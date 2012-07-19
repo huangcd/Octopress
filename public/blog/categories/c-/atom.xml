@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C# | 流水笔记]]></title>
   <link href="http://huangcd.github.com/blog/categories/c-/atom.xml" rel="self"/>
   <link href="http://huangcd.github.com/"/>
-  <updated>2012-07-18T23:32:59+08:00</updated>
+  <updated>2012-07-19T17:21:02+08:00</updated>
   <id>http://huangcd.github.com/</id>
   <author>
     <name><![CDATA[huangcd]]></name>
@@ -18,36 +18,73 @@
     <link href="http://huangcd.github.com/blog/2012/07/18/functional-c-number/"/>
     <updated>2012-07-18T07:20:00+08:00</updated>
     <id>http://huangcd.github.com/blog/2012/07/18/functional-c-number</id>
-    <content type="html"><![CDATA[<p>由于工作的需要，最近需要大量使用MS系的产品，
-Visual Studio和C#首当其冲（吐槽一下，
-Visual Studio的快捷键和Intelligence太弱了，
-好不容易有个ReSharper还是收费的。。。）</p>
+    <content type="html"><![CDATA[<p>由于工作的需要，最近需要大量使用MS系的产品，Visual Studio和C#首当其冲（吐槽一下，Visual Studio的快捷键和Intelligence太弱了，好不容易有个ReSharper还是收费的。。。）</p>
 
-<p>不得不说，几年不见，C#跟以前长得都不一样了。
-我印象中的C#基本上是Java的翻版，现在一看，
-我勒个去，各种lambda、LINQ满天飞。。。</p>
+<p>不得不说，几年不见，C#跟以前长得都不一样了。我印象中的C#基本上是Java的翻版，现在一看，我勒个去，各种lambda、LINQ满天飞。。。</p>
 
 <!--more-->
 
 
-<p>lambda是我喜欢的，作为一个低级的Haskell爱好者
-和Python的中度用户，lambda表达式为链式处理带来的
-快捷体验是无可比拟的，
-Python的map、reduce、filter
-等函数式方法以及Generator Expression是谁用谁知道啊。</p>
+<p>lambda是我喜欢的，作为一个低级的Haskell爱好者和Python的中度用户，lambda表达式为链式处理带来的快捷体验是无可比拟的，Python的map、reduce、filter这些函数式方法以及Generator Expression是谁用谁知道啊。</p>
 
-<p>粗略看了一下C#，发现居然没有map、reduce、filter几个函数，
-深感无力，决定自己轮子一下：</p>
+<p>粗略看了一下C#，发现居然没有map、reduce、filter几个函数，深感无力，决定自己轮子一下：</p>
 
-<p><div><script src='https://gist.github.com/3133167.js?file='></script>
-<noscript><pre><code>public static IEnumerable&lt;TResult&gt; Map&lt;in TSource, TResult&gt;(IEnumerable&lt;TSource&gt; sources, Func&lt;TSource, TResult&gt; mapper)
+<p>``` csharp functional C#
+public static IEnumerable<TResult> Map&lt;TSource, TResult></p>
+
+<pre><code>(IEnumerable&lt;TSource&gt; sources, Converter&lt;TSource, TResult&gt; converter)
+</code></pre>
+
+<p>{</p>
+
+<pre><code>foreach (var source in sources)
 {
-    foreach (var source in sources)
+    yield return converter(source);
+}
+</code></pre>
+
+<p>}</p>
+
+<p>public static IEnumerable<TItem> Filter<TItem></p>
+
+<pre><code>(IEnumerable&lt;TItem&gt; sources, Predicate&lt;TItem&gt; predicater)
+</code></pre>
+
+<p>{</p>
+
+<pre><code>foreach (var item in sources)
+{
+    if (predicater(item))
     {
-        yield return mapper(source);
+        yield return item;
     }
-}</code></pre></noscript></div>
-</p>
+}
+</code></pre>
+
+<p>}</p>
+
+<p>public delegate TResult Accumulator<in TSource, TResult></p>
+
+<pre><code>(TSource source, TResult result);
+</code></pre>
+
+<p>public static TResult Reduce&lt;TSource, TResult></p>
+
+<pre><code>(IEnumerable&lt;TSource&gt; sources, TResult initValue, 
+ Accumulator&lt;TSource, TResult&gt; accumulator)
+</code></pre>
+
+<p>{</p>
+
+<pre><code>foreach (var source in sources)
+{
+    initValue = accumulator(source, initValue);
+}
+return initValue;
+</code></pre>
+
+<p>}
+```</p>
 ]]></content>
   </entry>
   

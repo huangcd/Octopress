@@ -9,11 +9,7 @@
   <meta name="author" content="huangcd">
 
   
-  <meta name="description" content="由于工作的需要，最近需要大量使用MS系的产品，
-Visual Studio和C#首当其冲（吐槽一下，
-Visual Studio的快捷键和Intelligence太弱了，
-好不容易有个ReSharper还是收费的。。。） 不得不说，几年不见，C#跟以前长得都不一样了。
-我印象中的C# &hellip;">
+  <meta name="description" content="由于工作的需要，最近需要大量使用MS系的产品，Visual Studio和C#首当其冲（吐槽一下，Visual Studio的快捷键和Intelligence太弱了，好不容易有个ReSharper还是收费的。。。） 不得不说，几年不见，C#跟以前长得都不一样了。我印象中的C#基本上是Java的翻版 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,35 +90,88 @@ Visual Studio的快捷键和Intelligence太弱了，
   </header>
 
 
-<div class="entry-content"><p>由于工作的需要，最近需要大量使用MS系的产品，
-Visual Studio和C#首当其冲（吐槽一下，
-Visual Studio的快捷键和Intelligence太弱了，
-好不容易有个ReSharper还是收费的。。。）</p>
+<div class="entry-content"><p>由于工作的需要，最近需要大量使用MS系的产品，Visual Studio和C#首当其冲（吐槽一下，Visual Studio的快捷键和Intelligence太弱了，好不容易有个ReSharper还是收费的。。。）</p>
 
-<p>不得不说，几年不见，C#跟以前长得都不一样了。
-我印象中的C#基本上是Java的翻版，现在一看，
-我勒个去，各种lambda、LINQ满天飞。。。</p>
+<p>不得不说，几年不见，C#跟以前长得都不一样了。我印象中的C#基本上是Java的翻版，现在一看，我勒个去，各种lambda、LINQ满天飞。。。</p>
 
 <!--more-->
 
 
-<p>lambda是我喜欢的，作为一个低级的Haskell爱好者
-和Python的中度用户，lambda表达式为链式处理带来的
-快捷体验是无可比拟的，
-Python的map、reduce、filter
-等函数式方法以及Generator Expression是谁用谁知道啊。</p>
+<p>lambda是我喜欢的，作为一个低级的Haskell爱好者和Python的中度用户，lambda表达式为链式处理带来的快捷体验是无可比拟的，Python的map、reduce、filter这些函数式方法以及Generator Expression是谁用谁知道啊。</p>
 
-<p>粗略看了一下C#，发现居然没有map、reduce、filter几个函数，
-深感无力，决定自己轮子一下：</p>
+<p>粗略看了一下C#，发现居然没有map、reduce、filter几个函数，深感无力，决定自己轮子一下：</p>
 
-<div><script src='https://gist.github.com/3133167.js?file='></script>
-<noscript><pre><code>public static IEnumerable&lt;TResult&gt; Map&lt;in TSource, TResult&gt;(IEnumerable&lt;TSource&gt; sources, Func&lt;TSource, TResult&gt; mapper)
-{
-    foreach (var source in sources)
-    {
-        yield return mapper(source);
-    }
-}</code></pre></noscript></div>
+<figure class='code'><figcaption><span>functional C#</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">TResult</span><span class="p">&gt;</span> <span class="n">Map</span><span class="p">&lt;</span><span class="n">TSource</span><span class="p">,</span> <span class="n">TResult</span><span class="p">&gt;</span>
+</span><span class='line'>    <span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">TSource</span><span class="p">&gt;</span> <span class="n">sources</span><span class="p">,</span> <span class="n">Converter</span><span class="p">&lt;</span><span class="n">TSource</span><span class="p">,</span> <span class="n">TResult</span><span class="p">&gt;</span> <span class="n">converter</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">source</span> <span class="k">in</span> <span class="n">sources</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">yield</span> <span class="k">return</span> <span class="nf">converter</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">TItem</span><span class="p">&gt;</span> <span class="n">Filter</span><span class="p">&lt;</span><span class="n">TItem</span><span class="p">&gt;</span>
+</span><span class='line'>    <span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">TItem</span><span class="p">&gt;</span> <span class="n">sources</span><span class="p">,</span> <span class="n">Predicate</span><span class="p">&lt;</span><span class="n">TItem</span><span class="p">&gt;</span> <span class="n">predicater</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">sources</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">predicater</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">yield</span> <span class="k">return</span> <span class="n">item</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">delegate</span> <span class="n">TResult</span> <span class="n">Accumulator</span><span class="p">&lt;</span><span class="k">in</span> <span class="n">TSource</span><span class="p">,</span> <span class="n">TResult</span><span class="p">&gt;</span>
+</span><span class='line'>    <span class="p">(</span><span class="n">TSource</span> <span class="n">source</span><span class="p">,</span> <span class="n">TResult</span> <span class="n">result</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">static</span> <span class="n">TResult</span> <span class="n">Reduce</span><span class="p">&lt;</span><span class="n">TSource</span><span class="p">,</span> <span class="n">TResult</span><span class="p">&gt;</span>
+</span><span class='line'>    <span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">TSource</span><span class="p">&gt;</span> <span class="n">sources</span><span class="p">,</span> <span class="n">TResult</span> <span class="n">initValue</span><span class="p">,</span>
+</span><span class='line'>     <span class="n">Accumulator</span><span class="p">&lt;</span><span class="n">TSource</span><span class="p">,</span> <span class="n">TResult</span><span class="p">&gt;</span> <span class="n">accumulator</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">source</span> <span class="k">in</span> <span class="n">sources</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">initValue</span> <span class="p">=</span> <span class="n">accumulator</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">initValue</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">initValue</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 
 </div>
 
@@ -172,6 +221,8 @@ Python的map、reduce、filter
     <p class="meta">
       
       
+        <a class="basic-alignment right" href="/blog/2012/07/19/shi-yong-octopresszai-githubda-jian-bo-ke/" title="Next Post: 使用Octopress在github搭建博客">使用Octopress在github搭建博客 &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -191,6 +242,10 @@ Python的map、reduce、filter
 </section><section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/07/19/shi-yong-octopresszai-githubda-jian-bo-ke/">使用Octopress在github搭建博客</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/07/18/functional-c-number/">函数式C#的尝试</a>
