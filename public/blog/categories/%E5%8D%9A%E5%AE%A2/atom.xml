@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 博客 | 流水笔记]]></title>
+  <link href="http://huangcd.github.com/blog/categories/%E5%8D%9A%E5%AE%A2/atom.xml" rel="self"/>
+  <link href="http://huangcd.github.com/"/>
+  <updated>2012-07-19T17:54:48+08:00</updated>
+  <id>http://huangcd.github.com/</id>
+  <author>
+    <name><![CDATA[huangcd]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[使用Octopress在github搭建博客]]></title>
+    <link href="http://huangcd.github.com/blog/2012/07/19/shi-yong-octopresszai-githubda-jian-bo-ke/"/>
+    <updated>2012-07-19T16:48:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2012/07/19/shi-yong-octopresszai-githubda-jian-bo-ke</id>
+    <content type="html"><![CDATA[<ol>
+<li>使用<a href="http://rubyforge.org/frs/download.php/75127/rubyinstaller-1.9.2-p290.exe">rubyInstaller</a>安装ruby1.9.2</li>
+<li>使用<a href="http://code.google.com/p/msysgit/downloads/list">msysgit</a>安装git</li>
+<li>按照<a href="https://github.com/oneclick/rubyinstaller/wiki/development-kit">教程</a>安装<a href="https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe">development-kit</a></li>
+<li>在命令行下执行下面代码</li>
+</ol>
+
+
+<p><code>sh
+git clone git://github.com/imathis/octopress.git octopress
+cd octopress
+gem install bundler
+bundle install
+</code></p>
+
+<p>如果gem install的速度比较慢，可以把gem的源换成taobao的</p>
+
+<p><code>sh
+gem sources --remove http://rubygems.org/
+gem sources -a http://ruby.taobao.org/
+</code></p>
+
+<p>安装过程中可能会遇到一些问题，自行google之。</p>
+
+<ol>
+<li>在github创建一个名字为[userName].github.com的项目，然后根据<a href="https://help.github.com/">help</a>的内容进行配置。</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

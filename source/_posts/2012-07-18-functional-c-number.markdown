@@ -54,3 +54,16 @@ public static TResult Reduce<TSource, TResult>
 }
 ```
 
+写完之后就深深地被自己的函数式功底折服了~尤其是这Reduce函数，还可以生成Filter和Map两个函数，实在是太给力了。。。
+
+然后开始看LINQ，看着看着觉得不怎么妥。。咦，Filter不就是where嘛，Map不就是Select嘛。。。原来我想要的，别人早就想好了，不过还好Reduce这么高阶的函数是LINQ做不到的，想来又深以为然~
+
+然后装了ReSharper（插播一下，ReSharper真的可以让Visual Studio好用一万倍啊一万倍），猛然又发现，ReShaper函数上直接提示说这个可以换成LINQ表达式！我勒个去，Ctrl+Enter之后果然把Reduce函数变成了这个样子：
+
+``` csharp
+return sources.Aggregate(initValue, (current, source) => accumulator(source, current));
+```
+
+于是我就不能忍了，直接上.NET Reflector看源码，发现Aggregate、Select、Where几个函数长得基本和我写得差不多，总算舒服一点。。。
+
+总的来说，C#还是不错的，从语言的层面上来说已经完全超越Java了，除了各种库少一点，用的人少一点之外基本上没什么问题了。
