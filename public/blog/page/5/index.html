@@ -1,0 +1,880 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>流水笔记</title>
+  <meta name="author" content="huangcd">
+
+  
+  <meta name="description" content="找了一下，貌似numpy库没有这个函数，自己写了一个 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+from numpy import *
+def &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://huangcd.github.com/blog/page/5/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="流水笔记" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">流水笔记</a></h1>
+  
+    <h2>面向免费零食和饮料的编程</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:huangcd.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/19/qiu-jie-e-de-ju-zhen-ci-fang/">求解e的矩阵次方</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-19T00:00:00+08:00" pubdate data-updated="true">Aug 19<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>找了一下，貌似numpy库没有这个函数，自己写了一个</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#!/usr/bin/env python
+</span><span class='line'># -*- coding: UTF-8 -*-
+</span><span class='line'>from numpy import *
+</span><span class='line'>def pow_e(A, err = 1E-5):
+</span><span class='line'>'''e的A次方，A为矩阵'''
+</span><span class='line'>idx = 1
+</span><span class='line'>fact = 1
+</span><span class='line'>result = A ** 0
+</span><span class='line'>while True:
+</span><span class='line'>T = (A ** idx) / fact
+</span><span class='line'>idx += 1
+</span><span class='line'>fact *= idx
+</span><span class='line'>sumT = sum(map(lambda l: sum(map(long, map(abs, l))), T.tolist()))
+</span><span class='line'>if sumT > 10E10:
+</span><span class='line'>raise Exception('power is too large')
+</span><span class='line'>if sumT &lt;= err:
+</span><span class='line'>break
+</span><span class='line'>result += T
+</span><span class='line'>return result</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/19/fa-pai-wen-ti-de-python-jie/">发牌问题的Python解</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-19T00:00:00+08:00" pubdate data-updated="true">Aug 19<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.javaeye.com/topic/739731" target="_self">原帖在此</a>（有52张扑克牌要随机发牌给四个玩家，并且四个玩家牌的数量是相同的？）</p>
+
+<p>google了一下，发现Python也可以一行写完，不过需要用到izip_longest和random两个函数。代码如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>from itertools import izip_longest
+</span><span class='line'>
+</span><span class='line'>from random import random
+</span><span class='line'>
+</span><span class='line'>list(izip_longest(*[iter(sorted(range(1, 53), key=lambda x: random()))]*13))</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/18/kai-shi-haskell/">开始Haskell</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-18T00:00:00+08:00" pubdate data-updated="true">Aug 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>今年的计划很完美，上半年学一门脚本语言（Python），现在说不上精通，但至少各种小需求下的正常使用是没什么问题的了，而且也写过不少的程序，最近的就是在重写仙剑啦，不过也很久没写了。。。相比之前马马虎虎学的Ruby（这个还好，至少用ROR做了一个小网站，虽然现在已经报废），Perl（跟学屠龙术差不多，学完了不知道用在哪里，渐渐地就忘光了，现在仅仅依稀还记得各种_、$的古怪含义）。想想Python确实是有它的优势，首先最大的优势当然就是google在用啦，然后各种语法糖也很舒服，库也多，基本上所有需求都能找到相应的库。不足之处是似乎论脚本比不过Perl、论OO比不过Ruby，论函数式好像也不怎么样，总之就是感觉比较杂，而且正则不是native的，也多多少少有点麻烦。缩进是个很有意思的东西，不过我喜欢，唯一的麻烦就是复制代码往往要改缩进。</p>
+
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-分割一下&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-</p>
+
+<p>鉴于Python已经可以投入正常使用了，于是决定开始学一个函数式语言，其实可以选择的余地还是很多的，比如Scala、Lisp、Coq等等，不过Scala似乎没有那么纯函数；Coq似乎又仅仅是一个理论语言，没什么实用意义；Lisp似乎不错，但总觉得老了点。然后看到程序员上的一篇文章《纯粹之美——浅谈纯函数式语言Haskell》，发现一个很有趣的东西：Haskell是一个人名（Haskell Curry），然后Curry同构不就是之前学Coq一直不怎么明白的东西嘛。所以想想就学Haskell算了。</p>
+
+<p>于是昨天下了Haskell（七十多M，忒大了。。。），装上，开始边学边做Project Euler，感觉良好～</p>
+
+<p>目前的感觉是Haskell和去掉证明部分的Coq太像了，大概函数式语言都长得一个样子的缘故，不过更具实用性，因为有IO等交互性的模块。关于为什么能有IO，《纯粹之美——浅谈纯函数式语言Haskell》里面是这么说的：</p>
+
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-以下为摘抄&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-</p>
+
+<p>Haskell里面用了Monad的概念，帮助干这些“脏活”。Haskell是一门通用语言，可以实现所有的读写文件、访问数据库等功能。但是它把IO操作与纯函数严格的隔离开。怎么办到呢？haskell的另外一个特性：强类型的特性就发挥作用了。Haskell里面每一个函数都有一个类型签名，整个程序就像是很多个形状不同的拼图，两个函数必须形状匹配才能拼装在一起。任何带有副作用的函数，其类型签名中都会带上一个IO的类型标签，这个IO类型标签就像一个戳，只要带上了，任何调用它的函数也必须有IO标签。只有带有IO类型标签的函数才能调用另一个带有IO标签的函数，而在IO函数内可以调用纯函数，而反过来，纯函数却不可以调用带有IO标签的函数。</p>
+
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-摘抄结束&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-</p>
+
+<p>说白了，就是IO这样的模块是游离在Haskell函数式核心模块之外的补充部分。</p>
+
+<p>还有一个很有意思的东西就是Haskell的程序可以很容易变成无需Haskell平台环境的可执行文件，这个比Java、Python什么的都方便多了。</p>
+
+<p>除此之外，Haskell就很像是Coq了：纯函数式、强类型、惰性计算（lazy）、函数组合、高阶函数等等。</p>
+
+<p>总而言之，统而言之，争取在春节前后能把Haskell用起来。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/18/gu-jian-qi-tan-hao-hua-ban/">古剑奇谭豪华版</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-18T00:00:00+08:00" pubdate data-updated="true">Aug 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>拿到了，速度很快，很好很强大，不过外壳果然是稍微有点损坏。包装很精美，有一个很可爱的口很大的毛茸茸的钥匙扣、有一个太古纪事卷轴（6米长。。。宿舍展不开）、有一张精美音乐CD（光驱坏了，听不了。。。）、有一本精选美术设定集（还好，不算很精美）。当然还有安装光盘说明书等等，总的来说很满意，虽然价格有点高。</p>
+
+<p>试玩了一下，果然跑不起来。。。没装补丁的时候过场动画（太古纪事卷轴）都一顿一顿的，装全了补丁以后还好，但进入游戏以后依然很卡，放幻灯片的效果，导致操作手感很差。没有显卡太悲凉了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/17/xin-wen-zhong-guo-jing-ji-chao-guo-ri-ben-cheng-wei-shi-jie-di-er/">欣闻中国经济超过日本成为世界第二</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-17T00:00:00+08:00" pubdate data-updated="true">Aug 17<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>不过貌似跟我没什么关系，桃李的麻辣香锅还是至少要10块左右才够吃。。。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/12/you-hui-xue-xiao-le/">又回学校了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-12T00:00:00+08:00" pubdate data-updated="true">Aug 12<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>真快啊真快啊，转眼间的事情</p>
+
+<p>昨天坐了一整天的各种交通工具，回到宿舍都虚了，晚上吃饭很有想吐的感觉，于是草草吃了点就回去了。自行车又没气了，看来还真的是一个学期就必须打一次气的。回去以后把风扇插插洗洗（原来把内壳拿出的方法不是压扁内壳，而是拉开外壳），然后拧螺母的时候又发现死活拧不紧去，手都快拧滑的时候才想到是不是应该把螺母翻个个再拧呢，于是发现果然是这样的。</p>
+
+<p>然后爸打电话过来说我没给他改程序，因为他电脑里面的程序还是错的，然后我敏锐地指出他当时只是拷到U盘，然后就匆匆赶去打麻将了，一说果然是。</p>
+
+<p>然后睡觉，睡着睡着突然发现不太对头，匆匆跑厕所，回过头一想似乎果然是每次吃饭吃到想吐总是有点什么问题的。还好之后吃了点药就一夜安宁了。然后早上起来又发现全身乏力，也不知道是拉肚子的原因还是发烧，更悲剧的是发现我的钥匙不见了。四处找了一会没找到遂决定睡觉，这个很好，睡醒了以后虽然还是全身无力，但至少想到钥匙可能放在哪里了，一找，果然在蚊帐下面。</p>
+
+<p>于是去吃午饭，依然没有食欲，于是想喝粥，紫米粥是肯定要的，但是似乎不够吃，看到绿豆粥上面似乎隐隐约约飘着点肉，大喜，又要了一碗。结帐的时候发现一共才1.1块，想怎么可能有肉呢？？？噼里啪啦灌完紫米粥以后试了一口绿豆粥，发现不仅没有肉，而且超难喝。又试了一口，依然很难喝，果断不喝，直接拿到回收处。</p>
+
+<p>然后去买网线，C楼网线质量虽然差，但想着好像也没有别的地方能买，于是也只好委屈一下了，哪知十块钱的网线买回来刚插上就断了卡位的那个透明状物体，真是气死我也，于是继续睡觉，不开风扇憋了一身汗以后醒来发现似乎还好，腰不酸了，背也不痛了，上楼也倍儿有劲。于是开始改代码，改吧改吧发现是不是应该写点什么东西先，于是就开始写了。</p>
+
+<p>另，发现似乎实验室有钱发了，账户里面有了转账记录，虽然还看不到钱是多少，但依然我心甚慰——终于有钱了</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/12/%5Bzhuan%5D-shuo-shuo-zi-fu-ji-he-bian-ma/">【转】说说字符集和编码</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-12T00:00:00+08:00" pubdate data-updated="true">Aug 12<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>javaeye上看到的帖子，读起来很愉快。</p>
+
+<p>很久很久以前，有一群人，他们决定用8个可以开合的晶体管来组合成不同的状态，以表示世界上的万物。他们看到8个开关状态是好的，于是他们把这称为&#8221;字节&#8221;。</p>
+
+<p>再后来，他们又做了一些可以处理这些字节的机器，机器开动了，可以用字节来组合出很多状态，状态开始变来变去。他们看到这样是好的，于是它们就这机器称为&#8221;计算机&#8221;。</p>
+
+<p>开始计算机只在美国用。八位的字节一共可以组合出256(2的8次方)种不同的状态。</p>
+
+<p>他 们把其中的编号从0开始的32种状态分别规定了特殊的用途，一但终端、打印机遇上约定好的这些字节被传过来时，就要做一些约定的动作。遇上00x10,  终端就换行，遇上0x07, 终端就向人们嘟嘟叫，例好遇上0x1b,  打印机就打印反白的字，或者终端就用彩色显示字母。他们看到这样很好，于是就把这些0x20以下的字节状态称为&#8221;控制码&#8221;。</p>
+
+<p>他们又把 所有的空格、标点符号、数字、大小写字母分别用连续的字节状态表示，一直编到了第127号，这样计算机就可以用不同字节来存储英语的文字了。大家看到这 样，都感觉很好，于是大家都把这个方案叫做 ANSI 的&#8221;Ascii&#8221;编码（American Standard Code for  Information Interchange，美国信息互换标准代码）。当时世界上所有的计算机都用同样的ASCII方案来保存英文文字。</p>
+
+<p>后 来，就像建造巴比伦塔一样，世界各地的都开始使用计算机，但是很多国家用的不是英文，他们的字母里有许多是ASCII里没有的，为了可以在计算机保存他们 的文字，他们决定采用127号之后的空位来表示这些新的字母、符号，还加入了很多画表格时需要用下到的横线、竖线、交叉等形状，一直把序号编到了最后一个 状态255。从128到255这一页的字符集被称&#8221;扩展字符集&#8221;。从此之后，贪婪的人类再没有新的状态可以用了，美帝国主义可能没有想到还有第三世界国家 的人们也希望可以用到计算机吧！</p>
+
+<p>等中国人们得到计算机时，已经没有可以利用的字节状态来表示汉字，况且有6000多个常用汉字需要保 存呢。但是这难不倒智慧的中国人民，我们不客气地把那些127号之后的奇异符号们直接取消掉,  规定：一个小于127的字符的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节（他称之为高字节）从0xA1用到 0xF7，后面一个字节（低字节）从0xA1到0xFE，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，我们还把数学符号、罗马希腊的 字母、日文的假名们都编进去了，连在 ASCII  里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的&#8221;全角&#8221;字符，而原来在127号以下的那些就叫&#8221;半角&#8221;字符了。</p>
+
+<p>中国人民看到这样很不错，于是就把这种汉字方案叫做 &#8220;GB2312&#8221;。GB2312 是对 ASCII 的中文扩展。</p>
+
+<p>但是中国的汉字太多了，我们很快就就发现有许多人的人名没有办法在这里打出来，特别是某些很会麻烦别人的国家领导人。于是我们不得不继续把 GB2312 没有用到的码位找出来老实不客气地用上。</p>
+
+<p>后 来还是不够用，于是干脆不再要求低字节一定是127号之后的内码，只要第一个字节是大于127就固定表示这是一个汉字的开始，不管后面跟的是不是扩展字符 集里的内容。结果扩展之后的编码方案被称为 GBK 标准，GBK 包括了 GB2312  的所有内容，同时又增加了近20000个新的汉字（包括繁体字）和符号。</p>
+
+<p>后来少数民族也要用电脑了，于是我们再扩展，又加了几千个新的少数民族的字，GBK 扩成了 GB18030。从此之后，中华民族的文化就可以在计算机时代中传承了。</p>
+
+<p>中 国的程序员们看到这一系列汉字编码的标准是好的，于是通称他们叫做 &#8220;DBCS&#8221;（Double Byte Charecter Set  双字节字符集）。在DBCS系列标准里，最大的特点是两字节长的汉字字符和一字节长的英文字符并存于同一套编码方案里，因此他们写的程序为了支持中文处 理，必须要注意字串里的每一个字节的值，如果这个值是大于127的，那么就认为一个双字节字符集里的字符出现了。那时候凡是受过加持，会编程的计算机僧侣 们都要每天念下面这个咒语数百遍：</p>
+
+<p>&#8220;一个汉字算两个英文字符！一个汉字算两个英文字符&#8230;&#8230;&#8221;</p>
+
+<p>因 为当时各个国家都像中国这样搞出一套自己的编码标准，结果互相之间谁也不懂谁的编码，谁也不支持别人的编码，连大陆和台湾这样只相隔了150海里，使用着 同一种语言的兄弟地区，也分别采用了不同的 DBCS  编码方案。当时的中国人想让电脑显示汉字，就必须装上一个&#8221;汉字系统&#8221;，专门用来处理汉字的显示、输入的问题，但是那个台湾的愚昧封建人士写的算命程序就 必须加装另一套支持 BIG5  编码的什么&#8221;倚天汉字系统&#8221;才可以用，装错了字符系统，显示就会乱了套！这怎么办？而且世界民族之林中还有那些一时用不上电脑的穷苦人民，他们的文字又怎 么办？</p>
+
+<p>真是计算机的巴比伦塔命题啊！</p>
+
+<p>正在这时，大天使加百列及时出现了：一个叫 ISO  （国际标谁化组织）的国际组织决定着手解决这个问题。他们采用的方法很简单：废了所有的地区性编码方案，重新搞一个包括了地球上所有文化、所有字母和符号 的编码！他们打算叫它&#8221;Universal Multiple-Octet Coded Character Set&#8221;，简称 UCS, 俗称  &#8220;UNICODE&#8221;。</p>
+
+<p>UNICODE 开始制订时，计算机的存储器容量极大地发展了，空间再也不成为问题了。于是 ISO  就直接规定必须用两个字节，也就是16位来统一表示所有的字符，对于ascii里的那些&#8221;半角&#8221;字符，UNICODE  包持其原编码不变，只是将其长度由原来的8位扩展为16位，而其他文化和语言的字符则全部重新统一编码。由于&#8221;半角&#8221;英文符号只需要用到低8位，所以其高 8位永远是0，因此这种大气的方案在保存英文文本时会多浪费一倍的空间。</p>
+
+<p>这时候，从旧社会里走过来的程序员开始发现一个奇怪的现象： 他们的strlen函数靠不住了，一个汉字不再是相当于两个字符了，而是一个！是的，从 UNICODE  开始，无论是半角的英文字母，还是全角的汉字，它们都是统一的&#8221;一个字符&#8221;！同时，也都是统一的&#8221;两个字节&#8221;，请注意&#8221;字符&#8221;和&#8221;字节&#8221;两个术语的不 同，&#8221;字节&#8221;是一个8位的物理存贮单元，而&#8221;字符&#8221;则是一个文化相关的符号。在UNICODE  中，一个字符就是两个字节。一个汉字算两个英文字符的时代已经快过去了。</p>
+
+<p>从前多种字符集存在时，那些做多语言软件的公司遇上过很大麻 烦，他们为了在不同的国家销售同一套软件，就不得不在区域化软件时也加持那个双字节字符集咒语，不仅要处处小心不要搞错，还要把软件中的文字在不同的字符 集中转来转去。UNICODE 对于他们来说是一个很好的一揽子解决方案，于是从 Windows NT 开始，MS  趁机把它们的操作系统改了一遍，把所有的核心代码都改成了用 UNICODE 方式工作的版本，从这时开始，WINDOWS  系统终于无需要加装各种本土语言系统，就可以显示全世界上所有文化的字符了。</p>
+
+<p>但是，UNICODE 在制订时没有考虑与任何一种现有的编码方案保持兼容，这使得 GBK 与UNICODE 在汉字的内码编排上完全是不一样的，没有一种简单的算术方法可以把文本内容从UNICODE编码和另一种编码进行转换，这种转换必须通过查表来进行。</p>
+
+<p>如 前所述，UNICODE  是用两个字节来表示为一个字符，他总共可以组合出65535不同的字符，这大概已经可以覆盖世界上所有文化的符号。如果还不够也没有关系，ISO已经准备 了UCS-4方案，说简单了就是四个字节来表示一个字符，这样我们就可以组合出21亿个不同的字符出来（最高位有其他用途），这大概可以用到银河联邦成立 那一天吧！</p>
+
+<p>UNICODE 来到时，一起到来的还有计算机网络的兴起，UNICODE  如何在网络上传输也是一个必须考虑的问题，于是面向传输的众多 UTF（UCS Transfer  Format）标准出现了，顾名思义，UTF8就是每次8个位传输数据，而UTF16就是每次16个位，只不过为了传输时的可靠性，从UNICODE到 UTF时并不是直接的对应，而是要过一些算法和规则来转换。</p>
+
+<p>受到过网络编程加持的计算机僧侣们都知道，在网络里传递信息时有一个很重要 的问题，就是对于数据高低位的解读方式，一些计算机是采用低位先发送的方法，例如我们PC机采用的 INTEL  架构，而另一些是采用高位先发送的方式，在网络中交换数据时，为了核对双方对于高低位的认识是否是一致的，采用了一种很简便的方法，就是在文本流的开始时 向对方发送一个标志符。如果之后的文本是高位在位，那就发送&#8221;FEFF&#8221;，反之，则发送&#8221;FFFE&#8221;。不信你可以用二进制方式打开一个UTF-X格式的文 件，看看开头两个字节是不是这两个字节？</p>
+
+<p>讲到这里，我们再顺便说说一个很著名的奇怪现象：当你在 windows 的记事本里新建一个文件，输入&#8221;联通&#8221;两个字之后，保存，关闭，然后再次打开，你会发现这两个字已经消失了，代之的是几个乱码！呵呵，有人说这就是联通之所以拼不过移动的原因。</p>
+
+<p>其实这是因为GB2312编码与UTF8编码产生了编码冲撞的原因。</p>
+
+<p>从网上引来一段从UNICODE到UTF8的转换规则：</p>
+
+<p>Unicode</p>
+
+<p>UTF-8
+0000 - 007F</p>
+
+<p>0xxxxxxx</p>
+
+<p>0080 - 07FF</p>
+
+<p>110xxxxx 10xxxxxx</p>
+
+<p>0800 - FFFF</p>
+
+<p>1110xxxx 10xxxxxx 10xxxxxx</p>
+
+<p>例 如&#8221;汉&#8221;字的Unicode编码是6C49。6C49在0800-FFFF之间，所以要用3字节模板：1110xxxx 10xxxxxx  10xxxxxx。将6C49写成二进制是：0110 1100 0100 1001，将这个比特流按三字节模板的分段方法分为0110 110001  001001，依次代替模板中的x，得到：1110-0110 10-110001 10-001001，即E6 B1 89，这就是其UTF8的编码。</p>
+
+<p>而当你新建一个文本文件时，记事本的编码默认是ANSI, 如果你在ANSI的编码输入汉字，那么他实际就是GB系列的编码方式，在这种编码下，&#8221;联通&#8221;的内码是：</p>
+
+<p>c1 1100 0001</p>
+
+<p>aa 1010 1010</p>
+
+<p>cd 1100 1101</p>
+
+<p>a8 1010 1000</p>
+
+<p>注 意到了吗？第一二个字节、第三四个字节的起始部分的都是&#8221;110&#8221;和&#8221;10&#8221;，正好与UTF8规则里的两字节模板是一致的，于是再次打开记事本时，记事本 就误认为这是一个UTF8编码的文件，让我们把第一个字节的110和第二个字节的10去掉，我们就得到了&#8221;00001  101010&#8221;，再把各位对齐，补上前导的0，就得到了&#8221;0000 0000 0110  1010&#8221;，不好意思，这是UNICODE的006A，也就是小写的字母&#8221;j&#8221;，而之后的两字节用UTF8解码之后是0368，这个字符什么也不是。这就 是只有&#8221;联通&#8221;两个字的文件没有办法在记事本里正常显示的原因。</p>
+
+<p>而如果你在&#8221;联通&#8221;之后多输入几个字，其他的字的编码不见得又恰好是110和10开始的字节，这样再次打开时，记事本就不会坚持这是一个utf8编码的文件，而会用ANSI的方式解读之，这时乱码又不出现了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/29/xian-jian-tu-pian-xi-lie-quan-bu-jie-xi-wan-cheng/">[仙剑]图片系列全部解析完成</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-29T00:00:00+08:00" pubdate data-updated="true">Jul 29<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>其实是很久之前的事情了，一直没时间写。现在除了145号地图（似乎是锁妖塔某层）有问题以外其他都已经解析出来了。找个时间调一下145就好了。</p>
+
+<p>另外速度问题现在先不处理了，没什么方法。</p>
+
+<p>最后是仙灵岛的地图，原图很大，这里是缩小了的。</p>
+
+<p><img class="alignnone" title="仙灵岛地图" src="http://python-pal.googlecode.com/files/6.png" alt="" width="320" height="320"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/29/hui-dao-jia-le/">回到家了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-29T00:00:00+08:00" pubdate data-updated="true">Jul 29<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>几乎是坐了两天整，累死了。昨天回家以后从七点一直睡到几天早上五点。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/26/fan-yi-de-yi-pian-wen-zhang/">翻译的一篇文章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-26T00:00:00+08:00" pubdate data-updated="true">Jul 26<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>一篇关于Python速度的文章，感觉写的还是不错的。一时兴起，就翻译了一下，不过翻译水平自然是很差了，所以看不懂的话就看<a href="http://wiki.python.org/moin/PythonSpeed" target="_blank">原文</a>吧</p>
+
+<!--style-start -->
+
+
+<h2>Python的速度</h2>
+
+
+<p>经常会有很多人担心Python写的程序会存在性能上的问题。是不是说使用Python就意味着性能上会有不可接受的损失呢？一些人会往往会不假思索地给出结论：“Python是解释性的脚本语言啊，解释性脚本语言都是非常慢的！”然而另外一些人经过实际测试以后发现Python其实并不慢。当然，某些时候可能是因为你恰好有一个跑的非常慢的程序。</p>
+
+<h2>速度对于程序来说是不是重要吗？</h2>
+
+
+<p>有些人可能会盲目地追求所谓的速度；在他们看来，像C这样的语言在很多场景下能够提供更好的运行速度，所以他们会觉得不管什么场合C都是一个更好的选择。但是另外一些人可能会觉得开发速度才是更重要的，所以即便实在那些Python运行效率不那么高的应用里面，他们还是会选择Python。而且这些人往往也会惊奇地发现Python代码的执行速度还是可以接受的，甚至某些时候在开发时间差不多的情况下Python的代码甚至会比C/C++要来的快（<span style="font-size:x-small;">译者：本来还觉得挺好的，这么一说就没什么意思了。。。</span>）。</p>
+
+<p>通常来说，绝对的速度并不是最重要的，你应该考虑的是一个可接受的执行速度。优化地太多反而是对资源（你的时间或者金钱）的一种浪费。</p>
+
+<h2>提高性能和可伸缩性的技术</h2>
+
+
+<p>下面是一些提高内存使用、速度和可扩展性等方面性能的编码原则：</p>
+
+<h3>使用更好的算法或者更快的工具</h3>
+
+
+<ul>
+<li>测试从属关系的时候，使用set和dictionary（O(1)的时间复杂度）比普通序列（O(n)的时间复杂度）要快得多。比如说对于“a in  b”这样的语句，b应该是set或者dictionary，而不是list或者tuple。</li>
+    <li>字符串连接用&#8221;.join(seq) 的方式会更好（O(n)的过程）。相反，如果使用“+”或者“+=”操作符的话复杂度是O(n^2)的，因为在这个过程中的每一步都要生成一个新的字符串。CPython  2.4翻译器在一定程度上优化了这个过程，但是&#8221;.join(seq) 仍然是最好的方式。</li>
+    <li>很多工具都有链表（list）形式或者迭代器（iterator）形式（range和xrange，map和itertools.imap，<a href="http://www.python.org/dev/peps/pep-0202/">list  comprehensions</a>和<a href="http://www.python.org/dev/peps/pep-0289/">generator expressions</a>，dict.items和dict.iteritems）。一般情况下，迭代器形式对内存要求更低而且有更多的可伸缩性。如果并不需要一个真正的list的话，迭代器形式是一个更好的选择。</li>
+    <li>很多核心模块都是用优化过的C来写的。利用这些模块可以让程序性能有很大的提升。这些模块包括所有的内置数据类型（list，tuple，set和dictionary）和像array、itertools、collections.deque这样的扩展模块。</li>
+    <li>类似的，内置函数也会比手工构建的函数要快，比如map(operator.add,  v1, v2)就比map(lambda x,y: x+y, v1, v2)快。</li>
+    <li>list结构在处理定长数组或者变长的栈的时候效率较高。然而当涉及到队列的pop操作或者插入操作的时候，使用collections.deque()更好，因为它避免了每次插入或者删除的时候需要重建数组的过程，所以它的时间复杂度将由O(n)提高到O(1)。</li>
+    <li>自定义排序的时候，使用Python2.4的key=或者传统的修饰器效率更高，因为它们的实现只需要对每个元素调用一次key函数。而不像cmp=那样每个元素都要调用很多次。比如sort(key=str.lower) 要比sort(cmp=lambda a,b: cmp(a.lower(),  b.lower()))快。另见<a href="http://wiki.python.org/moin/TimeComplexity"><span style="color:#0000aa;">TimeComplexity</span></a>。</li>
+</ul>
+
+
+<h3>利用解释器优化</h3>
+
+
+<ul>
+<li>在函数里面，局部变量的访问速度要比全局变量、内置数据和属性查找快。所以有时候在内部循环里面把变量局部化是值得的。 比如random.shuffle()函数使用了random=self.random进行局部化，节省了每次循环都要查表（在self中查找random）的过程。当然在循环外部这样做的话就不太值得了。</li>
+    <li>上一个建议是一个把常量表达式提出循环的通用规则。类似地，常量的展开也应该手工地做，比如说在循环里面应该把x=1+2替换成x=3。</li>
+    <li>函数调用开销要比其他的操作大。因此有时候应该在一些关键的循环里面应该把函数内联(inline)。</li>
+    <li>
+<a href="http://www.python.org/dev/peps/pep-0202/">list comprehensions</a>要比for循环稍微快一点（除非你不想要结果）。</li>
+    <li>从Python2.3开始，解释器对while  1进行了优化，相比起while  True而言，它在循环判断的时候只有一次跳转。因此在一些关键的场景下可以使用while  1来替代while True，虽然这有可能会降低程序的可读性。</li>
+    <li>混合赋值（x, y=a, b）比独立赋值要慢（x = a; y = b）。当然，通过混合赋值来交换（x, y=y, x）还是通过临时变量交换（t = x;  x = y; y = t）要快。</li>
+    <li>链式比较比用and操作符要快，因此应该把x < y and y < z写成x < y <  z。</li>
+    <li>另外还有一些快速的实现应该只在最需要的程序里面使用。比如果用not not  x会比bool(x)快。</li>
+</ul>
+
+
+<h3>利用诊断工具</h3>
+
+
+<ul>
+<li>hotshot和profile模块可以用来定位性能瓶颈所在，profile工具还能识别消耗在Python代码上的时间和消耗在C代码上的时间。</li>
+    <li>timeit模块提供一个分析不同实现的及时的性能比较的工具。</li>
+</ul>
+
+
+<h3>程序性能也受到一些全局策略的影响</h3>
+
+
+<ul>
+<li>在解析XML文本的时候，相对DOM方法而言，SAX更快，而且内存效率更高。</li>
+    <li>更多地使用C版本的模块也会提高程序性能，比如用cPickle来替代pickle模块，用cStringIO来替代StringIO。当然也要意识到一般而言C版本的模块可能会缺乏灵活性。</li>
+    <li>在一些I/O读取较多的场合使用线程可以加快响应时间。</li>
+    <li>select模块可以帮助我们最小化从多个socket抓取数据的开销。</li>
+</ul>
+
+
+<h3>考虑使用额外的工具来提高性能</h3>
+
+
+<ul>
+<li>对于大规模的数值计算而言，numpy更有效率。</li>
+    <li>psyco和pyrex能够加速本地代码。然而也要注意它们的一些限制，比如说并不支持所有的构造器。</li>
+    <li>See the <a href="http://wiki.python.org/moin/SciPy"><span style="color:#0000aa;">SciPy</span></a>-related document <a href="http://scipy.org/PerformancePython"><span style="color:#0000aa;">&#8220;A beginners guide  to using Python for performance computing&#8221;</span></a> for an interesting  comparison of different tools, along with some timing results.</li>
+</ul>
+
+
+<h2>更多地性能提示</h2>
+
+
+<p>可以在<a href="http://wiki.python.org/moin/PythonSpeed/PerformanceTips"><span style="color:#0000aa;">PythonSpeed/PerformanceTips</span></a>一文中找到更多的提升性能的技巧和例子。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/6/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/4/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+ <h1>Categories</h1>
+ <ul id="categories">
+ <li class='category'><a href='/blog/categories/csharp/'>Csharp (1)</a></li>
+<li class='category'><a href='/blog/categories/haskell/'>Haskell (3)</a></li>
+<li class='category'><a href='/blog/categories/java/'>Java (2)</a></li>
+<li class='category'><a href='/blog/categories/lego积木/'>Lego积木 (1)</a></li>
+<li class='category'><a href='/blog/categories/plc/'>PLC (3)</a></li>
+<li class='category'><a href='/blog/categories/programming/'>Programming (5)</a></li>
+<li class='category'><a href='/blog/categories/python/'>Python (14)</a></li>
+<li class='category'><a href='/blog/categories/ubuntu/'>Ubuntu (7)</a></li>
+<li class='category'><a href='/blog/categories/vim/'>Vim (2)</a></li>
+<li class='category'><a href='/blog/categories/webkit/'>Webkit (3)</a></li>
+<li class='category'><a href='/blog/categories/functional/'>functional (1)</a></li>
+<li class='category'><a href='/blog/categories/lambda/'>lambda (1)</a></li>
+<li class='category'><a href='/blog/categories/仙剑/'>仙剑 (5)</a></li>
+<li class='category'><a href='/blog/categories/流水笔记/'>流水笔记 (20)</a></li>
+<li class='category'><a href='/blog/categories/游戏/'>游戏 (2)</a></li>
+<li class='category'><a href='/blog/categories/电影/'>电影 (1)</a></li>
+
+ </ul>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/07/19/shi-yong-octopresszai-githubda-jian-bo-ke/">使用Octopress在github搭建博客</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/18/functional-c-number/">函数式C#的尝试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/12/29/yi-ran-shi-jin-tian-de-shi-qing/">依然是今天的事情</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/12/29/tools/">tools</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/12/28/huan-shi-jin-tian-de-shi-qing/">还是今天的事情</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/huangcd">@huangcd</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'huangcd',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("huangcd", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/huangcd" class="twitter-follow-button" data-show-count="false">Follow @huangcd</a>
+  
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/112457374017832727892?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - huangcd -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

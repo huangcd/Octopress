@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: PLC | 流水笔记]]></title>
+  <link href="http://huangcd.github.com/blog/categories/plc/atom.xml" rel="self"/>
+  <link href="http://huangcd.github.com/"/>
+  <updated>2012-07-23T17:14:06+08:00</updated>
+  <id>http://huangcd.github.com/</id>
+  <author>
+    <name><![CDATA[huangcd]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[2010.4.27 PLC、西厢、股票]]></title>
+    <link href="http://huangcd.github.com/blog/2010/04/27/2010-4-27-plc-xi-xiang-gu-piao/"/>
+    <updated>2010-04-27T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/04/27/2010-4-27-plc-xi-xiang-gu-piao</id>
+    <content type="html"><![CDATA[<p>果然没有理论的支持还是做不成事情的，今天看了一下PLC的书，恍然大悟豁然开朗，很多疑问迎刃而解。
+首先PLC有一种很奇怪的执行方式，就是主程序块（OB1）并不是只执行一次，而是以一个恒定的间隔循环执行，这就解释了为什么CtrlValve里面DB101到DB110所有数据块里面的内容都是相同的，原来那只是个初始值。
+然后PIW之类的P是有深意的，它表示直接读取当前的信号（<strong>而不是在程序块执行之间保存到影像寄存器里面的值</strong>）。
+然后累加器AC呢，S7-300只有两个（ACCU0，ACCU1），而S7-200和S7-400都有4个（ACCU0～ACCU3）。
+然后对于一条指令，是一种操作码+操作数的形式，操作码自然就是L，A，=，==I之类的东西了。但操作数还是很有讲究的，可以有地址和数据两种方式。而地址又分为两种，一种是绝对地址（Memory Address），另一种是<strong>符号地址（Symbol Address）</strong>（符号地址还没看，据说在书中12～13章有详细介绍）。绝对地址呢，又分为直接寻址和间接寻址两种方式，直接寻址就是类似“I3.0”这样的形式，就是I区中第3个字节第0位了。间接寻址又很有讲究，比如S7-200中就跟C语言差不多，有&amp;和*两种符号，自然就是<strong>取地址</strong>和<strong>取当前地址对应的值作为地址对应的值</strong>（。。。反正就是那个意思了）。S7-300/400就简单很多了，可以用I[I10]之类的，意思就是把I10的值拿出来（比如是20），然后取I20的值。书里有个例子，是说</p>
+
+<p>[code]
+L    P#22.2
+T    LD10
+A    I[LD10]
+A    I0.0
+=    Q0.1
+[/code]</p>
+
+<p>看起来好像很复杂很牛的样子，其实就是</p>
+
+<p>[code]
+A    I22.2
+A    I0.0
+=    Q0.1
+[/code]</p>
+
+<p>的意思。
+然后还有S7-300/400寄存器间接寻址的内容也没看。
+然后今天跟万师兄谈了一下，发现某PLC系统结构非常清晰，没有整理的必要，于是现在任务暂时变成全方位理解CtrlValve的代码。貌似这160行的代码基本上就够我整个研究生论文了。。。</p>
+
+<p>然后今天收到一封邮件，说是西厢计划比较好用的版本出来了，于是下了下来，装上张生，还是很不错的，至少twitter、facebook等等都能正常访问，wordPress虽然慢了一点，但也还能忍。恩，西厢还是很牛的一个东西。</p>
+
+<p>然后今天股票很悲剧，操作失误把国航全卖了，然后南航差2分没买上（结果彪了6个点）。啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2010.4.26 PLC、WebKit、社当考试]]></title>
+    <link href="http://huangcd.github.com/blog/2010/04/26/2010-4-26-plc-webkit-she-dang-kao-shi/"/>
+    <updated>2010-04-26T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/04/26/2010-4-26-plc-webkit-she-dang-kao-shi</id>
+    <content type="html"><![CDATA[<p>首先详细分析一下SIMATIC 300(1)的代码（不写点东西的话总容易分神。。。）
+显然是先从OB1开始的了，OB1就是俗称的"Main Program Sweep (Cycle)"
+首先Call的是StationSendPC函数，也就是FC13（内含DB2--PCRev），学名是
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>” 从站设备原始数据传入DB2“</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>” 从站设备原始数据传入DB2“</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>” 从站设备原始数据传入DB2“</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>[code]
+AN I 16.0
+= DBX 144.0
+[/code]</p>
+
+<p>的结构，<strong>但AN是和上一个RLO and not，似乎就是每一个AN都是和上一个类似代码段的RLO and not一下，也就是说结果是逐个依赖的样子（我说的是什么呢？？？）</strong>。
+(号外——补充一个注释：LAR1 P#M100.0 //Load AR1 with a 32-bit pointer constant.)
+然后是泵运行状态，代码如下：</p>
+
+<p>[code]
+L P#20.0 //取基址
+LAR1
+L P#162.0
+LAR2
+L 11
+Lop1: NOP 0
+T #TmpNum
+A I [AR1,P#0.0]
+= DBX [AR2,P#0.0]
+AN I [AR1,P#0.0]
+= DBX [AR2,P#0.1]
++AR1 P#0.2 //输入间隔2
++AR2 P#1.0 //数据块间隔1字节
+L #TmpNum
+LOOP Lop1
+[/code]</p>
+
+<p>好吧，其实我<em><strong>没看懂</strong></em>，所以直接贴上来。。。</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>” 从站设备原始数据传入DB2“</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>” 从站设备原始数据传入DB2“</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>” 从站设备原始数据传入DB2“</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>” 从站设备原始数据传入DB2“</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&lt;div class='bogus-wrapper'>&lt;notextile>&lt;figure class='code'>&lt;div class="highlight">&lt;table>&lt;tr>&lt;td class="gutter">&lt;pre class="line-numbers">&lt;span class='line-number'>1&lt;/span>
+</span><span class='line'>&lt;/pre>&lt;/td>&lt;td class='code'>&lt;pre>&lt;code class=''>&lt;span class='line'>” 从站设备原始数据传入DB2“&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>&lt;/div>&lt;/figure>&lt;/notextile>&lt;/div>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>” 从站设备原始数据传入DB2“</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>” 从站设备原始数据传入DB2“</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>” 从站设备原始数据传入DB2“</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>” 从站设备原始数据传入DB2“</span></code></pre></td></tr></table></div></figure></notextile></div>
+Web Template Framework, 它provides commonly used functions all over the WebKit codebase.
+然后检查发现FrameLoader似乎是整个WebCore的入口，外壳（GTK、QT、Chrome等等）就是调用FrameLoader来载入网页 的，然后FrameLoader目前有一个问题，就是载入网页的时候需要一个外壳（这依赖太纠结了。。。），FrameLoader有几个看起来很 kernel的函数，首先是createWindows，就是新建一个窗口（标签页）的时候调用的吧。然后是各种load，就是载入URL了。</p>
+
+<p>暂时就看了这么多。。。</p>
+
+<p>下午考试，社会主义与当代中国，太纠结了。10道论述题，每道题都是写着歇着突然发现“咦，好像问的不是这个”，怎么办？划掉重写？太浪费时间了。。。试 图转回来？要能转回来就不会写错了。。。然后就像“算了，反正老师未必会看，看了也未必知道我在说什么，知道也可能会同情我写了那么多字”，反正大概应该 可能也许不会挂就是了，然后就开始写下一题了。</p>
+
+<p>晚上突然发现最近几周都忘了下Mentalist，我就说怎么总觉得少看了一部美剧，但具体有想不起来，Lie To Me已经停播，Chuck好像出的话基本都下了，然后今天终于想起是Mentalist，一搜，居然差3集没看，真是哇哈哈哈哈哈哈哈哈哈哈哈</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>” 从站设备原始数据传入DB2“</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>” 从站设备原始数据传入DB2“</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2010.4.24 PLC及聚餐及曼联]]></title>
+    <link href="http://huangcd.github.com/blog/2010/04/24/2010-4-24-plc-ji-ju-can-ji-man-lian/"/>
+    <updated>2010-04-24T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/04/24/2010-4-24-plc-ji-ju-can-ji-man-lian</id>
+    <content type="html"><![CDATA[<p>历经千辛万苦，终于把SIMATIC（为什么那么像赛门铁克呢？？？）里面的源码弄出来了。不得不说 Vim除了适合显摆以外，功能还是异常强大的，尽管现在还只是略懂，不过已经足以完成大部分文本处理的任务了。遗憾的是:%s/{pattern} /{substring}/g全局替换似乎不能用中文（<strong>或者更准确的说，VIM在命令状态下不能输入中文，有机会要尝试解决一下</strong>）。</p>
+
+<p>继续补充昨天内容：</p>
+
+<ul>
+<li>PI原来是Process Input的意思（ABB变频器和S7-300DP通讯里面说到——《设计文档（简略）》，PS.似乎找不到传说中的SFC15，只有SFC20和 SFC14）。因此据猜测，PIW应该是Process Input Word的意思了吧。</li>
+    <li>还有什么DBX 145.0这样的东西就是对应于当前打开的那个DB（OPN XXX中的XXX）中的第145.0（实际上应该就是145个位）。因为在《设计文档（简略）》中有这么一句</li>
+</ul>
+
+
+<p>[code]
+RECORD :=P#DB20.DBX 6.0 BYTE 6
+[/code]</p>
+
+<p>说的似乎是从DB20中第6位开始读6个BYTE</p>
+
+<ul>
+<li>OB其实是Organization Block的意思。</li>
+    <li>DB自然就是Data Block了</li>
+    <li>FC指的是Function</li>
+    <li>FB是Function Block（跟FC有什么区别呢？？？）</li>
+    <li>SFC是System Function</li>
+    <li>VAT是Variable Table，储存各种各样的变量。如下图（程序中各种各样的"PCSend".PCSend[2]）这种要你命三 千的含义都能从这里查到（说起来，DBX是不是任意位数呢？类似DBW、DBB）<a href="http://huangcd.files.wordpress.com/2010/04/2010-4-24-plce58f8ae8819ae9a490e58f8ae69bbce88194.png"><img class="alignnone size-full wp-image-10" title="2010 4 24 plce58f8ae8819ae9a490e58f8ae69bbce88194" src="http://huangcd.files.wordpress.com/2010/04/2010-4-24-plce58f8ae8819ae9a490e58f8ae69bbce88194.png" alt="" width="401" height="401"></a>
+</li>
+</ul>
+
+
+<p>另外赞一下VirtualBox的无缝模式，个人感觉完胜VirtualPC（没用过。。。）、VMWare（没用过最新版。。。）两个收费版</p>
+
+<p>中午聚餐，计有LMY、LHD、XQ、LZJ、CKY、LWJ和我共七人于江湖味道（为什么二楼看起来挺高雅的，一楼却怎么看都像大排档呢，搞到我被大家 狂喷），价格便宜量又足，还是不错的。席间爆料说我曾经发过暧昧短信。。。我怎么不记得了
+席间诸位工作了的同仁都无甚八卦热情，更多的是讨论租房等现实问题。我和LZJ两位烟酒僧对角默坐，无言以对，很是悲凉。</p>
+
+<p>晚上突然发现新浪有曼联直播，还是曼联VS热刺这种重头戏，显然是要看的。不过新浪视频居然只支持IE，只支持IE也就忍了，居然一开就把带宽全占了，网 都上不了。不过尽管如此，我还是排除万难，坚持看完全场，并在看直播过程中成功吧SIMATIC代码导出来。
+鉴于曼联赢了，心情甚好，点评一下：</p>
+
+<ol>
+<li>潇洒哥真不潇洒</li>
+    <li>小马哥很牛，上场就来个助攻，虽然只是捣了个脚</li>
+    <li>nani似乎没以前那么喜欢突突突了，表现还是可以的</li>
+    <li>Bale真牛，曼联当年没搞到手浪费了</li>
+    <li>王老吉同志很好，梅开二度</li>
+    <li>卡里克挺好的一个同志，怎么就成隐身卡了。。。</li>
+    <li>鲁小胖的小孩感觉怎么那么胖呢</li>
+    <li>他池为了马竞，似乎不会给面子了</li>
+</ol>
+
+
+<p>OVER，开始看片</p>
+]]></content>
+  </entry>
+  
+</feed>

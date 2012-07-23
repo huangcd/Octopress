@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Haskell | 流水笔记]]></title>
+  <link href="http://huangcd.github.com/blog/categories/haskell/atom.xml" rel="self"/>
+  <link href="http://huangcd.github.com/"/>
+  <updated>2012-07-23T17:14:06+08:00</updated>
+  <id>http://huangcd.github.com/</id>
+  <author>
+    <name><![CDATA[huangcd]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[一个Haskell的网站]]></title>
+    <link href="http://huangcd.github.com/blog/2010/08/26/yi-ge-haskell-de-wang-zhan/"/>
+    <updated>2010-08-26T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/08/26/yi-ge-haskell-de-wang-zhan</id>
+    <content type="html"><![CDATA[<p><a href="http://learnyouahaskell.com/chapters" target="_blank">http://learnyouahaskell.com/chapters</a></p>
+
+<p>据说还不错，先存着，以后再看</p>
+
+<div id="_mcePaste" style="width:1px;height:1px;overflow:hidden;">http://learnyouahaskell.com/chapters</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Haskell中的CPS]]></title>
+    <link href="http://huangcd.github.com/blog/2010/08/25/haskell-zhong-de-cps/"/>
+    <updated>2010-08-25T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/08/25/haskell-zhong-de-cps</id>
+    <content type="html"><![CDATA[<p>CPS(Continuation Passing Style)。恩，还不太明白，不过感觉异常强大。简单地说，就是把一个函数（比如说f）作为另一个函数的参数实现迭代，函数作为参数很正常，然而神奇的是CPS中的这个f每次迭代时都不一样，比如说第一次的时候可能是(x -> []），然而第二次的时候可能就变成了(x -> x:[]) 了，这样想起来似乎就有点像Python中的yield了。</p>
+
+<p>比如一个cps的实例是：</p>
+
+<p><strong><span style="color:#0000ff;">cps :: (a -> b -> (b -> b) -> b) -> b -> [a] -> b
+cps f z [] = z
+cps f z (x:xs) = f x z (y -> cps f y xs)</span></strong></p>
+
+<p>然后就可以利用这个cps来重新定义一些常用函数了：</p>
+
+<p><strong><span style="color:#0000ff;">myMap func l = cps (a bl h -> (func a): (h bl)) [] l</span></strong></p>
+
+<p><strong><span style="color:#0000ff;">myFold func z l = cps (a bl h -> func x (h bl)) z l</span></strong></p>
+
+<p><span style="color:#888888;">这个myFold似乎和foldr不一样，理解错误。。。</span><strong><span style="color:#0000ff;">
+</span></strong></p>
+
+<p><strong><span style="color:#0000ff;">myFilter func l = cps (a bl h -> if func a then a: (h bl) else h bl) [] l</span></strong></p>
+
+<p>这两个函数就map、foldr和filter的实现了，这里面的函数h就是神奇所在了，对应来看，下面三个函数的lambda表达式就是cps中的f，因此h就是(y -> cps f y xs)这个函数，这是一个包含cps的lambda表达式，也就是说每次调用这个函数的时候它都要调用cps来产生一个新的函数。什么时候中止呢，就是当xs==[]的时候了，这时h是这样一个函数t -> []，然后依次把h代入计算，直到最后得到结果。</p>
+
+<p>恩，虽然说起来貌似异常powerful的样子，但好像也没有什么很特别的用处，无非就是一个yield。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[开始Haskell]]></title>
+    <link href="http://huangcd.github.com/blog/2010/08/18/kai-shi-haskell/"/>
+    <updated>2010-08-18T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/08/18/kai-shi-haskell</id>
+    <content type="html"><![CDATA[<p>今年的计划很完美，上半年学一门脚本语言（Python），现在说不上精通，但至少各种小需求下的正常使用是没什么问题的了，而且也写过不少的程序，最近的就是在重写仙剑啦，不过也很久没写了。。。相比之前马马虎虎学的Ruby（这个还好，至少用ROR做了一个小网站，虽然现在已经报废），Perl（跟学屠龙术差不多，学完了不知道用在哪里，渐渐地就忘光了，现在仅仅依稀还记得各种_、$的古怪含义）。想想Python确实是有它的优势，首先最大的优势当然就是google在用啦，然后各种语法糖也很舒服，库也多，基本上所有需求都能找到相应的库。不足之处是似乎论脚本比不过Perl、论OO比不过Ruby，论函数式好像也不怎么样，总之就是感觉比较杂，而且正则不是native的，也多多少少有点麻烦。缩进是个很有意思的东西，不过我喜欢，唯一的麻烦就是复制代码往往要改缩进。</p>
+
+<p>-------------------------------------------------------分割一下-------------------------------------------------------</p>
+
+<p>鉴于Python已经可以投入正常使用了，于是决定开始学一个函数式语言，其实可以选择的余地还是很多的，比如Scala、Lisp、Coq等等，不过Scala似乎没有那么纯函数；Coq似乎又仅仅是一个理论语言，没什么实用意义；Lisp似乎不错，但总觉得老了点。然后看到程序员上的一篇文章《纯粹之美——浅谈纯函数式语言Haskell》，发现一个很有趣的东西：Haskell是一个人名（Haskell Curry），然后Curry同构不就是之前学Coq一直不怎么明白的东西嘛。所以想想就学Haskell算了。</p>
+
+<p>于是昨天下了Haskell（七十多M，忒大了。。。），装上，开始边学边做Project Euler，感觉良好～</p>
+
+<p>目前的感觉是Haskell和去掉证明部分的Coq太像了，大概函数式语言都长得一个样子的缘故，不过更具实用性，因为有IO等交互性的模块。关于为什么能有IO，《纯粹之美——浅谈纯函数式语言Haskell》里面是这么说的：</p>
+
+<p>----------------------------------------------------以下为摘抄----------------------------------------------------</p>
+
+<p>Haskell里面用了Monad的概念，帮助干这些“脏活”。Haskell是一门通用语言，可以实现所有的读写文件、访问数据库等功能。但是它把IO操作与纯函数严格的隔离开。怎么办到呢？haskell的另外一个特性：强类型的特性就发挥作用了。Haskell里面每一个函数都有一个类型签名，整个程序就像是很多个形状不同的拼图，两个函数必须形状匹配才能拼装在一起。任何带有副作用的函数，其类型签名中都会带上一个IO的类型标签，这个IO类型标签就像一个戳，只要带上了，任何调用它的函数也必须有IO标签。只有带有IO类型标签的函数才能调用另一个带有IO标签的函数，而在IO函数内可以调用纯函数，而反过来，纯函数却不可以调用带有IO标签的函数。</p>
+
+<p>-------------------------------------------------------摘抄结束-------------------------------------------------------</p>
+
+<p>说白了，就是IO这样的模块是游离在Haskell函数式核心模块之外的补充部分。</p>
+
+<p>还有一个很有意思的东西就是Haskell的程序可以很容易变成无需Haskell平台环境的可执行文件，这个比Java、Python什么的都方便多了。</p>
+
+<p>除此之外，Haskell就很像是Coq了：纯函数式、强类型、惰性计算（lazy）、函数组合、高阶函数等等。</p>
+
+<p>总而言之，统而言之，争取在春节前后能把Haskell用起来。</p>
+]]></content>
+  </entry>
+  
+</feed>

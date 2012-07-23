@@ -4,7 +4,7 @@
   <title><![CDATA[流水笔记]]></title>
   <link href="http://huangcd.github.com/atom.xml" rel="self"/>
   <link href="http://huangcd.github.com/"/>
-  <updated>2012-07-19T17:21:02+08:00</updated>
+  <updated>2012-07-23T17:14:06+08:00</updated>
   <id>http://huangcd.github.com/</id>
   <author>
     <name><![CDATA[huangcd]]></name>
@@ -129,6 +129,444 @@ gem sources -a http://ruby.taobao.org/</p></blockquote>
 
 
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[依然是今天的事情]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/29/yi-ran-shi-jin-tian-de-shi-qing/"/>
+    <updated>2010-12-29T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/29/yi-ran-shi-jin-tian-de-shi-qing</id>
+    <content type="html"><![CDATA[<p>宋老师说William做事很快，果然是很快。今天看了一个工具以后把我的看法给他发过去，顺便提了一下等价性证明无从下手的问题。过了不大一会他就打电话过来详细了解了Lego小车的模型，然后指出了现在的系统实际上应该是有两层的控制器在工作，high level是我写的pid控制器，low level是Lego本身的一个控制系统，就像卫星一样（说得好像很高级的样子，赞～），我们之前的验证其实都是在high level上面做的，low level里面的事情还没说清楚。所以我最好能把这个事情给弄明白。</p>
+
+<p>然后下午又开始搬出尘封已久的Lego小车。试了一下，发现代码几个月不用，大概是生锈了，跑起来各种不给力，效果很不好，还原因不明。想想还是先专心看看low level实现比较靠谱，看了一下Motor那块，发现其实真没做什么事情，无非就是把速度等比例转换成马达的功率，然后稍微做了点调整。。。</p>
+
+<p>忘了说个号外，今天看到一个很给力的哥们，用Lego和纸杯了个留声机。<a href="http://www.josepino.com/lego/ntx-gramophone">这里</a>可以围观。亮点是最后一句的粗体。。。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[tools]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/29/tools/"/>
+    <updated>2010-12-29T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/29/tools</id>
+    <content type="html"><![CDATA[<p>SPIN: I haven&#8217;t tried it. I read the manual and find out that SPIN use its own language Promela, so I have to change the C code. And the manual also says that &#8220;Spin is a tool for analyzing the logical consistency of concurrent systems, specifically of data communication protocols&#8221;. So I think it&#8217;s not suitable.
+(http://spinroot.com/spin/sitemap.html)</p>
+
+<p>MAGIC: I haven&#8217;t tried it either. However after I read the introduction and tutorial, I think it might be a very good tools for us. It&#8217;s used to verify an implementation in C code conforms to its specification.
+(http://www.cs.cmu.edu/~chaki/magic/)</p>
+
+<p>CBMC: I&#8217;ve tried this tool. It&#8217;s a Bounded Model Checker for ANSI-C programs. It allows verifying array bounds, pointer safety and user-specified assertions. It&#8217;s kind of useful, but not performs well with loops in C code.
+(http://www-2.cs.cmu.edu/~modelcheck/cbmc/)</p>
+
+<p>VeriSoft: I an unable to download the software. It seems to be useful, but I am not sure if it can deal with multiplication.
+(http://cm.bell-labs.com/who/god/verisoft/files.html)</p>
+
+<p>BANDERA: for model checking concurrent Java software. not for me.
+(http://bandera.projects.cis.ksu.edu/)</p>
+
+<p>FSP notation: might be useful
+(http://www.doc.ic.ac.uk/~jnm/LTSdocumention/FSP-notation.html)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[还是今天的事情]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/28/huan-shi-jin-tian-de-shi-qing/"/>
+    <updated>2010-12-28T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/28/huan-shi-jin-tian-de-shi-qing</id>
+    <content type="html"><![CDATA[<p>早上看了一下那篇所谓的Model Checking on python和eXplode，发现是挂着Model checking的狗头卖autoamted-testing的羊肉。跟我要做的东西完全不沾边。。。不过eXplode里面有提到几个implementation-level model checking的文章，主要是Java和C的。估计看看能有点收获。</p>
+
+<p>中午跟William通了个电话。他也是觉得裸写BLAST Algorithm工作量确实有点大，所以最好还是能够再找找其他工具看看能不能凑活一下，他提了几个，我也找了几个，计有SLAM、CBMC、SPIN等等，明天逐一试试看看靠不靠谱。今天先简单试了一下，SPIN貌似不是针对C的，估计不行；CBMC挺好，但是循环处理很不给力；SLAM微软出品，不抱什么希望。。。</p>
+
+<p>抛开这些东西不说吧，其实回到最根本的问题，William想证的是python code和数学方程的等价性，这个就是我一直不知道怎么证的。说可以写invariant来保证，但invariant怎么写呢？真是一大堆头疼的问题。</p>
+
+<p>总的来说今天很不给力。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[又是今天的事情]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/27/you-shi-jin-tian-de-shi-qing/"/>
+    <updated>2010-12-27T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/27/you-shi-jin-tian-de-shi-qing</id>
+    <content type="html"><![CDATA[<p>先说昨天的，开了一上午会，干了一下午活，然后晚上开了一个晚上的会。昨天是星期天！！！早上自己啃面包，中午一小撮人吃饺子，晚上一大坨人吃汉堡，总的来说没一顿好的，饺子很难吃。麦当劳的汉堡，不能说难吃，就是吃完之后觉得不太舒服。。。</p>
+
+<p>今天上午干了几件事情：办了新的学生卡（居然要30块工本费。。。），洗了最近积攒的衣服，剪了个鸟头，不过我喜欢。。。晚上洗澡回来头发终于不结冰了。</p>
+
+<p>下午主要工作就是给William发了封邮件，说了一下我想做的事情，大概就是想在python上面做model checking，思路是python code转CFG转BLAST Algorithm，发完邮件之后仔细看了看，想了想。发现虽然原来想着就不简单，但实际应该更难。Pypy出来的CFG有限制，CPython出来的CFG没看过，不过网上有人说很麻烦，估计最后如果要做的话可能还要自己写转换。突然想起三年前其实就是做着类似的事情，只不过是在PHP code上检查infeasible branch，实际上做的事情都很类似。想想真是可悲，研究所换来换去，导师换来换去，最后还是在做同样的东西，早知道这样还不如当初直截了当地跟宇哥混了，虽然谨慎觉得可能也很悲惨，但至少不至于三年什么都干不出来，而且那边至少有口头上承诺的好处。</p>
+
+<p>伤心的往事掠过不提了，转换出CFG以后BLAST Algorithm也不好弄，不过至少如果William觉得靠谱的话可以奋起一搏。</p>
+
+<p>另外今天认识了一个很可爱的人，恩。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[今天的事情]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/24/jin-tian-de-shi-qing/"/>
+    <updated>2010-12-24T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/24/jin-tian-de-shi-qing</id>
+    <content type="html"><![CDATA[<p>首先是实验室里面的，最近两个老师都回来了，然后我的座位正好背对着两位老师，因此时常觉得压力很大。。。想悄悄干点坏事都不行。</p>
+
+<p>然后上周隔壁组试图结题，挤压了n久的工作要赶着做完。毫无意外地，我被拉去帮忙赶工了。。。发来布置任务的邮件写的很牛的样子，让我觉得压力很大，不过和负责coding的师弟了解了一下以后发现是个很简单的东西。</p>
+
+<p>第二天早上一大早赶过去试图开工，正在准备软件的时候老大赶过来说有个小任务。。。于是就开始优先做小任务了，确实挺小的，十分钟搞定，不过由于要求要弄成exe，然后我是用python写的，所以就开始尝试转换了，试了一下py2exe，很好很强大，一下子就转过去了，转到纯洁无瑕的虚拟机下面一试，发现丫说这是不明真相的exe不能执行。网上搜了一下，发现是python2.6用的是VS2008编译的，py2exe之后各种不能用，尝试了一些解决方案发现没效果。心里默念“python2.6傻X一万遍，VS2008傻X一千遍”以后果断开始尝试pyinstall，惊奇的发现pyinstall纯爷们，直接来一句我们支持2.5、2.7及各种3.+版本，但是不支持您用的2.6。心里再次默念python2.6傻X一万遍以后开始在纯洁无瑕的虚拟机下面装python2.5.4（顺便发现corsair挂了），装完以后果然pyinstall就可以用了。而且很好很强大的是它还可以把所有需要的文件打包成一个大exe，如果忽略那个长得巨难看无比的图标的话简直就太完美了。</p>
+
+<p>吃完饭回来开始做隔壁组的任务，吭哧吭哧捣鼓了一个下午总算完成了，n久不用Java，难得用一次还是在不给力的netbeans上面，而且还要写界面，十分痛苦。而且最后发现写的东西无非是师弟原有代码的简化版。。。不过事不关己，完成任务就好</p>
+
+<p>晚上打球，这学期第一次打六点场，一开始很不给力，跑了两下觉得晚饭都要跳出喉咙了。。。不过后来越打越舒服，更舒服的是打完以后还能去北区澡堂洗澡，不用去东区将就。</p>
+
+<p>然后就没有然后了，恩</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[交了定金]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/19/jiao-le-ding-jin/"/>
+    <updated>2010-12-19T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/19/jiao-le-ding-jin</id>
+    <content type="html"><![CDATA[<p>恩，元旦爸妈过来办理最后的手续，然后这事就算完了。</p>
+
+<p>家里人都很高兴，毕竟也算是有着落了。</p>
+
+<p>突然觉得压力很大。。。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[家里的好吃的]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/16/jia-li-de-hao-chi-de/"/>
+    <updated>2010-12-16T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/16/jia-li-de-hao-chi-de</id>
+    <content type="html"><![CDATA[<p>海产品、河产品：</p>
+
+<p>跳跳鱼（tiao[四转轻声]仔）：煲汤很甜。不过最好吃还是豆豉煎焖一下，肉很嫩，煎完以后皮又稍微有点脆，一口一条，不用吐骨头，最爽的是端着满满一大盘，边吃边看球，可惜在家里不喝啤酒，不然就完美了。</p>
+
+<p>牡蛎（蠔）：吃过最好吃的一次是在海边直接开出来，马上拿到外婆家煮粥，清甜。稍差一点的就是拿回家里带壳煮，也很好吃，不过差点新鲜。其他的就只能说好吃了，说不上特别。</p>
+
+<p>皮皮虾（虾婆）：有膏的话香甜，没有的话凑活，不过剥皮太费劲了。。。</p>
+
+<p>蟹：好吃的蟹有两种，软壳的和有膏的，软壳的可以连壳一起吃，口感特别好；有膏的就不用说了。蟹的品种有很多，不过总的来说我喜欢大的。。。</p>
+
+<p>虾：是个虾就好吃</p>
+
+<p>花螺：一般要蘸辣椒酱或者醋吃，不过广东的辣椒酱像番茄酱多一点。说不上特别好吃，不过因为贵（一百多一斤，大概十个不到的样子，而且一斤花螺至少8两是壳），所以吃的比较少，每次吃起来都觉得意犹未尽。</p>
+
+<p>鲮鱼松：鲮鱼去骨以后和萝卜一起剁碎之后清蒸，能多吃一碗饭</p>
+
+<p>鱼头：是个鱼头就好吃，不过在家里想吃鱼头比较艰难。。。大家都想吃</p>
+
+<p>夜水咸鱼：其实不是咸鱼。。。一般是一种叫“刀里”（金线鱼）的开肚去内脏以后用粗盐埋一夜，然后拿出来或蒸或煎，既有鲜鱼的甜味，鱼肉又比一般的结实，还有一股香味。有个不怎么好听的名字，叫“一夜情”。。。</p>
+
+<p>北极贝刺生：是好吃，比其他刺生都要好吃，不过忒贵了</p>
+
+<p>各种汤：</p>
+
+<p>老鸭汤：老火老鸭汤，很甜，鸭肉煲软了之后也特别好吃</p>
+
+<p>羊肉煲：羊肉加枸杞党参姜片之类的煲到水变成汁一样，为了吃羊肉可以无限量吃饭。比北京这边的羊肉好吃一百倍。。。</p>
+
+<p>鱼头煲：好吃不解释，阿爸做的特别好吃</p>
+
+<p>藕汤：精华不在藕，而在于藕汤里面的肉特别好吃，不管瘦肉肥肉。。。</p>
+
+<p>各种菜：</p>
+
+<p>南瓜花：很甜</p>
+
+<p>薯苗：貌似是专门用来吃的品种，口感很特别，纤维比较粗，不过很好吃</p>
+
+<p>秘制鱼干：阿公阿婆造。。。各种鱼开肚去内脏以后晒干，专门用于早上喝粥。鱼有大有小，大的一小块能下几碗粥，小的一勺能舀几十条。</p>
+
+<p>本地系列：所谓本地，并不是指在附近养，而是指不用饲料，纯放养的。典型的是本地鸡，特点是肉比较有韧性，吃起来比一般的要香。</p>
+
+<p>香菇蒸鸡：阿妈做得特别好吃，不过这个比起好吃来说，更重要的是香，真的是十里飘香，三楼饭厅我在六楼房间就能闻到。</p>
+
+<p>飘香牛骨头：所谓的秘制牛骨头，要专门开车到山里面某个偏僻的角落的某家小店吃，不过吃完之后总是觉得不枉此行。熬的火候特别好，恰好能咬开里面的肉，又不至于太烂。而且确实是飘香，不过不是闻起来香，是吃起来香。</p>
+
+<p>烧鹅：一般是外面买回来的，正好楼下有个烧鹅店。烧鹅肉一般般，好吃的是烧鹅皮，所谓皮脆多汁，一口咬下，满嘴留香（比西门烤翅要好吃。。。）</p>
+
+<p>水果系列：</p>
+
+<p>马水桔：产于阳春马水，只有春节才能吃到，而且多半不是正宗的，特别甜，能吃的欲罢不能。。。</p>
+
+<p>荔枝龙眼：每年夏天总有很多，不是特别喜欢，不过量大，无聊就吃，无聊就吃。。。</p>
+
+<p>火龙果：家里有种，几个姑姑家里也有种，所以经常能吃到，很滑很嫩，冰冻效果尤佳</p>
+
+<p>菠萝蜜：其实挺好吃的，不过不喜欢，据说很容易上火。菠萝蜜很牛的一点是所有东西几乎都能吃。。。</p>
+
+<p>早茶夜宵系列：</p>
+
+<p>这个太多了，写不下。。。羊杂、牛杂、蛋挞、干蒸、小馒头、白切牛、核桃包、雪蛤挞等等等等</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[位运算版的n皇后问题]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/15/wei-yun-suan-ban-de-n-huang-hou-wen-ti/"/>
+    <updated>2010-12-15T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/15/wei-yun-suan-ban-de-n-huang-hou-wen-ti</id>
+    <content type="html"><![CDATA[
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># -*- coding: utf-8 -*-
+</span><span class='line'>"""
+</span><span class='line'>n皇后问题位运算版
+</span><span class='line'>Created on Wed Dec 15 08:39:27 2010
+</span><span class='line'>@author: HUANGCD
+</span><span class='line'>"""
+</span><span class='line'>def queen(row, ld, rd, upper_limit, result):
+</span><span class='line'>'''
+</span><span class='line'>@param row   列上的限制，0为允许，1为不允许
+</span><span class='line'>@param ld    左上到右下的对角线限制
+</span><span class='line'>@param rd    右上到左下的对角线限制
+</span><span class='line'>@param upper_limit   n （设定的值为(1 &lt;&lt; n) - 1）
+</span><span class='line'>@param result  返回的结果
+</span><span class='line'>'''
+</span><span class='line'>    if row ^ upper_limit:
+</span><span class='line'>        pos = upper_limit & ~(row | ld | rd)
+</span><span class='line'>        while pos:
+</span><span class='line'>            p = pos & (-pos)
+</span><span class='line'>            pos = pos - p
+</span><span class='line'>            result = queen(row | p, (ld | p) &lt;> 1, upper_limit, result)
+</span><span class='line'>    else:
+</span><span class='line'>        result += 1
+</span><span class='line'>    return result
+</span><span class='line'>
+</span><span class='line'>if __name__ == '__main__':
+</span><span class='line'>    import time
+</span><span class='line'>    time.clock()
+</span><span class='line'>    print queen(0, 0, 0, (1 &lt;&lt; 13) - 1, 0) 
+</span><span class='line'>    print time.clock()</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[计算一个32位整数的二进制表示末尾0的个数]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/15/ji-suan-yi-ge-32-wei-zheng-shu-de-er-jin-zhi-biao-shi-mo-wei-0-de-ge-shu/"/>
+    <updated>2010-12-15T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/15/ji-suan-yi-ge-32-wei-zheng-shu-de-er-jin-zhi-biao-shi-mo-wei-0-de-ge-shu</id>
+    <content type="html"><![CDATA[<p>&#8220;` python</p>
+
+<h1>-<em>- coding: utf-8 -</em>-</h1>
+
+<p>&#8221;&#8221;&#8221;
+计算一个32位整数的二进制表示末尾0的个数
+Created on Wed Dec 15 09:18:27 2010
+@author: HUANGCD
+&#8221;&#8221;&#8221;
+multiply_De_Bruijn_position = [</p>
+
+<pre><code>    0, 1, 28, 2, 29, 14, 24, 3, 30, 22, 20, 15, 25, 17, 4, 8,
+    31, 27, 13, 23, 21, 19, 16, 7, 26, 12, 18, 6, 11, 5, 10, 9]
+</code></pre>
+
+<p>def tail_zero_count(num):</p>
+
+<pre><code>return multiply_De_Bruijn_position[(((num &amp; (-num)) * 0x077CB531) &gt;&gt; 27) &amp; 31]
+</code></pre>
+
+<p>if <strong>name</strong> == &#8217;<strong>main</strong>&#8217;:</p>
+
+<pre><code>print tail_zero_count(0x110000000)
+</code></pre>
+
+<p>&#8220;`</p>
+
+<p><a href="http://graphics.stanford.edu/~seander/bithacks.html" target="_blank">这里</a>可以围观到各种位运算的技巧</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[再一次情何以堪]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/10/zai-yi-ci-qing-he-yi-kan/"/>
+    <updated>2010-12-10T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/10/zai-yi-ci-qing-he-yi-kan</id>
+    <content type="html"><![CDATA[<p>据说某次错误的算法作业在小朋友中间广为流传，情何以堪。。。
+昨天打了一个下午和半个晚上的羽毛球，现在腰酸背痛腿抽筋，还没有思达舒胶囊。导致今天中午辗转反侧了一个下午，愣是睡不着。。。
+改编个冷笑话：
+“丞相！丞相～～～～奉孝昨日在西门吃了几串烤翅，晚上腹泻不止，已经。。。去啦～～～”</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[情何以堪。。。]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/04/qing-he-yi-kan-/"/>
+    <updated>2010-12-04T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/04/qing-he-yi-kan-</id>
+    <content type="html"><![CDATA[<p>以前打电话回家无非就是谈谈人生谈谈理想，说说工作说说学习，聊聊八卦聊聊新闻，非常和谐。最近口风突然变了，大家都开始关心我的感情问题了，时不时就来一句“有女朋友没啊”、“真的没有女朋友啊”、“有女朋友不要不说啊”之类的，这个还好，呵呵笑一下就算过去了。不料今天跟我爸打电话的时候他老人家突然来了一句“要抓紧，这是近期工作的重点，要放到科研和找工作同等重要的地位”。我就o(╯□╰)o了，好像也不至于啊，真是让我情何以堪。。。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[流水笔记]]></title>
+    <link href="http://huangcd.github.com/blog/2010/11/28/liu-shui-bi-ji/"/>
+    <updated>2010-11-28T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/11/28/liu-shui-bi-ji</id>
+    <content type="html"><![CDATA[<p>半夜翻被子的时候把水杯弄翻了，床单衣服全湿了。只见我不慌不忙翻起来拿面纸把水吸个半干，换件衣服，卷着被子到另一边继续睡。早上起来发现床单居然已经干了，怀疑是在做梦，又摸了一下衣服，发现是湿的，于是淡定地起床。。。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[看了Inception]]></title>
+    <link href="http://huangcd.github.com/blog/2010/11/28/kan-le-inception/"/>
+    <updated>2010-11-28T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/11/28/kan-le-inception</id>
+    <content type="html"><![CDATA[<p>可能是之前已经被剧透了不少，比如梦是有层次的之类，所以感觉不怎么给力。
+看到一半的时候心里想不会到最后发现原来Codd是在梦里面，然后Mal是清醒的吧。结果到最后发现果然Codd似乎就是在梦里，不过倒没说Mal是不是清醒的。
+另外翻译是《盗梦空间》，不过似乎实际上是在植梦，跟盗梦貌似关系不大。
+Codd同学十几年前说：“You jump, I jump”，现在成了“I&#8217;m not jumping with you”o(╯□╰)o。
+总的来说场景很有想象力，不过内容没有想象中给力。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[贴段代码]]></title>
+    <link href="http://huangcd.github.com/blog/2010/11/24/tie-duan-dai-ma/"/>
+    <updated>2010-11-24T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/11/24/tie-duan-dai-ma</id>
+    <content type="html"><![CDATA[<p>python的修饰器版singleton模式</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#!/usr/bin/env python
+</span><span class='line'># -*- coding: UTF-8 -*-
+</span><span class='line'>def singleton(cls):
+</span><span class='line'>    '''
+</span><span class='line'>    singleton 模式的修饰器，保留第一次初始化的值
+</span><span class='line'>    例：
+</span><span class='line'>    @singleton
+</span><span class='line'>    class Class:
+</span><span class='line'>        def __init__(self, v):
+</span><span class='line'>            self.val = v
+</span><span class='line'>    a = Class('a')
+</span><span class='line'>    b = Class('b')
+</span><span class='line'>    则b.val == 'a'
+</span><span class='line'>    a is b返回True
+</span><span class='line'>    '''
+</span><span class='line'>    instance_container = []
+</span><span class='line'>    def get_instance(*arg, **args):
+</span><span class='line'>        if not len(instance_container):
+</span><span class='line'>            instance_container.append(cls(*arg, **args))
+</span><span class='line'>        return instance_container[0]
+</span><span class='line'>    return get_instance</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[做了件傻事]]></title>
+    <link href="http://huangcd.github.com/blog/2010/11/21/zuo-le-jian-sha-shi/"/>
+    <updated>2010-11-21T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/11/21/zuo-le-jian-sha-shi</id>
+    <content type="html"><![CDATA[<p>Ubuntu下改hosts文件的时候把&#8221;127.0.0.1 机器名&#8221;这行给删了，然后退出以后发现sudo不能用了，每次sudo的时候总会提示</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo: unable to resolve host 机器名</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后由于sudo不能用不能把hosts改回来。。。</p>
+
+<p>幸好在网上搜了一下，发现有个gksudo的东西，与sudo类似功能，不过是GTK+ frontend的，反正就是说和sudo之间没什么联系了，然后就可以把hosts的内容改回来了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Shell笔记]]></title>
+    <link href="http://huangcd.github.com/blog/2010/11/21/shell-bi-ji/"/>
+    <updated>2010-11-21T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/11/21/shell-bi-ji</id>
+    <content type="html"><![CDATA[<p>批量删除指定文件（以链接错误文件为例）：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>file * | grep 'symbolic link in a loop' | sed 's/:.*$//g' | xargs -i rm {}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>file列出当前文件夹的文件属性，grep过滤文件，sed修改行内容，xargs生成删除指令</p>
+
+<p>批量软链接：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>file * | grep 'symbolic link in a loop' | sed 's/:.*$//g' | xargs -i rm {}</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[发现Ubuntu下面的Firefox暴快无比]]></title>
+    <link href="http://huangcd.github.com/blog/2010/11/21/fa-xian-ubuntu-xia-mian-de-firefox-bao-kuai-wu-bi/"/>
+    <updated>2010-11-21T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/11/21/fa-xian-ubuntu-xia-mian-de-firefox-bao-kuai-wu-bi</id>
+    <content type="html"><![CDATA[<p>之前Ubuntu下一直在用chrome，结果开十来个标签就崩溃了；然后改用Opera，感觉很好很强大。不过在笔记本里面装Ubuntu以后，还是用回了Firefox。然后真是不用不知道，一用吓一跳，速度快得惊人。装了大概10个左右的插件，启动还是两秒内就好了，而且使用过程中开二三十个页面依然毫无压力。
+上个插件截图：
+<a href="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRihjQYM"><img class="alignnone" title="截图" src="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRihjQYM" alt=""></a></p>
+
+<p>恩，不得不说，appspot虽然诸多限制，但存点图片什么的小文件还是很给力的。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[一张截图]]></title>
+    <link href="http://huangcd.github.com/blog/2010/11/19/yi-zhang-jie-tu/"/>
+    <updated>2010-11-19T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/11/19/yi-zhang-jie-tu</id>
+    <content type="html"><![CDATA[<p><a href="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRi5hQYM"><img class="alignnone" title="截图" src="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRi5hQYM" alt=""></a></p>
 ]]></content>
   </entry>
   

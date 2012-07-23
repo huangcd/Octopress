@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>2010.4.24 PLC及聚餐及曼联 - 流水笔记</title>
+  <meta name="author" content="huangcd">
+
+  
+  <meta name="description" content="历经千辛万苦，终于把SIMATIC（为什么那么像赛门铁克呢？？？）里面的源码弄出来了。不得不说 Vim除了适合显摆以外，功能还是异常强大的，尽管现在还只是略懂，不过已经足以完成大部分文本处理的任务了。遗憾的是:%s/{pattern} /{substring}/g全局替换似乎不能用中文（ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://huangcd.github.com/blog/2010/04/24/2010-4-24-plc-ji-ju-can-ji-man-lian/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="流水笔记" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">流水笔记</a></h1>
+  
+    <h2>面向免费零食和饮料的编程</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:huangcd.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">2010.4.24 PLC及聚餐及曼联</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-24T00:00:00+08:00" pubdate data-updated="true">Apr 24<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>历经千辛万苦，终于把SIMATIC（为什么那么像赛门铁克呢？？？）里面的源码弄出来了。不得不说 Vim除了适合显摆以外，功能还是异常强大的，尽管现在还只是略懂，不过已经足以完成大部分文本处理的任务了。遗憾的是:%s/{pattern} /{substring}/g全局替换似乎不能用中文（<strong>或者更准确的说，VIM在命令状态下不能输入中文，有机会要尝试解决一下</strong>）。</p>
+
+<p>继续补充昨天内容：</p>
+
+<ul>
+<li>PI原来是Process Input的意思（ABB变频器和S7-300DP通讯里面说到——《设计文档（简略）》，PS.似乎找不到传说中的SFC15，只有SFC20和 SFC14）。因此据猜测，PIW应该是Process Input Word的意思了吧。</li>
+    <li>还有什么DBX 145.0这样的东西就是对应于当前打开的那个DB（OPN XXX中的XXX）中的第145.0（实际上应该就是145个位）。因为在《设计文档（简略）》中有这么一句</li>
+</ul>
+
+
+<p>[code]
+RECORD :=P#DB20.DBX 6.0 BYTE 6
+[/code]</p>
+
+<p>说的似乎是从DB20中第6位开始读6个BYTE</p>
+
+<ul>
+<li>OB其实是Organization Block的意思。</li>
+    <li>DB自然就是Data Block了</li>
+    <li>FC指的是Function</li>
+    <li>FB是Function Block（跟FC有什么区别呢？？？）</li>
+    <li>SFC是System Function</li>
+    <li>VAT是Variable Table，储存各种各样的变量。如下图（程序中各种各样的"PCSend".PCSend[2]）这种要你命三 千的含义都能从这里查到（说起来，DBX是不是任意位数呢？类似DBW、DBB）<a href="http://huangcd.files.wordpress.com/2010/04/2010-4-24-plce58f8ae8819ae9a490e58f8ae69bbce88194.png"><img class="alignnone size-full wp-image-10" title="2010 4 24 plce58f8ae8819ae9a490e58f8ae69bbce88194" src="http://huangcd.files.wordpress.com/2010/04/2010-4-24-plce58f8ae8819ae9a490e58f8ae69bbce88194.png" alt="" width="401" height="401"></a>
+</li>
+</ul>
+
+
+<p>另外赞一下VirtualBox的无缝模式，个人感觉完胜VirtualPC（没用过。。。）、VMWare（没用过最新版。。。）两个收费版</p>
+
+<p>中午聚餐，计有LMY、LHD、XQ、LZJ、CKY、LWJ和我共七人于江湖味道（为什么二楼看起来挺高雅的，一楼却怎么看都像大排档呢，搞到我被大家 狂喷），价格便宜量又足，还是不错的。席间爆料说我曾经发过暧昧短信。。。我怎么不记得了
+席间诸位工作了的同仁都无甚八卦热情，更多的是讨论租房等现实问题。我和LZJ两位烟酒僧对角默坐，无言以对，很是悲凉。</p>
+
+<p>晚上突然发现新浪有曼联直播，还是曼联VS热刺这种重头戏，显然是要看的。不过新浪视频居然只支持IE，只支持IE也就忍了，居然一开就把带宽全占了，网 都上不了。不过尽管如此，我还是排除万难，坚持看完全场，并在看直播过程中成功吧SIMATIC代码导出来。
+鉴于曼联赢了，心情甚好，点评一下：</p>
+
+<ol>
+<li>潇洒哥真不潇洒</li>
+    <li>小马哥很牛，上场就来个助攻，虽然只是捣了个脚</li>
+    <li>nani似乎没以前那么喜欢突突突了，表现还是可以的</li>
+    <li>Bale真牛，曼联当年没搞到手浪费了</li>
+    <li>王老吉同志很好，梅开二度</li>
+    <li>卡里克挺好的一个同志，怎么就成隐身卡了。。。</li>
+    <li>鲁小胖的小孩感觉怎么那么胖呢</li>
+    <li>他池为了马竞，似乎不会给面子了</li>
+</ol>
+
+
+<p>OVER，开始看片</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">huangcd</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-24T00:00:00+08:00" pubdate data-updated="true">Apr 24<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/plc/'>PLC</a>, <a class='category' href='/blog/categories/流水笔记/'>流水笔记</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://huangcd.github.com/blog/2010/04/24/2010-4-24-plc-ji-ju-can-ji-man-lian/" data-via="huangcd" data-counturl="http://huangcd.github.com/blog/2010/04/24/2010-4-24-plc-ji-ju-can-ji-man-lian/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/04/23/grep-bang-zhu/" title="Previous Post: grep帮助">&laquo; grep帮助</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/04/25/xin-de-she-zhi-ce-shi/" title="Next Post: 新的设置测试">新的设置测试 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+ <h1>Categories</h1>
+ <ul id="categories">
+ <li class='category'><a href='/blog/categories/csharp/'>Csharp (1)</a></li>
+<li class='category'><a href='/blog/categories/haskell/'>Haskell (3)</a></li>
+<li class='category'><a href='/blog/categories/java/'>Java (2)</a></li>
+<li class='category'><a href='/blog/categories/lego积木/'>Lego积木 (1)</a></li>
+<li class='category'><a href='/blog/categories/plc/'>PLC (3)</a></li>
+<li class='category'><a href='/blog/categories/programming/'>Programming (5)</a></li>
+<li class='category'><a href='/blog/categories/python/'>Python (14)</a></li>
+<li class='category'><a href='/blog/categories/ubuntu/'>Ubuntu (7)</a></li>
+<li class='category'><a href='/blog/categories/vim/'>Vim (2)</a></li>
+<li class='category'><a href='/blog/categories/webkit/'>Webkit (3)</a></li>
+<li class='category'><a href='/blog/categories/functional/'>functional (1)</a></li>
+<li class='category'><a href='/blog/categories/lambda/'>lambda (1)</a></li>
+<li class='category'><a href='/blog/categories/仙剑/'>仙剑 (5)</a></li>
+<li class='category'><a href='/blog/categories/流水笔记/'>流水笔记 (20)</a></li>
+<li class='category'><a href='/blog/categories/游戏/'>游戏 (2)</a></li>
+<li class='category'><a href='/blog/categories/电影/'>电影 (1)</a></li>
+
+ </ul>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/07/19/shi-yong-octopresszai-githubda-jian-bo-ke/">使用Octopress在github搭建博客</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/18/functional-c-number/">函数式C#的尝试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/12/29/yi-ran-shi-jin-tian-de-shi-qing/">依然是今天的事情</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/12/29/tools/">tools</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/12/28/huan-shi-jin-tian-de-shi-qing/">还是今天的事情</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/huangcd">@huangcd</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'huangcd',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("huangcd", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/huangcd" class="twitter-follow-button" data-show-count="false">Follow @huangcd</a>
+  
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/112457374017832727892?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - huangcd -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

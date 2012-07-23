@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 电影 | 流水笔记]]></title>
+  <link href="http://huangcd.github.com/blog/categories/%E7%94%B5%E5%BD%B1/atom.xml" rel="self"/>
+  <link href="http://huangcd.github.com/"/>
+  <updated>2012-07-23T17:14:06+08:00</updated>
+  <id>http://huangcd.github.com/</id>
+  <author>
+    <name><![CDATA[huangcd]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[看了Inception]]></title>
+    <link href="http://huangcd.github.com/blog/2010/11/28/kan-le-inception/"/>
+    <updated>2010-11-28T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/11/28/kan-le-inception</id>
+    <content type="html"><![CDATA[<p>可能是之前已经被剧透了不少，比如梦是有层次的之类，所以感觉不怎么给力。
+看到一半的时候心里想不会到最后发现原来Codd是在梦里面，然后Mal是清醒的吧。结果到最后发现果然Codd似乎就是在梦里，不过倒没说Mal是不是清醒的。
+另外翻译是《盗梦空间》，不过似乎实际上是在植梦，跟盗梦貌似关系不大。
+Codd同学十几年前说：“You jump, I jump”，现在成了“I'm not jumping with you”o(╯□╰)o。
+总的来说场景很有想象力，不过内容没有想象中给力。</p>
+]]></content>
+  </entry>
+  
+</feed>

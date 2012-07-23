@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Programming | 流水笔记]]></title>
+  <link href="http://huangcd.github.com/blog/categories/programming/atom.xml" rel="self"/>
+  <link href="http://huangcd.github.com/"/>
+  <updated>2012-07-23T17:14:06+08:00</updated>
+  <id>http://huangcd.github.com/</id>
+  <author>
+    <name><![CDATA[huangcd]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[依然是今天的事情]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/29/yi-ran-shi-jin-tian-de-shi-qing/"/>
+    <updated>2010-12-29T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/29/yi-ran-shi-jin-tian-de-shi-qing</id>
+    <content type="html"><![CDATA[<p>宋老师说William做事很快，果然是很快。今天看了一个工具以后把我的看法给他发过去，顺便提了一下等价性证明无从下手的问题。过了不大一会他就打电话过来详细了解了Lego小车的模型，然后指出了现在的系统实际上应该是有两层的控制器在工作，high level是我写的pid控制器，low level是Lego本身的一个控制系统，就像卫星一样（说得好像很高级的样子，赞～），我们之前的验证其实都是在high level上面做的，low level里面的事情还没说清楚。所以我最好能把这个事情给弄明白。</p>
+
+<p>然后下午又开始搬出尘封已久的Lego小车。试了一下，发现代码几个月不用，大概是生锈了，跑起来各种不给力，效果很不好，还原因不明。想想还是先专心看看low level实现比较靠谱，看了一下Motor那块，发现其实真没做什么事情，无非就是把速度等比例转换成马达的功率，然后稍微做了点调整。。。</p>
+
+<p>忘了说个号外，今天看到一个很给力的哥们，用Lego和纸杯了个留声机。<a href="http://www.josepino.com/lego/ntx-gramophone">这里</a>可以围观。亮点是最后一句的粗体。。。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[tools]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/29/tools/"/>
+    <updated>2010-12-29T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/29/tools</id>
+    <content type="html"><![CDATA[<p>SPIN: I haven't tried it. I read the manual and find out that SPIN use its own language Promela, so I have to change the C code. And the manual also says that "Spin is a tool for analyzing the logical consistency of concurrent systems, specifically of data communication protocols". So I think it's not suitable.
+(http://spinroot.com/spin/sitemap.html)</p>
+
+<p>MAGIC: I haven't tried it either. However after I read the introduction and tutorial, I think it might be a very good tools for us. It's used to verify an implementation in C code conforms to its specification.
+(http://www.cs.cmu.edu/~chaki/magic/)</p>
+
+<p>CBMC: I've tried this tool. It's a Bounded Model Checker for ANSI-C programs. It allows verifying array bounds, pointer safety and user-specified assertions. It's kind of useful, but not performs well with loops in C code.
+(http://www-2.cs.cmu.edu/~modelcheck/cbmc/)</p>
+
+<p>VeriSoft: I an unable to download the software. It seems to be useful, but I am not sure if it can deal with multiplication.
+(http://cm.bell-labs.com/who/god/verisoft/files.html)</p>
+
+<p>BANDERA: for model checking concurrent Java software. not for me.
+(http://bandera.projects.cis.ksu.edu/)</p>
+
+<p>FSP notation: might be useful
+(http://www.doc.ic.ac.uk/~jnm/LTSdocumention/FSP-notation.html)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[还是今天的事情]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/28/huan-shi-jin-tian-de-shi-qing/"/>
+    <updated>2010-12-28T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/28/huan-shi-jin-tian-de-shi-qing</id>
+    <content type="html"><![CDATA[<p>早上看了一下那篇所谓的Model Checking on python和eXplode，发现是挂着Model checking的狗头卖autoamted-testing的羊肉。跟我要做的东西完全不沾边。。。不过eXplode里面有提到几个implementation-level model checking的文章，主要是Java和C的。估计看看能有点收获。</p>
+
+<p>中午跟William通了个电话。他也是觉得裸写BLAST Algorithm工作量确实有点大，所以最好还是能够再找找其他工具看看能不能凑活一下，他提了几个，我也找了几个，计有SLAM、CBMC、SPIN等等，明天逐一试试看看靠不靠谱。今天先简单试了一下，SPIN貌似不是针对C的，估计不行；CBMC挺好，但是循环处理很不给力；SLAM微软出品，不抱什么希望。。。</p>
+
+<p>抛开这些东西不说吧，其实回到最根本的问题，William想证的是python code和数学方程的等价性，这个就是我一直不知道怎么证的。说可以写invariant来保证，但invariant怎么写呢？真是一大堆头疼的问题。</p>
+
+<p>总的来说今天很不给力。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[又是今天的事情]]></title>
+    <link href="http://huangcd.github.com/blog/2010/12/27/you-shi-jin-tian-de-shi-qing/"/>
+    <updated>2010-12-27T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/12/27/you-shi-jin-tian-de-shi-qing</id>
+    <content type="html"><![CDATA[<p>先说昨天的，开了一上午会，干了一下午活，然后晚上开了一个晚上的会。昨天是星期天！！！早上自己啃面包，中午一小撮人吃饺子，晚上一大坨人吃汉堡，总的来说没一顿好的，饺子很难吃。麦当劳的汉堡，不能说难吃，就是吃完之后觉得不太舒服。。。</p>
+
+<p>今天上午干了几件事情：办了新的学生卡（居然要30块工本费。。。），洗了最近积攒的衣服，剪了个鸟头，不过我喜欢。。。晚上洗澡回来头发终于不结冰了。</p>
+
+<p>下午主要工作就是给William发了封邮件，说了一下我想做的事情，大概就是想在python上面做model checking，思路是python code转CFG转BLAST Algorithm，发完邮件之后仔细看了看，想了想。发现虽然原来想着就不简单，但实际应该更难。Pypy出来的CFG有限制，CPython出来的CFG没看过，不过网上有人说很麻烦，估计最后如果要做的话可能还要自己写转换。突然想起三年前其实就是做着类似的事情，只不过是在PHP code上检查infeasible branch，实际上做的事情都很类似。想想真是可悲，研究所换来换去，导师换来换去，最后还是在做同样的东西，早知道这样还不如当初直截了当地跟宇哥混了，虽然谨慎觉得可能也很悲惨，但至少不至于三年什么都干不出来，而且那边至少有口头上承诺的好处。</p>
+
+<p>伤心的往事掠过不提了，转换出CFG以后BLAST Algorithm也不好弄，不过至少如果William觉得靠谱的话可以奋起一搏。</p>
+
+<p>另外今天认识了一个很可爱的人，恩。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[VirtualBox卸载增强工具包]]></title>
+    <link href="http://huangcd.github.com/blog/2010/10/25/virtualbox-xie-zai-zeng-qiang-gong-ju-bao/"/>
+    <updated>2010-10-25T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/10/25/virtualbox-xie-zai-zeng-qiang-gong-ju-bao</id>
+    <content type="html"><![CDATA[<p>﻿﻿﻿有够麻烦的，网上搜了个脚本，貌似有用</p>
+
+<div id="_mcePaste">sudo find /etc -name "*vboxadd*" -exec rm {} ;</div>
+
+
+<div id="_mcePaste">sudo find /etc -name "*vboxvfs*" -exec rm {} ;</div>
+
+
+<div id="_mcePaste">sudo rm -r /usr/src/vboxadd-*</div>
+
+
+<div id="_mcePaste">sudo rm -r /usr/src/vboxvfs-*</div>
+
+
+<div id="_mcePaste">sudo rm /usr/sbin/vboxadd-timesync</div>
+
+
+<div id="_mcePaste">sudo rm /lib/modules/`uname -r`/misc/vboxadd.ko</div>
+
+
+<div id="_mcePaste">sudo rm /lib/modules/`uname -r`/misc/vboxvfs.ko</div>
+
+
+<p>sudo find /etc -name "<em>vboxadd</em>" -exec rm {} ;sudo find /etc -name "<em>vboxvfs</em>" -exec rm {} ;sudo rm -r /usr/src/vboxadd-<em>sudo rm -r /usr/src/vboxvfs-</em>sudo rm /usr/sbin/vboxadd-timesyncsudo rm /lib/modules/<code>uname -r</code>/misc/vboxadd.kosudo rm /lib/modules/<code>uname -r</code>/misc/vboxvfs.ko</p>
+]]></content>
+  </entry>
+  
+</feed>

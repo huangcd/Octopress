@@ -3,7 +3,7 @@ layout: post
 title: "函数式C#的尝试"
 date: 2012-07-18 07:20
 comments: true
-categories: [函数式, C#, lambda]
+categories: [functional, Csharp, lambda]
 author: huangcd
 ---
 

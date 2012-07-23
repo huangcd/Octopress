@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ubuntu | 流水笔记]]></title>
+  <link href="http://huangcd.github.com/blog/categories/ubuntu/atom.xml" rel="self"/>
+  <link href="http://huangcd.github.com/"/>
+  <updated>2012-07-23T17:14:06+08:00</updated>
+  <id>http://huangcd.github.com/</id>
+  <author>
+    <name><![CDATA[huangcd]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[做了件傻事]]></title>
+    <link href="http://huangcd.github.com/blog/2010/11/21/zuo-le-jian-sha-shi/"/>
+    <updated>2010-11-21T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/11/21/zuo-le-jian-sha-shi</id>
+    <content type="html"><![CDATA[<p>Ubuntu下改hosts文件的时候把"127.0.0.1 机器名"这行给删了，然后退出以后发现sudo不能用了，每次sudo的时候总会提示</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo: unable to resolve host 机器名&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>然后由于sudo不能用不能把hosts改回来。。。</p>
+
+<p>幸好在网上搜了一下，发现有个gksudo的东西，与sudo类似功能，不过是GTK+ frontend的，反正就是说和sudo之间没什么联系了，然后就可以把hosts的内容改回来了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Shell笔记]]></title>
+    <link href="http://huangcd.github.com/blog/2010/11/21/shell-bi-ji/"/>
+    <updated>2010-11-21T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/11/21/shell-bi-ji</id>
+    <content type="html"><![CDATA[<p>批量删除指定文件（以链接错误文件为例）：</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>file * | grep 'symbolic link in a loop' | sed 's/:.*$//g' | xargs -i rm {}&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>file列出当前文件夹的文件属性，grep过滤文件，sed修改行内容，xargs生成删除指令</p>
+
+<p>批量软链接：</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>file * | grep 'symbolic link in a loop' | sed 's/:.*$//g' | xargs -i rm {}&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[发现Ubuntu下面的Firefox暴快无比]]></title>
+    <link href="http://huangcd.github.com/blog/2010/11/21/fa-xian-ubuntu-xia-mian-de-firefox-bao-kuai-wu-bi/"/>
+    <updated>2010-11-21T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/11/21/fa-xian-ubuntu-xia-mian-de-firefox-bao-kuai-wu-bi</id>
+    <content type="html"><![CDATA[<p>之前Ubuntu下一直在用chrome，结果开十来个标签就崩溃了；然后改用Opera，感觉很好很强大。不过在笔记本里面装Ubuntu以后，还是用回了Firefox。然后真是不用不知道，一用吓一跳，速度快得惊人。装了大概10个左右的插件，启动还是两秒内就好了，而且使用过程中开二三十个页面依然毫无压力。
+上个插件截图：
+<a href="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRihjQYM"><img class="alignnone" title="截图" src="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRihjQYM" alt=""></a></p>
+
+<p>恩，不得不说，appspot虽然诸多限制，但存点图片什么的小文件还是很给力的。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[一张截图]]></title>
+    <link href="http://huangcd.github.com/blog/2010/11/19/yi-zhang-jie-tu/"/>
+    <updated>2010-11-19T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/11/19/yi-zhang-jie-tu</id>
+    <content type="html"><![CDATA[<p><a href="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRi5hQYM"><img class="alignnone" title="截图" src="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRi5hQYM" alt=""></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Luit -- locale and ISO 2022 support for Unicode terminals]]></title>
+    <link href="http://huangcd.github.com/blog/2010/11/11/luit-locale-and-iso-2022-support-for-unicode-terminals/"/>
+    <updated>2010-11-11T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/11/11/luit-locale-and-iso-2022-support-for-unicode-terminals</id>
+    <content type="html"><![CDATA[<p>事情是这样的，比如想在Ubuntu下telnet上水木，telnet bbs.newsmth.net，然后就会蹭蹭蹭地发现放眼望去，一坨乱码。怎么办呢？</p>
+
+<div>luit出现了，它可以把locale或者ISO 2022的编码转换成Unicode编码，从而在Unicode终端中正常显示，比如用</div>
+
+
+<div>luit -encoding gbk telnet bbs.newsmth.net</div>
+
+
+<div>就会发现看到的都是正常人能看明白的东西了。</div>
+
+
+<div>当然luit的作用也不仅限telnet上水木了，比如cat gbk编码的文件的时候也可以在前面加luit。</div>
+
+]]></content>
+  </entry>
+  
+</feed>

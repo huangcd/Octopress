@@ -1,0 +1,779 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>流水笔记</title>
+  <meta name="author" content="huangcd">
+
+  
+  <meta name="description" content="抢鸡蛋大小的事情，本来学堂木质结构，又遇上这种风高放火天，更何况现在正在整修，而且烧的似乎主要集中在东边，频繁出现在各种封面上的西边清华学堂一侧表示毫无压力。虽然可惜，但毕竟旧的不去，新的不来。 可笑的是网上各种不明真相的群众纷纷发表各种感人言论，有高呼领导下课的，有感慨国将不国的， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://huangcd.github.com/blog/page/3/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="流水笔记" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">流水笔记</a></h1>
+  
+    <h2>面向免费零食和饮料的编程</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:huangcd.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/13/xue-tang-shi-huo/">学堂失火</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-13T00:00:00+08:00" pubdate data-updated="true">Nov 13<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>抢鸡蛋大小的事情，本来学堂木质结构，又遇上这种风高放火天，更何况现在正在整修，而且烧的似乎主要集中在东边，频繁出现在各种封面上的西边清华学堂一侧表示毫无压力。虽然可惜，但毕竟旧的不去，新的不来。</p>
+
+<p>可笑的是网上各种不明真相的群众纷纷发表各种感人言论，有高呼领导下课的，有感慨国将不国的，有感怀历史展望未来的，有反思百年清华精神的，有说二教鬼故事的o(╯□╰)o。总而言之，统而言之，无非就是想表达一个意思：作为一个有理想、有道德、有时间灌水、有精力无处释放的四有青年，表示压力很大。恩，也包括我。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/11/python-de-import-site-cuo-wu-jie-jue-fang-fa/">Python的Import Site错误解决方法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-11T00:00:00+08:00" pubdate data-updated="true">Nov 11<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在运行Python程序的时候可能会遇到&#8217;import site&#8217; failed; use -v for traceback的信息，但出现这个错误以后程序还可以运行，只不过后面如果在import某些库的话就会出现ImportError No module name XXX的信息，然后程序就真正死了。</p>
+
+<div>网上搜了很多后没有解决方法，后来一想，import site不就是说有一个site.py的文件咩，然后在Python安装目录下find一下，果然有两个site.py文件，一个在%PYTHON_HOME%/Lib目录下，一个在%PYTHON_HOME%/Lib/site-packages目录下，分别看了一下内容，发现%PYTHON_HOME%/Lib目录下的site.py比较靠谱，前面几行是这样写的：</div>
+
+
+<div>Append module search paths for third-party packages to sys.path.</div>
+
+
+<div>****************************************************************</div>
+
+
+<div>* This module is automatically imported during initialization. *</div>
+
+
+<div>****************************************************************</div>
+
+
+<div>In earlier versions of Python (up to 1.5a3), scripts or modules that</div>
+
+
+<div>needed to use site-specific modules would place &#8220;import site&#8221;</div>
+
+
+<div>somewhere near the top of their code.  Because of the automatic</div>
+
+
+<div>import, this is no longer necessary (but code that does it still</div>
+
+
+<div>works).</div>
+
+
+<div>可见应该就是它了，然后看了一下环境变量，果然%PATH%中没有%PYTHON_HOME%/Lib，把这个目录加到%PATH%中去，再次运行程序就好了。</div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/11/luit-locale-and-iso-2022-support-for-unicode-terminals/">Luit &#8211; Locale and ISO 2022 Support for Unicode Terminals</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-11T00:00:00+08:00" pubdate data-updated="true">Nov 11<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>事情是这样的，比如想在Ubuntu下telnet上水木，telnet bbs.newsmth.net，然后就会蹭蹭蹭地发现放眼望去，一坨乱码。怎么办呢？</p>
+
+<div>luit出现了，它可以把locale或者ISO 2022的编码转换成Unicode编码，从而在Unicode终端中正常显示，比如用</div>
+
+
+<div>luit -encoding gbk telnet bbs.newsmth.net</div>
+
+
+<div>就会发现看到的都是正常人能看明白的东西了。</div>
+
+
+<div>当然luit的作用也不仅限telnet上水木了，比如cat gbk编码的文件的时候也可以在前面加luit。</div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/09/wu-liao-de-ri-zi/">无聊的日子</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>今天是实验室跟传说中的图灵奖大牛sifakis交流的日子，不过没我什么事就是了。中午吃完饭，左右无事，就向图书馆溜达过去了。进去以后查了查银行的余额，发现几乎弹尽粮绝，撑到毕业是肯定没希望的了，现在连能不能撑到放假都不知道。。。想来整个研究生生涯实在是有点尴尬。</p>
+
+<p>到图书馆总是要翻翻书的，于是向中文阅览室走去，顺手拿了《三国故事集》、《什刹海的传说和故事》和《丰臣秀吉》三本书，挪到角落里搬张小板凳开始看起来了。翻了两页《三国故事集》，发现很像儿童读物，居然说刘备力大无穷，能把正在打架的关羽张飞生生拉开，很是无语，又往后翻了翻，猛然发现有“据说司马懿和诸葛亮小时候是同学哦”这样的句子，断定了这就是给小朋友看的，就把书放到一边，开始翻《什刹海的传说和故事》，翻了翻目录，发现都是些说传说又不够神奇，说八卦也不甚给力的小故事，颇为无聊，也放到一边去了。</p>
+
+<p>然后开始专心看山冈庄八的《丰臣秀吉》，翻了翻目录，共分为六章，除了少年一章不甚熟悉以外，其余几张感觉都跟历史相符，于是就开始看起来了。一翻就翻了两个多小时，看到与今川大战四处打酱油的一段。感觉书写的还是很有意思的，写历史写得跟小说一样，不过日吉丸小时候似乎正义感太足了，然后阿春的一段又似乎颇为神奇，甲斐这段直接跳过也然我很不爽。秀吉同学的口才是很好的，还善用计谋，不过最牛的还是死缠烂打的精神，一方面不达目的誓不罢休，另一方面为了实现目标可以不顾别人的看法，实在是非常人所能为之。</p>
+
+<p>然后就收到短信，明天开工，估计最近将近一个月的无聊日子要结束了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/08/ubuntu10-10-xia-an-zhuang-kbs/">Ubuntu10.10下安装KBS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>假设php5,apache2,ssl等相关包都已通过apt-get的方法安装好，在当前用户下安装。</p>
+
+<div>依赖包包含但不限于如下：</div>
+
+
+<div># apt-get install automake1.9
+# apt-get install php5-dev
+# apt-get install libmysqlclient15-dev
+# apt-get install sendmail
+# apt-get install libesmtp5
+# apt-get install byacc
+# apt-get install libgmp3-dev
+# apt-get install flex
+# apt-get install libxml2-dev
+# apt-get install libjpeg62-dev
+# apt-get install libpng12-dev
+# apt-get install libfreetype6-dev
+# apt-get install subversion
+<div>1、checkout源码</div>
+<div>cd ~/bbs</div>
+<div>svn co http://svn.kcn.cn/repos/kbs/trunk/</div>
+<div>2、修改站点定义信息</div>
+<div>cat /etc/passwd | grep <用户名> （查看当前用户的gid和uid）</div>
+<div>vi site/fb2k-v2.h （修改相关信息，将BBSUID和BBSGID改为上面看到的内容）</div>
+<div>3、配置、编译安装</div>
+<div>./autogen.sh</div>
+<div>./configure &#8211;prefix=/home/bbs &#8211;enable-site=fb2k-v2 &#8211;with-php &#8211;with-mysql &#8211;enable-ssh &#8211;enable-ssl &#8211;with-openssl=/usr &#8211;with-libesmtp &#8211;enable-innbbsd CFLAGS=&#8221;-O3 -g&#8221; （&#8211;prefix为安装目录，&#8211;enable-site指定站点信息）</div>
+<div>make</div>
+<div>sudo make install</div>
+<div>sudo make install-home （会清空安装目录下的数据信息）</div>
+<div>4、生成密钥</div>
+<div>cd /home/bbs/etc</div>
+<div>touch sshd_config</div>
+<div>ssh-keygen -t rsa1 -f ssh_host_key</div>
+<div>5、编辑php.ini</div>
+<div>修改 extension_dir=&#8221;/usr/lib/php5/20090626+lfs/&#8221;（php5目录下的类似文件）</div>
+<div>增加一行 extension=libphpbbslib.so</div>
+<div>将 short_open_tag 的值修改为 Off，magic_quotes_gpc 也应该设置成 Off</div>
+<div>将 session.save_path 目录（如 /var/lib/php5/）设置成 bbs 用户可写</div>
+<div>6、配置apache2</div>
+<div>vi /etc/apache2/apache2.conf （增加一行AddType application/x-httpd-php .php， 把 KeepAlive 参数设为 Off， 建议加入 AddDefaultCharset gb2312）</div>
+<div>vi /etc/apache2/envvars （把APACHE_RUN_USER和APACHE_RUN_GROUP的值改为当前用户）</div>
+<div>sudo /etc/init.d/apache2 restart （重启apache）</div>
+<div>把源码目录www2复制到apache2的DOCUMENT_PATH目录下（/var/www）</div>
+<div>7、初始化</div>
+<div>cd /home/bbs/bin</div>
+<div>./bootstrap</div>
+<div>8、运行及停止</div>
+<div>编写脚本startbbs，加入如下内容</div>
+<div>
+<ul>
+<li>#!/usr/bin/env sh</li>
+    <li>./miscd daemon</li>
+    <li>sudo ./bbslogd</li>
+    <li>sudo ./bbsd -p 23</li>
+    <li>sudo ./sshbbsd -p 22</li>
+</ul>
+编写脚本stopbbs，加入如下内容
+
+</div>
+<div>
+<ul>
+<li>#!/usr/bin/env sh</li>
+    <li>killall sshbbsd</li>
+    <li>killall bbsd</li>
+    <li>killall bbslogd</li>
+    <li>./miscd flush</li>
+    <li>killall miscd</li>
+</ul>
+通过startbbs启动，通过stopbbs停止。启动后通过telnet localhost或者网页访问localhost/<bbs目录>连接服务器
+
+</div>
+<div><strong>转信，blog，首页导读等未配置</strong></div>
+</div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/03/python-de-bu-fen-han-shu/">Python的部分函数</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-03T00:00:00+08:00" pubdate data-updated="true">Nov 3<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Haskell原生支持部分函数（这么说也不准确，Haskell本来一个函数就最多只能有一个参数，多参数函数只是多个函数组合的一种简化形式），然后今天发现其实Python里面也是有部分函数的，就是functools包里面的partial函数了，partial函数的第一个参数是一个函数，后面是这个函数的参数，然后返回一个新的函数，这个函数就是原来的函数中相应的参数被替换为常量的一个函数了。</p>
+
+<p>。。。描述能力堪忧</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/03/pyqt-huan-shi-hen-hao-hen-qiang-da-de/">PyQt还是很好很强大的</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-03T00:00:00+08:00" pubdate data-updated="true">Nov 3<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>恩，QtDesigner是神器，秒杀JFormDesinger，Visual Studio一万次，信号/槽的绑定方式也很好很强大。</p>
+
+<p>不足之处是文档都是Qt的，没有专门针对Python的文档，写起来不够顺手，谨慎估计效率也不是很高。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/02/ting-lai-de-xiao-hua/">听来的笑话</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-02T00:00:00+08:00" pubdate data-updated="true">Nov 2<span>nd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>发信人: *****************, 信区: CProgramming
+标  题: EOF是什么
+发信站: 水木社区 (Tue Nov  2 00:28:43 2010), 站内</p>
+
+<h1>include</h1>
+
+<p>// copy the input char to the output</p>
+
+<p>main()
+{
+int c;</p>
+
+<p>c = getchar();
+while (c != EOF) {
+putchar(c);
+c = getchar();
+}
+}</p>
+
+<p>mac os x系统下编译：cc 编译后运行
+输入：EOF
+输出：EOF
+为什么不是退出程序啊？
+现在只能用ctrl+c退出
+谢谢！</p>
+
+<p>&#8211;</p>
+
+<p>※ 来源:·水木社区 newsmth.net·[FROM: 59.66.200.*]</p>
+
+<hr>好吧，这个一般搞笑，更搞笑的在下面
+
+
+
+
+<hr>发信人: ****************************, 信区: CProgramming
+
+
+<p>标  题: Re: EOF是什么
+发信站: 水木社区 (Tue Nov  2 09:23:16 2010), 站内</p>
+
+<p>输入end of file or END OF FILE 还是不行啊
+到底输什么能结束啊？</p>
+
+<p>【 在 shocker ((<sup>o<sup>)/~)</sup></sup> 的大作中提到: 】
+: EOF 是end of file 的缩写，你在屏幕上输入的话不能直接用缩写，要全部输入。
+: 你再试试吧。</p>
+
+<p>&#8211;</p>
+
+<p>※ 来源:·水木社区 newsmth.net·[FROM: 59.66.200.*]</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/01/yi-ge-shen-qi-de-meng/">一个神奇的梦</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-01T00:00:00+08:00" pubdate data-updated="true">Nov 1<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在梦中拉着一个黄头发的女孩一直走，走了好久好久。。。</p>
+
+<p>然后就醒了</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/10/26/ubuntu10-10/">Ubuntu10.10</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-26T00:00:00+08:00" pubdate data-updated="true">Oct 26<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>几经艰辛，今天终于完成了10.04到10.10的升级。</p>
+
+<p>尝试了两次在线升级，结果都因为最后升级完成以后VirtualBox的增强功能包安装不了而退回10.04。（用虚拟机的好处就是随时可以备份整个系统，出错了直接替换硬盘文件，相当方便）</p>
+
+<p>然后昨天在网上搜了个卸载增强功能包的脚本（虽然貌似也不能完全卸载），然后又下了Alternative的盘开始离线更新，终于更新完了，增强功能包也能正常安装。</p>
+
+<p>咋一看来，10.10貌似和10.04没什么区别，除了界面漂亮了很多以外。似乎也说不上漂亮了很多，都是一些小修小改，但给我的感觉非常舒服。不过很悲剧地是由于使用的是离线安装，很多光盘里面没有的软件居然莫名其妙地被直接卸载了，如神器vim、ghc6。然后升级完成以后俨然发现还有两百多个软件需要更新，需要下载超过700M的内容，无语了。不过还好尝试使用163的镜像，在走教育网的时候速度有500K+，也就十几分钟的时间。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/4/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/2/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+ <h1>Categories</h1>
+ <ul id="categories">
+ <li class='category'><a href='/blog/categories/csharp/'>Csharp (1)</a></li>
+<li class='category'><a href='/blog/categories/haskell/'>Haskell (3)</a></li>
+<li class='category'><a href='/blog/categories/java/'>Java (2)</a></li>
+<li class='category'><a href='/blog/categories/lego积木/'>Lego积木 (1)</a></li>
+<li class='category'><a href='/blog/categories/plc/'>PLC (3)</a></li>
+<li class='category'><a href='/blog/categories/programming/'>Programming (5)</a></li>
+<li class='category'><a href='/blog/categories/python/'>Python (14)</a></li>
+<li class='category'><a href='/blog/categories/ubuntu/'>Ubuntu (7)</a></li>
+<li class='category'><a href='/blog/categories/vim/'>Vim (2)</a></li>
+<li class='category'><a href='/blog/categories/webkit/'>Webkit (3)</a></li>
+<li class='category'><a href='/blog/categories/functional/'>functional (1)</a></li>
+<li class='category'><a href='/blog/categories/lambda/'>lambda (1)</a></li>
+<li class='category'><a href='/blog/categories/仙剑/'>仙剑 (5)</a></li>
+<li class='category'><a href='/blog/categories/流水笔记/'>流水笔记 (20)</a></li>
+<li class='category'><a href='/blog/categories/游戏/'>游戏 (2)</a></li>
+<li class='category'><a href='/blog/categories/电影/'>电影 (1)</a></li>
+
+ </ul>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/07/19/shi-yong-octopresszai-githubda-jian-bo-ke/">使用Octopress在github搭建博客</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/18/functional-c-number/">函数式C#的尝试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/12/29/yi-ran-shi-jin-tian-de-shi-qing/">依然是今天的事情</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/12/29/tools/">tools</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/12/28/huan-shi-jin-tian-de-shi-qing/">还是今天的事情</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/huangcd">@huangcd</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'huangcd',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("huangcd", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/huangcd" class="twitter-follow-button" data-show-count="false">Follow @huangcd</a>
+  
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/112457374017832727892?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - huangcd -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

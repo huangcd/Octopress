@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Vim | 流水笔记]]></title>
+  <link href="http://huangcd.github.com/blog/categories/vim/atom.xml" rel="self"/>
+  <link href="http://huangcd.github.com/"/>
+  <updated>2012-07-23T17:14:06+08:00</updated>
+  <id>http://huangcd.github.com/</id>
+  <author>
+    <name><![CDATA[huangcd]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[VIM笔记]]></title>
+    <link href="http://huangcd.github.com/blog/2010/10/01/vim-bi-ji/"/>
+    <updated>2010-10-01T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/10/01/vim-bi-ji</id>
+    <content type="html"><![CDATA[<p>越来越觉得VIM是史上最牛没有之一的神器，然后用的时候是不是会发现一些问题，姑且记录一下，免得每次都要放狗。</p>
+
+<p>修改文件格式（DOS<-->Unix，专治各种看不见的<sup>M）：</sup></p>
+
+<p>:set fileformat=unix</p>
+
+<p>正则替换：</p>
+
+<p>多行查找：用_.表示任意字符
+非贪婪匹配：{-}</p>
+
+<p>其它还好，但是VIM里面似乎只有*和?，没有+</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[最近安装了一些Vim的插件，做个备忘]]></title>
+    <link href="http://huangcd.github.com/blog/2010/07/20/zui-jin-an-zhuang-le-yi-xie-vim-de-cha-jian--zuo-ge-bei-wang/"/>
+    <updated>2010-07-20T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/07/20/zui-jin-an-zhuang-le-yi-xie-vim-de-cha-jian--zuo-ge-bei-wang</id>
+    <content type="html"><![CDATA[<p>计有</p>
+
+<div>
+<div>
+
+TagList
+
+Ctags
+
+WinManager
+
+Pydiction
+
+python_ifold
+
+pyflakes
+
+Calendar
+
+其中taglist和Ctags很好很强大，其它的一般般，pydiction作为一个自动补全工具，只能补全系统原有的函数，没什么用处。
+
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

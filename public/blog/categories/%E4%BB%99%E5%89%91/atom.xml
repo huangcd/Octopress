@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 仙剑 | 流水笔记]]></title>
+  <link href="http://huangcd.github.com/blog/categories/%E4%BB%99%E5%89%91/atom.xml" rel="self"/>
+  <link href="http://huangcd.github.com/"/>
+  <updated>2012-07-23T17:14:06+08:00</updated>
+  <id>http://huangcd.github.com/</id>
+  <author>
+    <name><![CDATA[huangcd]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[仙剑]图片系列全部解析完成]]></title>
+    <link href="http://huangcd.github.com/blog/2010/07/29/xian-jian-tu-pian-xi-lie-quan-bu-jie-xi-wan-cheng/"/>
+    <updated>2010-07-29T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/07/29/xian-jian-tu-pian-xi-lie-quan-bu-jie-xi-wan-cheng</id>
+    <content type="html"><![CDATA[<p>其实是很久之前的事情了，一直没时间写。现在除了145号地图（似乎是锁妖塔某层）有问题以外其他都已经解析出来了。找个时间调一下145就好了。</p>
+
+<p>另外速度问题现在先不处理了，没什么方法。</p>
+
+<p>最后是仙灵岛的地图，原图很大，这里是缩小了的。</p>
+
+<p><img class="alignnone" title="仙灵岛地图" src="http://python-pal.googlecode.com/files/6.png" alt="" width="320" height="320"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[仙剑]最终动画]]></title>
+    <link href="http://huangcd.github.com/blog/2010/07/24/xian-jian-zui-zhong-dong-hua/"/>
+    <updated>2010-07-24T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/07/24/xian-jian-zui-zhong-dong-hua</id>
+    <content type="html"><![CDATA[<p><img src="http://python-pal.googlecode.com/files/boss%E5%8A%A8%E7%94%BB.gif" border="0" alt=""></p>
+
+<p>也就是rng.mkf文件，解析出来了。这个貌似就是最终boss动画</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[仙剑]YJ_1 Decoder完成]]></title>
+    <link href="http://huangcd.github.com/blog/2010/07/23/xian-jian-yj_1-decoder-wan-cheng/"/>
+    <updated>2010-07-23T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/07/23/xian-jian-yj_1-decoder-wan-cheng</id>
+    <content type="html"><![CDATA[<p><img src="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRjRgAUM" border="0" alt=""><h2>
+<span style="color:#ffe500;">哇哈哈哈哈</span><img src="http://println-hcd.appspot.com/editor/plugins/emoticons/28.gif" border="0" alt="">
+</h2>
+很快就写完了，但debug了很久，被Python的self各种完虐，相当悲剧。后来在我的不懈努力加上Winpdb的帮助下终于把已知的都bug的消灭掉。现在能把动画解析出来了。上面似乎就是灵儿的某个雷系终极法术的效果。</p>
+
+<p>不过话说回来winpdb还是很难用的，没有自定义变量、表达式的查看，而且数组一长的话还看不全。不得不说，真是大规模调试的话还是要上pydev+eclipse啊。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[仙剑]哈哈]]></title>
+    <link href="http://huangcd.github.com/blog/2010/07/23/xian-jian-ha-ha/"/>
+    <updated>2010-07-23T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/07/23/xian-jian-ha-ha</id>
+    <content type="html"><![CDATA[<div>
+<div>
+
+<img src="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRihkAUM" alt="仙剑搞笑图">
+
+FBP.mkf文件里面居然有一张这么有乐趣的图片
+
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[仙剑]进展]]></title>
+    <link href="http://huangcd.github.com/blog/2010/07/22/xian-jian-jin-zhan/"/>
+    <updated>2010-07-22T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/07/22/xian-jian-jin-zhan</id>
+    <content type="html"><![CDATA[<p>这几天的进展还是不少的。</p>
+
+<p>首先昨天晚上发现之前写的程序的一个bug，原来从mkf文件里面提出的文件总是少一段，后来才发现是漏了第一个索引的问题。这个故事说明别人写的摘要信一半就好了，具体还是要自己去分析体会。</p>
+
+<p>然后现在的已经解析出了4个mkf文件的内容，包括midi（音乐）、rgm（对话头像）、gop（背景贴图）和ball（道具，为什么叫ball呢，也许是因为前面几张图片都是球状物体吧。。。）</p>
+
+<p>这是rgm中的一张图片<img src="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRiB8QQM" alt="林月如"></p>
+
+<p>最后呢，由于其它的mkf文件大都经过YJ_1压缩（大宇当年居然创造出这么多特立独行的格式，实在是太无语了），所以现在还在写YJ_1解压缩程序</p>
+]]></content>
+  </entry>
+  
+</feed>
