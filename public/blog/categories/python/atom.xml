@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Python | 流水笔记]]></title>
+  <title><![CDATA[Category: python | 流水笔记]]></title>
   <link href="http://huangcd.github.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://huangcd.github.com/"/>
-  <updated>2012-07-23T17:42:08+08:00</updated>
+  <updated>2012-07-23T17:49:01+08:00</updated>
   <id>http://huangcd.github.com/</id>
   <author>
     <name><![CDATA[huangcd]]></name>
@@ -14,254 +14,19 @@
 
   
   <entry>
-    <title type="html"><![CDATA[又是今天的事情]]></title>
-    <link href="http://huangcd.github.com/blog/2010/12/27/you-shi-jin-tian-de-shi-qing/"/>
-    <updated>2010-12-27T00:00:00+08:00</updated>
-    <id>http://huangcd.github.com/blog/2010/12/27/you-shi-jin-tian-de-shi-qing</id>
-    <content type="html"><![CDATA[<p>先说昨天的，开了一上午会，干了一下午活，然后晚上开了一个晚上的会。昨天是星期天！！！早上自己啃面包，中午一小撮人吃饺子，晚上一大坨人吃汉堡，总的来说没一顿好的，饺子很难吃。麦当劳的汉堡，不能说难吃，就是吃完之后觉得不太舒服。。。</p>
+    <title type="html"><![CDATA[Python创建透明PNG图片]]></title>
+    <link href="http://huangcd.github.com/blog/2010/03/26/python-chuang-jian-tou-ming-png-tu-pian/"/>
+    <updated>2010-03-26T00:00:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2010/03/26/python-chuang-jian-tou-ming-png-tu-pian</id>
+    <content type="html"><![CDATA[<p>有两点需要注意的，一个是图片只有在保存成PNG格式之后 才会透明，另一个是颜色只能用"#FF00FF"这种格式，而不能用0XFF00FF（即只能 是字符串，否则不透明，很诡异）</p>
 
-<p>今天上午干了几件事情：办了新的学生卡（居然要30块工本费。。。），洗了最近积攒的衣服，剪了个鸟头，不过我喜欢。。。晚上洗澡回来头发终于不结冰了。</p>
-
-<p>下午主要工作就是给William发了封邮件，说了一下我想做的事情，大概就是想在python上面做model checking，思路是python code转CFG转BLAST Algorithm，发完邮件之后仔细看了看，想了想。发现虽然原来想着就不简单，但实际应该更难。Pypy出来的CFG有限制，CPython出来的CFG没看过，不过网上有人说很麻烦，估计最后如果要做的话可能还要自己写转换。突然想起三年前其实就是做着类似的事情，只不过是在PHP code上检查infeasible branch，实际上做的事情都很类似。想想真是可悲，研究所换来换去，导师换来换去，最后还是在做同样的东西，早知道这样还不如当初直截了当地跟宇哥混了，虽然谨慎觉得可能也很悲惨，但至少不至于三年什么都干不出来，而且那边至少有口头上承诺的好处。</p>
-
-<p>伤心的往事掠过不提了，转换出CFG以后BLAST Algorithm也不好弄，不过至少如果William觉得靠谱的话可以奋起一搏。</p>
-
-<p>另外今天认识了一个很可爱的人，恩。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[今天的事情]]></title>
-    <link href="http://huangcd.github.com/blog/2010/12/24/jin-tian-de-shi-qing/"/>
-    <updated>2010-12-24T00:00:00+08:00</updated>
-    <id>http://huangcd.github.com/blog/2010/12/24/jin-tian-de-shi-qing</id>
-    <content type="html"><![CDATA[<p>首先是实验室里面的，最近两个老师都回来了，然后我的座位正好背对着两位老师，因此时常觉得压力很大。。。想悄悄干点坏事都不行。</p>
-
-<p>然后上周隔壁组试图结题，挤压了n久的工作要赶着做完。毫无意外地，我被拉去帮忙赶工了。。。发来布置任务的邮件写的很牛的样子，让我觉得压力很大，不过和负责coding的师弟了解了一下以后发现是个很简单的东西。</p>
-
-<p>第二天早上一大早赶过去试图开工，正在准备软件的时候老大赶过来说有个小任务。。。于是就开始优先做小任务了，确实挺小的，十分钟搞定，不过由于要求要弄成exe，然后我是用python写的，所以就开始尝试转换了，试了一下py2exe，很好很强大，一下子就转过去了，转到纯洁无瑕的虚拟机下面一试，发现丫说这是不明真相的exe不能执行。网上搜了一下，发现是python2.6用的是VS2008编译的，py2exe之后各种不能用，尝试了一些解决方案发现没效果。心里默念“python2.6傻X一万遍，VS2008傻X一千遍”以后果断开始尝试pyinstall，惊奇的发现pyinstall纯爷们，直接来一句我们支持2.5、2.7及各种3.+版本，但是不支持您用的2.6。心里再次默念python2.6傻X一万遍以后开始在纯洁无瑕的虚拟机下面装python2.5.4（顺便发现corsair挂了），装完以后果然pyinstall就可以用了。而且很好很强大的是它还可以把所有需要的文件打包成一个大exe，如果忽略那个长得巨难看无比的图标的话简直就太完美了。</p>
-
-<p>吃完饭回来开始做隔壁组的任务，吭哧吭哧捣鼓了一个下午总算完成了，n久不用Java，难得用一次还是在不给力的netbeans上面，而且还要写界面，十分痛苦。而且最后发现写的东西无非是师弟原有代码的简化版。。。不过事不关己，完成任务就好</p>
-
-<p>晚上打球，这学期第一次打六点场，一开始很不给力，跑了两下觉得晚饭都要跳出喉咙了。。。不过后来越打越舒服，更舒服的是打完以后还能去北区澡堂洗澡，不用去东区将就。</p>
-
-<p>然后就没有然后了，恩</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[位运算版的n皇后问题]]></title>
-    <link href="http://huangcd.github.com/blog/2010/12/15/wei-yun-suan-ban-de-n-huang-hou-wen-ti/"/>
-    <updated>2010-12-15T00:00:00+08:00</updated>
-    <id>http://huangcd.github.com/blog/2010/12/15/wei-yun-suan-ban-de-n-huang-hou-wen-ti</id>
-    <content type="html"><![CDATA[<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;-&lt;</span><span class="n">em</span><span class="o">&gt;-</span> <span class="n">coding</span><span class="p">:</span> <span class="n">utf</span><span class="o">-</span><span class="mi">8</span> <span class="o">-&lt;/</span><span class="n">em</span><span class="o">&gt;-&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot;</span>
-</span><span class='line'><span class="s">n皇后问题位运算版</span>
-</span><span class='line'><span class="s">Created on Wed Dec 15 08:39:27 2010</span>
-</span><span class='line'><span class="s">@author: HUANGCD</span>
-</span><span class='line'><span class="s">&quot;&quot;&quot;</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">queen</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">ld</span><span class="p">,</span> <span class="n">rd</span><span class="p">,</span> <span class="n">upper_limit</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
-</span><span class='line'><span class="sd">&#39;&#39;&#39;</span>
-</span><span class='line'><span class="sd">@param row   列上的限制，0为允许，1为不允许</span>
-</span><span class='line'><span class="sd">@param ld    左上到右下的对角线限制</span>
-</span><span class='line'><span class="sd">@param rd    右上到左下的对角线限制</span>
-</span><span class='line'><span class="sd">@param upper_limit   n （设定的值为(1 &amp;lt;&amp;lt; n) - 1）</span>
-</span><span class='line'><span class="sd">@param result  返回的结果</span>
-</span><span class='line'><span class="sd">&#39;&#39;&#39;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">if</span> <span class="n">row</span> <span class="o">^</span> <span class="n">upper_limit</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">pos</span> <span class="o">=</span> <span class="n">upper_limit</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="o">~</span><span class="p">(</span><span class="n">row</span> <span class="o">|</span> <span class="n">ld</span> <span class="o">|</span> <span class="n">rd</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">while</span> <span class="n">pos</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">p</span> <span class="o">=</span> <span class="n">pos</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="p">(</span><span class="o">-</span><span class="n">pos</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span> <span class="o">-</span> <span class="n">p</span>
-</span><span class='line'>        <span class="n">result</span> <span class="o">=</span> <span class="n">queen</span><span class="p">(</span><span class="n">row</span> <span class="o">|</span> <span class="n">p</span><span class="p">,</span> <span class="p">(</span><span class="n">ld</span> <span class="o">|</span> <span class="n">p</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">upper_limit</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
-</span><span class='line'><span class="k">else</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span>
-</span><span class='line'><span class="k">return</span> <span class="n">result</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">==</span> <span class="s">&#39;&lt;strong&gt;main&lt;/strong&gt;&#39;</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kn">import</span> <span class="nn">time</span>
-</span><span class='line'><span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
-</span><span class='line'><span class="k">print</span> <span class="n">queen</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="mi">13</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class='line'><span class="k">print</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[计算一个32位整数的二进制表示末尾0的个数]]></title>
-    <link href="http://huangcd.github.com/blog/2010/12/15/ji-suan-yi-ge-32-wei-zheng-shu-de-er-jin-zhi-biao-shi-mo-wei-0-de-ge-shu/"/>
-    <updated>2010-12-15T00:00:00+08:00</updated>
-    <id>http://huangcd.github.com/blog/2010/12/15/ji-suan-yi-ge-32-wei-zheng-shu-de-er-jin-zhi-biao-shi-mo-wei-0-de-ge-shu</id>
-    <content type="html"><![CDATA[<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;-&lt;</span><span class="n">em</span><span class="o">&gt;-</span> <span class="n">coding</span><span class="p">:</span> <span class="n">utf</span><span class="o">-</span><span class="mi">8</span> <span class="o">-&lt;/</span><span class="n">em</span><span class="o">&gt;-&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot;</span>
-</span><span class='line'><span class="s">计算一个32位整数的二进制表示末尾0的个数</span>
-</span><span class='line'><span class="s">Created on Wed Dec 15 09:18:27 2010</span>
-</span><span class='line'><span class="s">@author: HUANGCD</span>
-</span><span class='line'><span class="s">&quot;&quot;&quot;</span>
-</span><span class='line'><span class="n">multiply_De_Bruijn_position</span> <span class="o">=</span> <span class="p">[</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>    <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span>
-</span><span class='line'>    <span class="mi">31</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">tail_zero_count</span><span class="p">(</span><span class="n">num</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">return</span> <span class="n">multiply_De_Bruijn_position</span><span class="p">[(((</span><span class="n">num</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="p">(</span><span class="o">-</span><span class="n">num</span><span class="p">))</span> <span class="o">*</span> <span class="mh">0x077CB531</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">27</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="mi">31</span><span class="p">]</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">==</span> <span class="s">&#39;&lt;strong&gt;main&lt;/strong&gt;&#39;</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">print</span> <span class="n">tail_zero_count</span><span class="p">(</span><span class="mh">0x110000000</span><span class="p">)</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p><a href="http://graphics.stanford.edu/~seander/bithacks.html" target="_blank">这里</a>可以围观到各种位运算的技巧</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[贴段代码]]></title>
-    <link href="http://huangcd.github.com/blog/2010/11/24/tie-duan-dai-ma/"/>
-    <updated>2010-11-24T00:00:00+08:00</updated>
-    <id>http://huangcd.github.com/blog/2010/11/24/tie-duan-dai-ma</id>
-    <content type="html"><![CDATA[<p>python的修饰器版singleton模式</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>!/usr/bin/env python&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;h1>-&lt;em>- coding: UTF-8 -&lt;/em>-&lt;/h1>
-</span><span class='line'>
-</span><span class='line'>&lt;p>def singleton(cls):&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>'''
-</span><span class='line'>singleton 模式的修饰器，保留第一次初始化的值
-</span><span class='line'>例：
-</span><span class='line'>@singleton
-</span><span class='line'>class Class:
-</span><span class='line'>    def __init__(self, v):
-</span><span class='line'>        self.val = v
-</span><span class='line'>a = Class('a')
-</span><span class='line'>b = Class('b')
-</span><span class='line'>则b.val == 'a'
-</span><span class='line'>a is b返回True
-</span><span class='line'>'''
-</span><span class='line'>instance_container = []
-</span><span class='line'>def get_instance(*arg, **args):
-</span><span class='line'>    if not len(instance_container):
-</span><span class='line'>        instance_container.append(cls(*arg, **args))
-</span><span class='line'>    return instance_container[0]
-</span><span class='line'>return get_instance
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>1 import Image, ImageFont, ImageDraw
+2
+3 im = Image.new('RGBA', (120, 50), (0, 0, 0, 0))
+4 dr = ImageDraw.Draw(im)
+5 font = ImageFont.truetype('MONACO.TTF', 30)
+6 dr.text((10, 10), 'hello', font = font, fill = '#00FF00')
+7 im.save('test.png', 'PNG')</p>
 ]]></content>
   </entry>
   

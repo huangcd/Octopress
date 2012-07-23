@@ -13,9 +13,7 @@ type: post
 找了一下，貌似numpy库没有这个函数，自己写了一个
 
 
-{% codeblock %}
-
-
+{% codeblock lang:python %}
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 from numpy import *
@@ -35,7 +33,5 @@ if sumT <= err:
 break
 result += T
 return result
-
-
 {% endcodeblock %}
  

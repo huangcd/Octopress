@@ -1,13 +1,14 @@
 --- 
 categories: 
-  - Lego积木
+  - Lego
+  - water
 comments: true
 layout: post
 published: true
 status: publish
 tags: 
   - Lego
-  - 杂记
+  - water
 title: 正式进入实验室
 type: post
 ---

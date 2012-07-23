@@ -117,7 +117,7 @@ def &hellip;">
 
   <div class="entry-content"><p>找了一下，貌似numpy库没有这个函数，自己写了一个</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -136,25 +136,26 @@ def &hellip;">
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#!/usr/bin/env python
-</span><span class='line'># -*- coding: UTF-8 -*-
-</span><span class='line'>from numpy import *
-</span><span class='line'>def pow_e(A, err = 1E-5):
-</span><span class='line'>'''e的A次方，A为矩阵'''
-</span><span class='line'>idx = 1
-</span><span class='line'>fact = 1
-</span><span class='line'>result = A ** 0
-</span><span class='line'>while True:
-</span><span class='line'>T = (A ** idx) / fact
-</span><span class='line'>idx += 1
-</span><span class='line'>fact *= idx
-</span><span class='line'>sumT = sum(map(lambda l: sum(map(long, map(abs, l))), T.tolist()))
-</span><span class='line'>if sumT > 10E10:
-</span><span class='line'>raise Exception('power is too large')
-</span><span class='line'>if sumT &lt;= err:
-</span><span class='line'>break
-</span><span class='line'>result += T
-</span><span class='line'>return result</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'><span class="c"># -*- coding: UTF-8 -*-</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">pow_e</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="mf">1E-5</span><span class="p">):</span>
+</span><span class='line'><span class="sd">&#39;&#39;&#39;e的A次方，A为矩阵&#39;&#39;&#39;</span>
+</span><span class='line'><span class="n">idx</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="n">fact</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="n">A</span> <span class="o">**</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'><span class="n">T</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">**</span> <span class="n">idx</span><span class="p">)</span> <span class="o">/</span> <span class="n">fact</span>
+</span><span class='line'><span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="n">fact</span> <span class="o">*=</span> <span class="n">idx</span>
+</span><span class='line'><span class="n">sumT</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">long</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="nb">abs</span><span class="p">,</span> <span class="n">l</span><span class="p">))),</span> <span class="n">T</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+</span><span class='line'><span class="k">if</span> <span class="n">sumT</span> <span class="o">&gt;</span> <span class="mf">10E10</span><span class="p">:</span>
+</span><span class='line'><span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;power is too large&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="k">if</span> <span class="n">sumT</span> <span class="o">&lt;=</span> <span class="n">err</span><span class="p">:</span>
+</span><span class='line'><span class="k">break</span>
+</span><span class='line'><span class="n">result</span> <span class="o">+=</span> <span class="n">T</span>
+</span><span class='line'><span class="k">return</span> <span class="n">result</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -197,16 +198,17 @@ def &hellip;">
 
 <p>google了一下，发现Python也可以一行写完，不过需要用到izip_longest和random两个函数。代码如下：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>from itertools import izip_longest
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">izip_longest</span>
 </span><span class='line'>
-</span><span class='line'>from random import random
+</span><span class='line'><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>
 </span><span class='line'>
-</span><span class='line'>list(izip_longest(*[iter(sorted(range(1, 53), key=lambda x: random()))]*13))</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nb">list</span><span class="p">(</span><span class="n">izip_longest</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="nb">iter</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">53</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">random</span><span class="p">()))]</span><span class="o">*</span><span class="mi">13</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -354,55 +356,7 @@ def &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2010/08/12/you-hui-xue-xiao-le/">又回学校了</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-12T00:00:00+08:00" pubdate data-updated="true">Aug 12<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>真快啊真快啊，转眼间的事情</p>
-
-<p>昨天坐了一整天的各种交通工具，回到宿舍都虚了，晚上吃饭很有想吐的感觉，于是草草吃了点就回去了。自行车又没气了，看来还真的是一个学期就必须打一次气的。回去以后把风扇插插洗洗（原来把内壳拿出的方法不是压扁内壳，而是拉开外壳），然后拧螺母的时候又发现死活拧不紧去，手都快拧滑的时候才想到是不是应该把螺母翻个个再拧呢，于是发现果然是这样的。</p>
-
-<p>然后爸打电话过来说我没给他改程序，因为他电脑里面的程序还是错的，然后我敏锐地指出他当时只是拷到U盘，然后就匆匆赶去打麻将了，一说果然是。</p>
-
-<p>然后睡觉，睡着睡着突然发现不太对头，匆匆跑厕所，回过头一想似乎果然是每次吃饭吃到想吐总是有点什么问题的。还好之后吃了点药就一夜安宁了。然后早上起来又发现全身乏力，也不知道是拉肚子的原因还是发烧，更悲剧的是发现我的钥匙不见了。四处找了一会没找到遂决定睡觉，这个很好，睡醒了以后虽然还是全身无力，但至少想到钥匙可能放在哪里了，一找，果然在蚊帐下面。</p>
-
-<p>于是去吃午饭，依然没有食欲，于是想喝粥，紫米粥是肯定要的，但是似乎不够吃，看到绿豆粥上面似乎隐隐约约飘着点肉，大喜，又要了一碗。结帐的时候发现一共才1.1块，想怎么可能有肉呢？？？噼里啪啦灌完紫米粥以后试了一口绿豆粥，发现不仅没有肉，而且超难喝。又试了一口，依然很难喝，果断不喝，直接拿到回收处。</p>
-
-<p>然后去买网线，C楼网线质量虽然差，但想着好像也没有别的地方能买，于是也只好委屈一下了，哪知十块钱的网线买回来刚插上就断了卡位的那个透明状物体，真是气死我也，于是继续睡觉，不开风扇憋了一身汗以后醒来发现似乎还好，腰不酸了，背也不痛了，上楼也倍儿有劲。于是开始改代码，改吧改吧发现是不是应该写点什么东西先，于是就开始写了。</p>
-
-<p>另，发现似乎实验室有钱发了，账户里面有了转账记录，虽然还看不到钱是多少，但依然我心甚慰——终于有钱了</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/12/%5Bzhuan%5D-shuo-shuo-zi-fu-ji-he-bian-ma/">【转】说说字符集和编码</a></h1>
+      <h1 class="entry-title"><a href="/blog/2010/08/12/zhuan-shuo-shuo-zi-fu-ji-he-bian-ma/">【转】说说字符集和编码</a></h1>
     
     
       <p class="meta">
@@ -509,6 +463,54 @@ def &hellip;">
 <p>注 意到了吗？第一二个字节、第三四个字节的起始部分的都是&#8221;110&#8221;和&#8221;10&#8221;，正好与UTF8规则里的两字节模板是一致的，于是再次打开记事本时，记事本 就误认为这是一个UTF8编码的文件，让我们把第一个字节的110和第二个字节的10去掉，我们就得到了&#8221;00001  101010&#8221;，再把各位对齐，补上前导的0，就得到了&#8221;0000 0000 0110  1010&#8221;，不好意思，这是UNICODE的006A，也就是小写的字母&#8221;j&#8221;，而之后的两字节用UTF8解码之后是0368，这个字符什么也不是。这就 是只有&#8221;联通&#8221;两个字的文件没有办法在记事本里正常显示的原因。</p>
 
 <p>而如果你在&#8221;联通&#8221;之后多输入几个字，其他的字的编码不见得又恰好是110和10开始的字节，这样再次打开时，记事本就不会坚持这是一个utf8编码的文件，而会用ANSI的方式解读之，这时乱码又不出现了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/12/you-hui-xue-xiao-le/">又回学校了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-12T00:00:00+08:00" pubdate data-updated="true">Aug 12<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>真快啊真快啊，转眼间的事情</p>
+
+<p>昨天坐了一整天的各种交通工具，回到宿舍都虚了，晚上吃饭很有想吐的感觉，于是草草吃了点就回去了。自行车又没气了，看来还真的是一个学期就必须打一次气的。回去以后把风扇插插洗洗（原来把内壳拿出的方法不是压扁内壳，而是拉开外壳），然后拧螺母的时候又发现死活拧不紧去，手都快拧滑的时候才想到是不是应该把螺母翻个个再拧呢，于是发现果然是这样的。</p>
+
+<p>然后爸打电话过来说我没给他改程序，因为他电脑里面的程序还是错的，然后我敏锐地指出他当时只是拷到U盘，然后就匆匆赶去打麻将了，一说果然是。</p>
+
+<p>然后睡觉，睡着睡着突然发现不太对头，匆匆跑厕所，回过头一想似乎果然是每次吃饭吃到想吐总是有点什么问题的。还好之后吃了点药就一夜安宁了。然后早上起来又发现全身乏力，也不知道是拉肚子的原因还是发烧，更悲剧的是发现我的钥匙不见了。四处找了一会没找到遂决定睡觉，这个很好，睡醒了以后虽然还是全身无力，但至少想到钥匙可能放在哪里了，一找，果然在蚊帐下面。</p>
+
+<p>于是去吃午饭，依然没有食欲，于是想喝粥，紫米粥是肯定要的，但是似乎不够吃，看到绿豆粥上面似乎隐隐约约飘着点肉，大喜，又要了一碗。结帐的时候发现一共才1.1块，想怎么可能有肉呢？？？噼里啪啦灌完紫米粥以后试了一口绿豆粥，发现不仅没有肉，而且超难喝。又试了一口，依然很难喝，果断不喝，直接拿到回收处。</p>
+
+<p>然后去买网线，C楼网线质量虽然差，但想着好像也没有别的地方能买，于是也只好委屈一下了，哪知十块钱的网线买回来刚插上就断了卡位的那个透明状物体，真是气死我也，于是继续睡觉，不开风扇憋了一身汗以后醒来发现似乎还好，腰不酸了，背也不痛了，上楼也倍儿有劲。于是开始改代码，改吧改吧发现是不是应该写点什么东西先，于是就开始写了。</p>
+
+<p>另，发现似乎实验室有钱发了，账户里面有了转账记录，虽然还看不到钱是多少，但依然我心甚慰——终于有钱了</p>
 </div>
   
   
@@ -733,7 +735,7 @@ def &hellip;">
  <li class='category'><a href='/blog/categories/csharp/'>Csharp (1)</a></li>
 <li class='category'><a href='/blog/categories/haskell/'>Haskell (3)</a></li>
 <li class='category'><a href='/blog/categories/java/'>Java (2)</a></li>
-<li class='category'><a href='/blog/categories/lego积木/'>Lego积木 (1)</a></li>
+<li class='category'><a href='/blog/categories/lego/'>Lego (1)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
 <li class='category'><a href='/blog/categories/plc/'>PLC (3)</a></li>
 <li class='category'><a href='/blog/categories/programming/'>Programming (5)</a></li>
@@ -743,7 +745,11 @@ def &hellip;">
 <li class='category'><a href='/blog/categories/webkit/'>Webkit (3)</a></li>
 <li class='category'><a href='/blog/categories/functional/'>functional (1)</a></li>
 <li class='category'><a href='/blog/categories/github/'>github (1)</a></li>
+<li class='category'><a href='/blog/categories/image/'>image (1)</a></li>
 <li class='category'><a href='/blog/categories/lambda/'>lambda (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (1)</a></li>
+<li class='category'><a href='/blog/categories/transparent/'>transparent (1)</a></li>
+<li class='category'><a href='/blog/categories/water/'>water (1)</a></li>
 <li class='category'><a href='/blog/categories/仙剑/'>仙剑 (5)</a></li>
 <li class='category'><a href='/blog/categories/博客/'>博客 (1)</a></li>
 <li class='category'><a href='/blog/categories/流水笔记/'>流水笔记 (20)</a></li>

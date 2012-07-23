@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | 流水笔记]]></title>
   <link href="http://huangcd.github.com/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://huangcd.github.com/"/>
-  <updated>2012-07-23T17:42:08+08:00</updated>
+  <updated>2012-07-23T17:49:01+08:00</updated>
   <id>http://huangcd.github.com/</id>
   <author>
     <name><![CDATA[huangcd]]></name>
@@ -26,9 +26,9 @@
   
   <entry>
     <title type="html"><![CDATA[【转】说说字符集和编码]]></title>
-    <link href="http://huangcd.github.com/blog/2010/08/12/%5Bzhuan%5D-shuo-shuo-zi-fu-ji-he-bian-ma/"/>
+    <link href="http://huangcd.github.com/blog/2010/08/12/zhuan-shuo-shuo-zi-fu-ji-he-bian-ma/"/>
     <updated>2010-08-12T00:00:00+08:00</updated>
-    <id>http://huangcd.github.com/blog/2010/08/12/[zhuan]-shuo-shuo-zi-fu-ji-he-bian-ma</id>
+    <id>http://huangcd.github.com/blog/2010/08/12/zhuan-shuo-shuo-zi-fu-ji-he-bian-ma</id>
     <content type="html"><![CDATA[<p>javaeye上看到的帖子，读起来很愉快。</p>
 
 <p>很久很久以前，有一群人，他们决定用8个可以开合的晶体管来组合成不同的状态，以表示世界上的万物。他们看到8个开关状态是好的，于是他们把这称为"字节"。</p>

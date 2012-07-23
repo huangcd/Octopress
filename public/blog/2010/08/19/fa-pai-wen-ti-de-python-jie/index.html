@@ -99,16 +99,17 @@ from itertools import izip_longest &hellip;">
 
 <p>google了一下，发现Python也可以一行写完，不过需要用到izip_longest和random两个函数。代码如下：</p>
 
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>from itertools import izip_longest
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">izip_longest</span>
 </span><span class='line'>
-</span><span class='line'>from random import random
+</span><span class='line'><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>
 </span><span class='line'>
-</span><span class='line'>list(izip_longest(*[iter(sorted(range(1, 53), key=lambda x: random()))]*13))</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class='line'><span class="nb">list</span><span class="p">(</span><span class="n">izip_longest</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="nb">iter</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">53</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">random</span><span class="p">()))]</span><span class="o">*</span><span class="mi">13</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
 
@@ -178,7 +179,7 @@ from itertools import izip_longest &hellip;">
  <li class='category'><a href='/blog/categories/csharp/'>Csharp (1)</a></li>
 <li class='category'><a href='/blog/categories/haskell/'>Haskell (3)</a></li>
 <li class='category'><a href='/blog/categories/java/'>Java (2)</a></li>
-<li class='category'><a href='/blog/categories/lego积木/'>Lego积木 (1)</a></li>
+<li class='category'><a href='/blog/categories/lego/'>Lego (1)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
 <li class='category'><a href='/blog/categories/plc/'>PLC (3)</a></li>
 <li class='category'><a href='/blog/categories/programming/'>Programming (5)</a></li>
@@ -188,7 +189,11 @@ from itertools import izip_longest &hellip;">
 <li class='category'><a href='/blog/categories/webkit/'>Webkit (3)</a></li>
 <li class='category'><a href='/blog/categories/functional/'>functional (1)</a></li>
 <li class='category'><a href='/blog/categories/github/'>github (1)</a></li>
+<li class='category'><a href='/blog/categories/image/'>image (1)</a></li>
 <li class='category'><a href='/blog/categories/lambda/'>lambda (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (1)</a></li>
+<li class='category'><a href='/blog/categories/transparent/'>transparent (1)</a></li>
+<li class='category'><a href='/blog/categories/water/'>water (1)</a></li>
 <li class='category'><a href='/blog/categories/仙剑/'>仙剑 (5)</a></li>
 <li class='category'><a href='/blog/categories/博客/'>博客 (1)</a></li>
 <li class='category'><a href='/blog/categories/流水笔记/'>流水笔记 (20)</a></li>

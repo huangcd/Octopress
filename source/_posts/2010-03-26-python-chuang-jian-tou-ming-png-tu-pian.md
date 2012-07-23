@@ -1,5 +1,8 @@
 --- 
-categories: []
+categories: 
+    - python
+    - transparent
+    - image
 comments: true
 layout: post
 published: true

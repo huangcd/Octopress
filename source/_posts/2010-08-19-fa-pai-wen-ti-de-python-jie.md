@@ -14,7 +14,7 @@ type: post
 
 google了一下，发现Python也可以一行写完，不过需要用到izip_longest和random两个函数。代码如下：
 
-{% codeblock %}
+{% codeblock lang:python %}
 
 from itertools import izip_longest
 

@@ -4,7 +4,7 @@
         <loc>
             http://huangcd.github.com/blog/2010/03/26/python-chuang-jian-tou-ming-png-tu-pian/
         </loc>
-        <lastmod>2012-07-23T16:31:09+08:00</lastmod>
+        <lastmod>2012-07-23T17:48:55+08:00</lastmod>
     </url>
     <url>
         <loc>http://huangcd.github.com/blog/2010/04/23/2010-4-23-plc/</loc>
@@ -85,13 +85,11 @@
         <lastmod>2012-07-23T16:31:10+08:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://huangcd.github.com/blog/2010/08/12/%5Bzhuan%5D-shuo-shuo-zi-fu-ji-he-bian-ma/
-        </loc>
+        <loc>http://huangcd.github.com/blog/2010/08/12/you-hui-xue-xiao-le/</loc>
         <lastmod>2012-07-23T16:31:11+08:00</lastmod>
     </url>
     <url>
-        <loc>http://huangcd.github.com/blog/2010/08/12/you-hui-xue-xiao-le/</loc>
+        <loc>http://huangcd.github.com/blog/2010/08/12/zhuan-shuo-shuo-zi-fu-ji-he-bian-ma/</loc>
         <lastmod>2012-07-23T16:31:11+08:00</lastmod>
     </url>
     <url>
@@ -110,11 +108,11 @@
     </url>
     <url>
         <loc>http://huangcd.github.com/blog/2010/08/19/fa-pai-wen-ti-de-python-jie/</loc>
-        <lastmod>2012-07-23T16:31:10+08:00</lastmod>
+        <lastmod>2012-07-23T17:44:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://huangcd.github.com/blog/2010/08/19/qiu-jie-e-de-ju-zhen-ci-fang/</loc>
-        <lastmod>2012-07-23T16:31:10+08:00</lastmod>
+        <lastmod>2012-07-23T17:44:35+08:00</lastmod>
     </url>
     <url>
         <loc>http://huangcd.github.com/blog/2010/08/25/haskell-zhong-de-cps/</loc>
@@ -130,7 +128,7 @@
     </url>
     <url>
         <loc>http://huangcd.github.com/blog/2010/09/05/zheng-shi-jin-ru-shi-yan-shi/</loc>
-        <lastmod>2012-07-23T16:31:10+08:00</lastmod>
+        <lastmod>2012-07-23T17:43:42+08:00</lastmod>
     </url>
     <url>
         <loc>http://huangcd.github.com/blog/2010/10/01/vim-bi-ji/</loc>
@@ -294,10 +292,10 @@
     </url>
     <url>
         <loc>http://huangcd.github.com/blog/archives/</loc>
-        <lastmod>2012-07-23T17:41:55+08:00</lastmod>
+        <lastmod>2012-07-23T17:48:55+08:00</lastmod>
     </url>
     <url>
         <loc>http://huangcd.github.com/</loc>
-        <lastmod>2012-07-23T17:41:55+08:00</lastmod>
+        <lastmod>2012-07-23T17:48:55+08:00</lastmod>
     </url>
 </urlset>

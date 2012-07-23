@@ -114,7 +114,7 @@ def &hellip;">
 
 <div class="entry-content"><p>找了一下，貌似numpy库没有这个函数，自己写了一个</p>
 
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -133,25 +133,26 @@ def &hellip;">
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#!/usr/bin/env python
-</span><span class='line'># -*- coding: UTF-8 -*-
-</span><span class='line'>from numpy import *
-</span><span class='line'>def pow_e(A, err = 1E-5):
-</span><span class='line'>'''e的A次方，A为矩阵'''
-</span><span class='line'>idx = 1
-</span><span class='line'>fact = 1
-</span><span class='line'>result = A ** 0
-</span><span class='line'>while True:
-</span><span class='line'>T = (A ** idx) / fact
-</span><span class='line'>idx += 1
-</span><span class='line'>fact *= idx
-</span><span class='line'>sumT = sum(map(lambda l: sum(map(long, map(abs, l))), T.tolist()))
-</span><span class='line'>if sumT > 10E10:
-</span><span class='line'>raise Exception('power is too large')
-</span><span class='line'>if sumT &lt;= err:
-</span><span class='line'>break
-</span><span class='line'>result += T
-</span><span class='line'>return result</span></code></pre></td></tr></table></div></figure></notextile></div>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'><span class="c"># -*- coding: UTF-8 -*-</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">pow_e</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="mf">1E-5</span><span class="p">):</span>
+</span><span class='line'><span class="sd">&#39;&#39;&#39;e的A次方，A为矩阵&#39;&#39;&#39;</span>
+</span><span class='line'><span class="n">idx</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="n">fact</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="n">A</span> <span class="o">**</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'><span class="n">T</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">**</span> <span class="n">idx</span><span class="p">)</span> <span class="o">/</span> <span class="n">fact</span>
+</span><span class='line'><span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="n">fact</span> <span class="o">*=</span> <span class="n">idx</span>
+</span><span class='line'><span class="n">sumT</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">long</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="nb">abs</span><span class="p">,</span> <span class="n">l</span><span class="p">))),</span> <span class="n">T</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+</span><span class='line'><span class="k">if</span> <span class="n">sumT</span> <span class="o">&gt;</span> <span class="mf">10E10</span><span class="p">:</span>
+</span><span class='line'><span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;power is too large&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="k">if</span> <span class="n">sumT</span> <span class="o">&lt;=</span> <span class="n">err</span><span class="p">:</span>
+</span><span class='line'><span class="k">break</span>
+</span><span class='line'><span class="n">result</span> <span class="o">+=</span> <span class="n">T</span>
+</span><span class='line'><span class="k">return</span> <span class="n">result</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
 
@@ -221,7 +222,7 @@ def &hellip;">
  <li class='category'><a href='/blog/categories/csharp/'>Csharp (1)</a></li>
 <li class='category'><a href='/blog/categories/haskell/'>Haskell (3)</a></li>
 <li class='category'><a href='/blog/categories/java/'>Java (2)</a></li>
-<li class='category'><a href='/blog/categories/lego积木/'>Lego积木 (1)</a></li>
+<li class='category'><a href='/blog/categories/lego/'>Lego (1)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
 <li class='category'><a href='/blog/categories/plc/'>PLC (3)</a></li>
 <li class='category'><a href='/blog/categories/programming/'>Programming (5)</a></li>
@@ -231,7 +232,11 @@ def &hellip;">
 <li class='category'><a href='/blog/categories/webkit/'>Webkit (3)</a></li>
 <li class='category'><a href='/blog/categories/functional/'>functional (1)</a></li>
 <li class='category'><a href='/blog/categories/github/'>github (1)</a></li>
+<li class='category'><a href='/blog/categories/image/'>image (1)</a></li>
 <li class='category'><a href='/blog/categories/lambda/'>lambda (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (1)</a></li>
+<li class='category'><a href='/blog/categories/transparent/'>transparent (1)</a></li>
+<li class='category'><a href='/blog/categories/water/'>water (1)</a></li>
 <li class='category'><a href='/blog/categories/仙剑/'>仙剑 (5)</a></li>
 <li class='category'><a href='/blog/categories/博客/'>博客 (1)</a></li>
 <li class='category'><a href='/blog/categories/流水笔记/'>流水笔记 (20)</a></li>
