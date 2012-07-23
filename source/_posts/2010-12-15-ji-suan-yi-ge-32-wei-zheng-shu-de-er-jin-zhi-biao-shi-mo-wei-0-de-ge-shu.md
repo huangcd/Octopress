@@ -10,7 +10,7 @@ tags:
 title: 计算一个32位整数的二进制表示末尾0的个数
 type: post
 ---
-``` python
+{% codeblock lang:python %}
 # -*- coding: utf-8 -*-
 """
 计算一个32位整数的二进制表示末尾0的个数
@@ -27,6 +27,6 @@ def tail_zero_count(num):
 if __name__ == '__main__':
     print tail_zero_count(0x110000000)
 
-```
+{% endcodeblock %}
 
 <a href="http://graphics.stanford.edu/~seander/bithacks.html" target="_blank">这里</a>可以围观到各种位运算的技巧
