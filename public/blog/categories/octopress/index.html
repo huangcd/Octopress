@@ -5,34 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>贴段代码 - 流水笔记</title>
+  <title>Category: Octopress - 流水笔记</title>
   <meta name="author" content="huangcd">
 
   
-  <meta name="description" content="python的修饰器版singleton模式 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
-def singleton(cls): ''' &hellip;">
+  <meta name="description" content="Category: Octopress">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -41,7 +18,7 @@ def singleton(cls): ''' &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://huangcd.github.com/blog/2010/11/24/tie-duan-dai-ma/">
+  <link rel="canonical" href="http://huangcd.github.comblog/categories/octopress/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -86,134 +63,35 @@ def singleton(cls): ''' &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">贴段代码</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-24T00:00:00+08:00" pubdate data-updated="true">Nov 24<span>th</span>, 2010</time>
-        
-      </p>
+    <h1 class="entry-title">Category: Octopress</h1>
     
   </header>
+  
+  <div id="blog-archives" class="category">
 
 
-<div class="entry-content"><p>python的修饰器版singleton模式</p>
 
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#!/usr/bin/env python
-</span><span class='line'># -*- coding: UTF-8 -*-
-</span><span class='line'>def singleton(cls):
-</span><span class='line'>    '''
-</span><span class='line'>    singleton 模式的修饰器，保留第一次初始化的值
-</span><span class='line'>    例：
-</span><span class='line'>    @singleton
-</span><span class='line'>    class Class:
-</span><span class='line'>        def __init__(self, v):
-</span><span class='line'>            self.val = v
-</span><span class='line'>    a = Class('a')
-</span><span class='line'>    b = Class('b')
-</span><span class='line'>    则b.val == 'a'
-</span><span class='line'>    a is b返回True
-</span><span class='line'>    '''
-</span><span class='line'>    instance_container = []
-</span><span class='line'>    def get_instance(*arg, **args):
-</span><span class='line'>        if not len(instance_container):
-</span><span class='line'>            instance_container.append(cls(*arg, **args))
-</span><span class='line'>        return instance_container[0]
-</span><span class='line'>    return get_instance</span></code></pre></td></tr></table></div></figure></notextile></div>
+  
+  <h2>2012</h2>
+
+<article>
+  
+<h1><a href="/blog/2012/07/19/shi-yong-octopresszai-githubda-jian-bo-ke/">使用Octopress在github搭建博客</a></h1>
+<time datetime="2012-07-19T16:48:00+08:00" pubdate><span class='month'>Jul</span> <span class='day'>19</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/octopress/'>Octopress</a>, <a class='category' href='/blog/categories/github/'>github</a>, <a class='category' href='/blog/categories/博客/'>博客</a></span>
+</footer>
 
 
+</article>
 
 </div>
 
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">huangcd</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-24T00:00:00+08:00" pubdate data-updated="true">Nov 24<span>th</span>, 2010</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/python/'>Python</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://huangcd.github.com/blog/2010/11/24/tie-duan-dai-ma/" data-via="huangcd" data-counturl="http://huangcd.github.com/blog/2010/11/24/tie-duan-dai-ma/" >Tweet</a>
-  
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2010/11/21/zuo-le-jian-sha-shi/" title="Previous Post: 做了件傻事">&laquo; 做了件傻事</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2010/11/28/kan-le-inception/" title="Next Post: 看了Inception">看了Inception &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
 </div>

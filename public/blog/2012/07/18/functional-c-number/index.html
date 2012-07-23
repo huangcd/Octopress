@@ -172,7 +172,20 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>写完之后就深深地被自己的函数式功底折服了~尤其是这Reduce函数，还可以生成Filter和Map两个函数，实在是太给力了。。。</p>
 
+<p>然后开始看LINQ，看着看着觉得不怎么妥。。咦，Filter不就是where嘛，Map不就是Select嘛。。。原来我想要的，别人早就想好了，不过还好Reduce这么高阶的函数是LINQ做不到的，想来又深以为然~</p>
+
+<p>然后装了ReSharper（插播一下，ReSharper真的可以让Visual Studio好用一万倍啊一万倍），猛然又发现，ReShaper函数上直接提示说这个可以换成LINQ表达式！我勒个去，Ctrl+Enter之后果然把Reduce函数变成了这个样子：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">return</span> <span class="n">sources</span><span class="p">.</span><span class="n">Aggregate</span><span class="p">(</span><span class="n">initValue</span><span class="p">,</span> <span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">accumulator</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">current</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>于是我就不能忍了，直接上.NET Reflector看源码，发现Aggregate、Select、Where几个函数长得基本和我写得差不多，总算舒服一点。。。</p>
+
+<p>总的来说，C#还是不错的，从语言的层面上来说已经完全超越Java了，除了各种库少一点，用的人少一点之外基本上没什么问题了。</p>
 </div>
 
 
@@ -240,6 +253,7 @@
 <li class='category'><a href='/blog/categories/haskell/'>Haskell (3)</a></li>
 <li class='category'><a href='/blog/categories/java/'>Java (2)</a></li>
 <li class='category'><a href='/blog/categories/lego积木/'>Lego积木 (1)</a></li>
+<li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
 <li class='category'><a href='/blog/categories/plc/'>PLC (3)</a></li>
 <li class='category'><a href='/blog/categories/programming/'>Programming (5)</a></li>
 <li class='category'><a href='/blog/categories/python/'>Python (14)</a></li>
@@ -247,8 +261,10 @@
 <li class='category'><a href='/blog/categories/vim/'>Vim (2)</a></li>
 <li class='category'><a href='/blog/categories/webkit/'>Webkit (3)</a></li>
 <li class='category'><a href='/blog/categories/functional/'>functional (1)</a></li>
+<li class='category'><a href='/blog/categories/github/'>github (1)</a></li>
 <li class='category'><a href='/blog/categories/lambda/'>lambda (1)</a></li>
 <li class='category'><a href='/blog/categories/仙剑/'>仙剑 (5)</a></li>
+<li class='category'><a href='/blog/categories/博客/'>博客 (1)</a></li>
 <li class='category'><a href='/blog/categories/流水笔记/'>流水笔记 (20)</a></li>
 <li class='category'><a href='/blog/categories/游戏/'>游戏 (2)</a></li>
 <li class='category'><a href='/blog/categories/电影/'>电影 (1)</a></li>

@@ -4,7 +4,7 @@
   <title><![CDATA[流水笔记]]></title>
   <link href="http://huangcd.github.com/atom.xml" rel="self"/>
   <link href="http://huangcd.github.com/"/>
-  <updated>2012-07-23T17:14:06+08:00</updated>
+  <updated>2012-07-23T17:26:17+08:00</updated>
   <id>http://huangcd.github.com/</id>
   <author>
     <name><![CDATA[huangcd]]></name>
@@ -22,20 +22,34 @@
 <li>使用<a href="http://rubyforge.org/frs/download.php/75127/rubyinstaller-1.9.2-p290.exe">rubyInstaller</a>安装ruby1.9.2</li>
 <li>使用<a href="http://code.google.com/p/msysgit/downloads/list">msysgit</a>安装git</li>
 <li>按照<a href="https://github.com/oneclick/rubyinstaller/wiki/development-kit">教程</a>安装<a href="https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe">development-kit</a></li>
-<li><p>在命令行下执行下面代码</p>
+<li>在命令行下执行下面代码</li>
+</ol>
 
-<blockquote><p>git clone git://github.com/imathis/octopress.git octopress
-cd octopress
-gem install bundler
-bundle install</p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'><span class="nb">cd </span>octopress
+</span><span class='line'>gem install bundler
+</span><span class='line'>bundle install
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>如果gem install的速度比较慢，可以把gem的源换成taobao的</p>
 
-<blockquote><p>gem sources &#8211;remove http://rubygems.org/
-gem sources -a http://ruby.taobao.org/</p></blockquote>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>gem sources --remove http://rubygems.org/
+</span><span class='line'>gem sources -a http://ruby.taobao.org/
+</span></code></pre></td></tr></table></div></figure>
 
-<p>安装过程中可能会遇到一些问题，自行google之。</p></li>
-<li><p>在github创建一个名字为[userName].github.com的项目，然后根据<a href="https://help.github.com/">help</a>的内容进行配置。</p></li>
+
+<p>安装过程中可能会遇到一些问题，自行google之。</p>
+
+<ol>
+<li>在github创建一个名字为[userName].github.com的项目，然后根据<a href="https://help.github.com/">help</a>的内容进行配置。</li>
 </ol>
 
 ]]></content>
@@ -128,7 +142,20 @@ gem sources -a http://ruby.taobao.org/</p></blockquote>
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>写完之后就深深地被自己的函数式功底折服了~尤其是这Reduce函数，还可以生成Filter和Map两个函数，实在是太给力了。。。</p>
 
+<p>然后开始看LINQ，看着看着觉得不怎么妥。。咦，Filter不就是where嘛，Map不就是Select嘛。。。原来我想要的，别人早就想好了，不过还好Reduce这么高阶的函数是LINQ做不到的，想来又深以为然~</p>
+
+<p>然后装了ReSharper（插播一下，ReSharper真的可以让Visual Studio好用一万倍啊一万倍），猛然又发现，ReShaper函数上直接提示说这个可以换成LINQ表达式！我勒个去，Ctrl+Enter之后果然把Reduce函数变成了这个样子：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">return</span> <span class="n">sources</span><span class="p">.</span><span class="n">Aggregate</span><span class="p">(</span><span class="n">initValue</span><span class="p">,</span> <span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">accumulator</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">current</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>于是我就不能忍了，直接上.NET Reflector看源码，发现Aggregate、Select、Where几个函数长得基本和我写得差不多，总算舒服一点。。。</p>
+
+<p>总的来说，C#还是不错的，从语言的层面上来说已经完全超越Java了，除了各种库少一点，用的人少一点之外基本上没什么问题了。</p>
 ]]></content>
   </entry>
   

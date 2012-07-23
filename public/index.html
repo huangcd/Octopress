@@ -12,8 +12,12 @@
   <meta name="description" content="使用rubyInstaller安装ruby1.9.2
 使用msysgit安装git
 按照教程安装development-kit
-在命令行下执行下面代码 git clone git://github.com/imathis/octopress.git octopress
-cd octopress &hellip;">
+在命令行下执行下面代码 1
+2
+3
+4
+git clone git://github.com/imathis/octopress.git octopress
+cd &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -101,20 +105,34 @@ cd octopress &hellip;">
 <li>使用<a href="http://rubyforge.org/frs/download.php/75127/rubyinstaller-1.9.2-p290.exe">rubyInstaller</a>安装ruby1.9.2</li>
 <li>使用<a href="http://code.google.com/p/msysgit/downloads/list">msysgit</a>安装git</li>
 <li>按照<a href="https://github.com/oneclick/rubyinstaller/wiki/development-kit">教程</a>安装<a href="https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe">development-kit</a></li>
-<li><p>在命令行下执行下面代码</p>
+<li>在命令行下执行下面代码</li>
+</ol>
 
-<blockquote><p>git clone git://github.com/imathis/octopress.git octopress
-cd octopress
-gem install bundler
-bundle install</p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'><span class="nb">cd </span>octopress
+</span><span class='line'>gem install bundler
+</span><span class='line'>bundle install
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>如果gem install的速度比较慢，可以把gem的源换成taobao的</p>
 
-<blockquote><p>gem sources &#8211;remove http://rubygems.org/
-gem sources -a http://ruby.taobao.org/</p></blockquote>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>gem sources --remove http://rubygems.org/
+</span><span class='line'>gem sources -a http://ruby.taobao.org/
+</span></code></pre></td></tr></table></div></figure>
 
-<p>安装过程中可能会遇到一些问题，自行google之。</p></li>
-<li><p>在github创建一个名字为[userName].github.com的项目，然后根据<a href="https://help.github.com/">help</a>的内容进行配置。</p></li>
+
+<p>安装过程中可能会遇到一些问题，自行google之。</p>
+
+<ol>
+<li>在github创建一个名字为[userName].github.com的项目，然后根据<a href="https://help.github.com/">help</a>的内容进行配置。</li>
 </ol>
 
 </div>
@@ -642,6 +660,7 @@ gem sources -a http://ruby.taobao.org/</p></blockquote>
 <li class='category'><a href='/blog/categories/haskell/'>Haskell (3)</a></li>
 <li class='category'><a href='/blog/categories/java/'>Java (2)</a></li>
 <li class='category'><a href='/blog/categories/lego积木/'>Lego积木 (1)</a></li>
+<li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
 <li class='category'><a href='/blog/categories/plc/'>PLC (3)</a></li>
 <li class='category'><a href='/blog/categories/programming/'>Programming (5)</a></li>
 <li class='category'><a href='/blog/categories/python/'>Python (14)</a></li>
@@ -649,8 +668,10 @@ gem sources -a http://ruby.taobao.org/</p></blockquote>
 <li class='category'><a href='/blog/categories/vim/'>Vim (2)</a></li>
 <li class='category'><a href='/blog/categories/webkit/'>Webkit (3)</a></li>
 <li class='category'><a href='/blog/categories/functional/'>functional (1)</a></li>
+<li class='category'><a href='/blog/categories/github/'>github (1)</a></li>
 <li class='category'><a href='/blog/categories/lambda/'>lambda (1)</a></li>
 <li class='category'><a href='/blog/categories/仙剑/'>仙剑 (5)</a></li>
+<li class='category'><a href='/blog/categories/博客/'>博客 (1)</a></li>
 <li class='category'><a href='/blog/categories/流水笔记/'>流水笔记 (20)</a></li>
 <li class='category'><a href='/blog/categories/游戏/'>游戏 (2)</a></li>
 <li class='category'><a href='/blog/categories/电影/'>电影 (1)</a></li>
