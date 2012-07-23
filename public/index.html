@@ -575,7 +575,7 @@ cd &hellip;">
 
   <div class="entry-content">
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -604,35 +604,36 @@ cd &hellip;">
 <span class='line-number'>27</span>
 <span class='line-number'>28</span>
 <span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># -*- coding: utf-8 -*-
-</span><span class='line'>"""
-</span><span class='line'>n皇后问题位运算版
-</span><span class='line'>Created on Wed Dec 15 08:39:27 2010
-</span><span class='line'>@author: HUANGCD
-</span><span class='line'>"""
-</span><span class='line'>def queen(row, ld, rd, upper_limit, result):
-</span><span class='line'>'''
-</span><span class='line'>@param row   列上的限制，0为允许，1为不允许
-</span><span class='line'>@param ld    左上到右下的对角线限制
-</span><span class='line'>@param rd    右上到左下的对角线限制
-</span><span class='line'>@param upper_limit   n （设定的值为(1 &lt;&lt; n) - 1）
-</span><span class='line'>@param result  返回的结果
-</span><span class='line'>'''
-</span><span class='line'>    if row ^ upper_limit:
-</span><span class='line'>        pos = upper_limit & ~(row | ld | rd)
-</span><span class='line'>        while pos:
-</span><span class='line'>            p = pos & (-pos)
-</span><span class='line'>            pos = pos - p
-</span><span class='line'>            result = queen(row | p, (ld | p) &lt;> 1, upper_limit, result)
-</span><span class='line'>    else:
-</span><span class='line'>        result += 1
-</span><span class='line'>    return result
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c"># -*- coding: utf-8 -*-</span>
+</span><span class='line'><span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">n皇后问题位运算版</span>
+</span><span class='line'><span class="sd">Created on Wed Dec 15 08:39:27 2010</span>
+</span><span class='line'><span class="sd">@author: HUANGCD</span>
+</span><span class='line'><span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">queen</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">ld</span><span class="p">,</span> <span class="n">rd</span><span class="p">,</span> <span class="n">upper_limit</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+</span><span class='line'><span class="sd">&#39;&#39;&#39;</span>
+</span><span class='line'><span class="sd">@param row   列上的限制，0为允许，1为不允许</span>
+</span><span class='line'><span class="sd">@param ld    左上到右下的对角线限制</span>
+</span><span class='line'><span class="sd">@param rd    右上到左下的对角线限制</span>
+</span><span class='line'><span class="sd">@param upper_limit   n （设定的值为(1 &lt;&lt; n) - 1）</span>
+</span><span class='line'><span class="sd">@param result  返回的结果</span>
+</span><span class='line'><span class="sd">&#39;&#39;&#39;</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">row</span> <span class="o">^</span> <span class="n">upper_limit</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">pos</span> <span class="o">=</span> <span class="n">upper_limit</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="n">row</span> <span class="o">|</span> <span class="n">ld</span> <span class="o">|</span> <span class="n">rd</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">while</span> <span class="n">pos</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">p</span> <span class="o">=</span> <span class="n">pos</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">-</span><span class="n">pos</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span> <span class="o">-</span> <span class="n">p</span>
+</span><span class='line'>            <span class="n">result</span> <span class="o">=</span> <span class="n">queen</span><span class="p">(</span><span class="n">row</span> <span class="o">|</span> <span class="n">p</span><span class="p">,</span> <span class="p">(</span><span class="n">ld</span> <span class="o">|</span> <span class="n">p</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">upper_limit</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">result</span>
 </span><span class='line'>
-</span><span class='line'>if __name__ == '__main__':
-</span><span class='line'>    import time
-</span><span class='line'>    time.clock()
-</span><span class='line'>    print queen(0, 0, 0, (1 &lt;&lt; 13) - 1, 0) 
-</span><span class='line'>    print time.clock()</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="kn">import</span> <span class="nn">time</span>
+</span><span class='line'>    <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">queen</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">13</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 

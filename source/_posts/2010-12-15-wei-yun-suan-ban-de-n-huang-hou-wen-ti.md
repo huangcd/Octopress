@@ -11,7 +11,7 @@ tags:
 title: 位运算版的n皇后问题
 type: post
 ---
-{% codeblock %}
+{% codeblock lang:python %}
 
 # -*- coding: utf-8 -*-
 """

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | 流水笔记]]></title>
   <link href="http://huangcd.github.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://huangcd.github.com/"/>
-  <updated>2012-07-23T17:38:22+08:00</updated>
+  <updated>2012-07-23T17:42:08+08:00</updated>
   <id>http://huangcd.github.com/</id>
   <author>
     <name><![CDATA[huangcd]]></name>
@@ -54,7 +54,7 @@
     <link href="http://huangcd.github.com/blog/2010/12/15/wei-yun-suan-ban-de-n-huang-hou-wen-ti/"/>
     <updated>2010-12-15T00:00:00+08:00</updated>
     <id>http://huangcd.github.com/blog/2010/12/15/wei-yun-suan-ban-de-n-huang-hou-wen-ti</id>
-    <content type="html"><![CDATA[<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+    <content type="html"><![CDATA[<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -92,44 +92,45 @@
 <span class='line-number'>36</span>
 <span class='line-number'>37</span>
 <span class='line-number'>38</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>&lt;h1>-&lt;em>- coding: utf-8 -&lt;/em>-&lt;/h1>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;-&lt;</span><span class="n">em</span><span class="o">&gt;-</span> <span class="n">coding</span><span class="p">:</span> <span class="n">utf</span><span class="o">-</span><span class="mi">8</span> <span class="o">-&lt;/</span><span class="n">em</span><span class="o">&gt;-&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>&lt;p>"""
-</span><span class='line'>n皇后问题位运算版
-</span><span class='line'>Created on Wed Dec 15 08:39:27 2010
-</span><span class='line'>@author: HUANGCD
-</span><span class='line'>"""
-</span><span class='line'>def queen(row, ld, rd, upper_limit, result):
-</span><span class='line'>'''
-</span><span class='line'>@param row   列上的限制，0为允许，1为不允许
-</span><span class='line'>@param ld    左上到右下的对角线限制
-</span><span class='line'>@param rd    右上到左下的对角线限制
-</span><span class='line'>@param upper_limit   n （设定的值为(1 &lt;&lt; n) - 1）
-</span><span class='line'>@param result  返回的结果
-</span><span class='line'>'''&lt;/p>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="s">n皇后问题位运算版</span>
+</span><span class='line'><span class="s">Created on Wed Dec 15 08:39:27 2010</span>
+</span><span class='line'><span class="s">@author: HUANGCD</span>
+</span><span class='line'><span class="s">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">queen</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">ld</span><span class="p">,</span> <span class="n">rd</span><span class="p">,</span> <span class="n">upper_limit</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+</span><span class='line'><span class="sd">&#39;&#39;&#39;</span>
+</span><span class='line'><span class="sd">@param row   列上的限制，0为允许，1为不允许</span>
+</span><span class='line'><span class="sd">@param ld    左上到右下的对角线限制</span>
+</span><span class='line'><span class="sd">@param rd    右上到左下的对角线限制</span>
+</span><span class='line'><span class="sd">@param upper_limit   n （设定的值为(1 &amp;lt;&amp;lt; n) - 1）</span>
+</span><span class='line'><span class="sd">@param result  返回的结果</span>
+</span><span class='line'><span class="sd">&#39;&#39;&#39;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>if row ^ upper_limit:
-</span><span class='line'>    pos = upper_limit &amp; ~(row | ld | rd)
-</span><span class='line'>    while pos:
-</span><span class='line'>        p = pos &amp; (-pos)
-</span><span class='line'>        pos = pos - p
-</span><span class='line'>        result = queen(row | p, (ld | p) &lt;&gt; 1, upper_limit, result)
-</span><span class='line'>else:
-</span><span class='line'>    result += 1
-</span><span class='line'>return result
-</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">if</span> <span class="n">row</span> <span class="o">^</span> <span class="n">upper_limit</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">pos</span> <span class="o">=</span> <span class="n">upper_limit</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="o">~</span><span class="p">(</span><span class="n">row</span> <span class="o">|</span> <span class="n">ld</span> <span class="o">|</span> <span class="n">rd</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">while</span> <span class="n">pos</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">p</span> <span class="o">=</span> <span class="n">pos</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="p">(</span><span class="o">-</span><span class="n">pos</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span> <span class="o">-</span> <span class="n">p</span>
+</span><span class='line'>        <span class="n">result</span> <span class="o">=</span> <span class="n">queen</span><span class="p">(</span><span class="n">row</span> <span class="o">|</span> <span class="n">p</span><span class="p">,</span> <span class="p">(</span><span class="n">ld</span> <span class="o">|</span> <span class="n">p</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">upper_limit</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</span><span class='line'><span class="k">else</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">return</span> <span class="n">result</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>&lt;p>if &lt;strong>name&lt;/strong> == '&lt;strong>main&lt;/strong>':&lt;/p>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">==</span> <span class="s">&#39;&lt;strong&gt;main&lt;/strong&gt;&#39;</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>import time
-</span><span class='line'>time.clock()
-</span><span class='line'>print queen(0, 0, 0, (1 &lt;&lt; 13) - 1, 0) 
-</span><span class='line'>print time.clock()
-</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kn">import</span> <span class="nn">time</span>
+</span><span class='line'><span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+</span><span class='line'><span class="k">print</span> <span class="n">queen</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="mi">13</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   
