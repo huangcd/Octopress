@@ -1,3 +1,4 @@
+rake generate
 rake deploy
 git add -A
 git commit -m "update from one_click_deploy"
