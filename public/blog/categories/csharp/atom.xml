@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Csharp | 流水笔记]]></title>
   <link href="http://huangcd.github.com/blog/categories/csharp/atom.xml" rel="self"/>
   <link href="http://huangcd.github.com/"/>
-  <updated>2012-07-23T17:49:01+08:00</updated>
+  <updated>2012-07-24T10:09:24+08:00</updated>
   <id>http://huangcd.github.com/</id>
   <author>
     <name><![CDATA[huangcd]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[使用LINQ表达式来求素数]]></title>
+    <link href="http://huangcd.github.com/blog/2012/07/21/sieve-using-linq/"/>
+    <updated>2012-07-21T12:03:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2012/07/21/sieve-using-linq</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[函数式C#的尝试]]></title>

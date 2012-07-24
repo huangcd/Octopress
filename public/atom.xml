@@ -4,7 +4,7 @@
   <title><![CDATA[流水笔记]]></title>
   <link href="http://huangcd.github.com/atom.xml" rel="self"/>
   <link href="http://huangcd.github.com/"/>
-  <updated>2012-07-23T17:49:01+08:00</updated>
+  <updated>2012-07-24T10:09:24+08:00</updated>
   <id>http://huangcd.github.com/</id>
   <author>
     <name><![CDATA[huangcd]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[使用LINQ表达式来求素数]]></title>
+    <link href="http://huangcd.github.com/blog/2012/07/21/sieve-using-linq/"/>
+    <updated>2012-07-21T12:03:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2012/07/21/sieve-using-linq</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用Octopress在github搭建博客]]></title>
@@ -594,15 +603,6 @@ Codd同学十几年前说：“You jump, I jump”，现在成了“I&#8217;m no
 <a href="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRihjQYM"><img class="alignnone" title="截图" src="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRihjQYM" alt=""></a></p>
 
 <p>恩，不得不说，appspot虽然诸多限制，但存点图片什么的小文件还是很给力的。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[一张截图]]></title>
-    <link href="http://huangcd.github.com/blog/2010/11/19/yi-zhang-jie-tu/"/>
-    <updated>2010-11-19T00:00:00+08:00</updated>
-    <id>http://huangcd.github.com/blog/2010/11/19/yi-zhang-jie-tu</id>
-    <content type="html"><![CDATA[<p><a href="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRi5hQYM"><img class="alignnone" title="截图" src="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRi5hQYM" alt=""></a></p>
 ]]></content>
   </entry>
   

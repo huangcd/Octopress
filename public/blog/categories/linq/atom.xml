@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: LINQ | 流水笔记]]></title>
+  <link href="http://huangcd.github.com/blog/categories/linq/atom.xml" rel="self"/>
+  <link href="http://huangcd.github.com/"/>
+  <updated>2012-07-24T10:09:24+08:00</updated>
+  <id>http://huangcd.github.com/</id>
+  <author>
+    <name><![CDATA[huangcd]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[使用LINQ表达式来求素数]]></title>
+    <link href="http://huangcd.github.com/blog/2012/07/21/sieve-using-linq/"/>
+    <updated>2012-07-21T12:03:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2012/07/21/sieve-using-linq</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>

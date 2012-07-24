@@ -9,7 +9,7 @@
   <meta name="author" content="huangcd">
 
   
-  <meta name="description" content="﻿﻿﻿有够麻烦的，网上搜了个脚本，貌似有用 sudo find /etc -name &#8220;*vboxadd*&#8221; -exec rm {} ; sudo find /etc -name &#8220;*vboxvfs*&#8221; -exec rm {} ; sudo rm - &hellip;">
+  <meta name="description" content="几经艰辛，今天终于完成了10.04到10.10的升级。 尝试了两次在线升级，结果都因为最后升级完成以后VirtualBox的增强功能包安装不了而退回10.04。（用虚拟机的好处就是随时可以备份整个系统，出错了直接替换硬盘文件，相当方便） 然后昨天在网上搜了个卸载增强功能包的脚本（ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,6 +30,18 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33586871-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -64,6 +76,48 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/10/26/ubuntu10-10/">Ubuntu10.10</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-26T00:00:00+08:00" pubdate data-updated="true">Oct 26<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>几经艰辛，今天终于完成了10.04到10.10的升级。</p>
+
+<p>尝试了两次在线升级，结果都因为最后升级完成以后VirtualBox的增强功能包安装不了而退回10.04。（用虚拟机的好处就是随时可以备份整个系统，出错了直接替换硬盘文件，相当方便）</p>
+
+<p>然后昨天在网上搜了个卸载增强功能包的脚本（虽然貌似也不能完全卸载），然后又下了Alternative的盘开始离线更新，终于更新完了，增强功能包也能正常安装。</p>
+
+<p>咋一看来，10.10貌似和10.04没什么区别，除了界面漂亮了很多以外。似乎也说不上漂亮了很多，都是一些小修小改，但给我的感觉非常舒服。不过很悲剧地是由于使用的是离线安装，很多光盘里面没有的软件居然莫名其妙地被直接卸载了，如神器vim、ghc6。然后升级完成以后俨然发现还有两百多个软件需要更新，需要下载超过700M的内容，无语了。不过还好尝试使用163的镜像，在走教育网的时候速度有500K+，也就十几分钟的时间。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -634,63 +688,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/25/haskell-zhong-de-cps/">Haskell中的CPS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-25T00:00:00+08:00" pubdate data-updated="true">Aug 25<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>CPS(Continuation Passing Style)。恩，还不太明白，不过感觉异常强大。简单地说，就是把一个函数（比如说f）作为另一个函数的参数实现迭代，函数作为参数很正常，然而神奇的是CPS中的这个f每次迭代时都不一样，比如说第一次的时候可能是(x -> []），然而第二次的时候可能就变成了(x -> x:[]) 了，这样想起来似乎就有点像Python中的yield了。</p>
-
-<p>比如一个cps的实例是：</p>
-
-<p><strong><span style="color:#0000ff;">cps :: (a -> b -> (b -> b) -> b) -> b -> [a] -> b
-cps f z [] = z
-cps f z (x:xs) = f x z (y -> cps f y xs)</span></strong></p>
-
-<p>然后就可以利用这个cps来重新定义一些常用函数了：</p>
-
-<p><strong><span style="color:#0000ff;">myMap func l = cps (a bl h -> (func a): (h bl)) [] l</span></strong></p>
-
-<p><strong><span style="color:#0000ff;">myFold func z l = cps (a bl h -> func x (h bl)) z l</span></strong></p>
-
-<p><span style="color:#888888;">这个myFold似乎和foldr不一样，理解错误。。。</span><strong><span style="color:#0000ff;">
-</span></strong></p>
-
-<p><strong><span style="color:#0000ff;">myFilter func l = cps (a bl h -> if func a then a: (h bl) else h bl) [] l</span></strong></p>
-
-<p>这两个函数就map、foldr和filter的实现了，这里面的函数h就是神奇所在了，对应来看，下面三个函数的lambda表达式就是cps中的f，因此h就是(y -> cps f y xs)这个函数，这是一个包含cps的lambda表达式，也就是说每次调用这个函数的时候它都要调用cps来产生一个新的函数。什么时候中止呢，就是当xs==[]的时候了，这时h是这样一个函数t -> []，然后依次把h代入计算，直到最后得到结果。</p>
-
-<p>恩，虽然说起来貌似异常powerful的样子，但好像也没有什么很特别的用处，无非就是一个yield。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -706,9 +703,10 @@ cps f z (x:xs) = f x z (y -> cps f y xs)</span></strong></p>
     <section>
  <h1>Categories</h1>
  <ul id="categories">
- <li class='category'><a href='/blog/categories/csharp/'>Csharp (1)</a></li>
+ <li class='category'><a href='/blog/categories/csharp/'>Csharp (2)</a></li>
 <li class='category'><a href='/blog/categories/haskell/'>Haskell (3)</a></li>
 <li class='category'><a href='/blog/categories/java/'>Java (2)</a></li>
+<li class='category'><a href='/blog/categories/linq/'>LINQ (1)</a></li>
 <li class='category'><a href='/blog/categories/lego/'>Lego (1)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
 <li class='category'><a href='/blog/categories/plc/'>PLC (3)</a></li>
@@ -736,6 +734,10 @@ cps f z (x:xs) = f x z (y -> cps f y xs)</span></strong></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/07/21/sieve-using-linq/">使用LINQ表达式来求素数</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/07/19/shi-yong-octopresszai-githubda-jian-bo-ke/">使用Octopress在github搭建博客</a>
       </li>
     
@@ -749,10 +751,6 @@ cps f z (x:xs) = f x z (y -> cps f y xs)</span></strong></p>
     
       <li class="post">
         <a href="/blog/2010/12/29/tools/">tools</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2010/12/28/huan-shi-jin-tian-de-shi-qing/">还是今天的事情</a>
       </li>
     
   </ul>

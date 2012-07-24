@@ -9,30 +9,7 @@
   <meta name="author" content="huangcd">
 
   
-  <meta name="description" content="恩，网上找的Python的singleton模式的修饰符方式实现： 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
-def singleton( &hellip;">
+  <meta name="description" content="一篇关于Python速度的文章，感觉写的还是不错的。一时兴起，就翻译了一下，不过翻译水平自然是很差了，所以看不懂的话就看原文吧 Python的速度 经常会有很多人担心Python写的程序会存在性能上的问题。是不是说使用Python就意味着性能上会有不可接受的损失呢？一些人会往往会不假思索地给出结论 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -53,6 +30,18 @@ def singleton( &hellip;">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33586871-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -87,6 +76,127 @@ def singleton( &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/26/fan-yi-de-yi-pian-wen-zhang/">翻译的一篇文章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-26T00:00:00+08:00" pubdate data-updated="true">Jul 26<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>一篇关于Python速度的文章，感觉写的还是不错的。一时兴起，就翻译了一下，不过翻译水平自然是很差了，所以看不懂的话就看<a href="http://wiki.python.org/moin/PythonSpeed" target="_blank">原文</a>吧</p>
+
+<!--style-start -->
+
+
+<h2>Python的速度</h2>
+
+
+<p>经常会有很多人担心Python写的程序会存在性能上的问题。是不是说使用Python就意味着性能上会有不可接受的损失呢？一些人会往往会不假思索地给出结论：“Python是解释性的脚本语言啊，解释性脚本语言都是非常慢的！”然而另外一些人经过实际测试以后发现Python其实并不慢。当然，某些时候可能是因为你恰好有一个跑的非常慢的程序。</p>
+
+<h2>速度对于程序来说是不是重要吗？</h2>
+
+
+<p>有些人可能会盲目地追求所谓的速度；在他们看来，像C这样的语言在很多场景下能够提供更好的运行速度，所以他们会觉得不管什么场合C都是一个更好的选择。但是另外一些人可能会觉得开发速度才是更重要的，所以即便实在那些Python运行效率不那么高的应用里面，他们还是会选择Python。而且这些人往往也会惊奇地发现Python代码的执行速度还是可以接受的，甚至某些时候在开发时间差不多的情况下Python的代码甚至会比C/C++要来的快（<span style="font-size:x-small;">译者：本来还觉得挺好的，这么一说就没什么意思了。。。</span>）。</p>
+
+<p>通常来说，绝对的速度并不是最重要的，你应该考虑的是一个可接受的执行速度。优化地太多反而是对资源（你的时间或者金钱）的一种浪费。</p>
+
+<h2>提高性能和可伸缩性的技术</h2>
+
+
+<p>下面是一些提高内存使用、速度和可扩展性等方面性能的编码原则：</p>
+
+<h3>使用更好的算法或者更快的工具</h3>
+
+
+<ul>
+<li>测试从属关系的时候，使用set和dictionary（O(1)的时间复杂度）比普通序列（O(n)的时间复杂度）要快得多。比如说对于“a in  b”这样的语句，b应该是set或者dictionary，而不是list或者tuple。</li>
+    <li>字符串连接用&#8221;.join(seq) 的方式会更好（O(n)的过程）。相反，如果使用“+”或者“+=”操作符的话复杂度是O(n^2)的，因为在这个过程中的每一步都要生成一个新的字符串。CPython  2.4翻译器在一定程度上优化了这个过程，但是&#8221;.join(seq) 仍然是最好的方式。</li>
+    <li>很多工具都有链表（list）形式或者迭代器（iterator）形式（range和xrange，map和itertools.imap，<a href="http://www.python.org/dev/peps/pep-0202/">list  comprehensions</a>和<a href="http://www.python.org/dev/peps/pep-0289/">generator expressions</a>，dict.items和dict.iteritems）。一般情况下，迭代器形式对内存要求更低而且有更多的可伸缩性。如果并不需要一个真正的list的话，迭代器形式是一个更好的选择。</li>
+    <li>很多核心模块都是用优化过的C来写的。利用这些模块可以让程序性能有很大的提升。这些模块包括所有的内置数据类型（list，tuple，set和dictionary）和像array、itertools、collections.deque这样的扩展模块。</li>
+    <li>类似的，内置函数也会比手工构建的函数要快，比如map(operator.add,  v1, v2)就比map(lambda x,y: x+y, v1, v2)快。</li>
+    <li>list结构在处理定长数组或者变长的栈的时候效率较高。然而当涉及到队列的pop操作或者插入操作的时候，使用collections.deque()更好，因为它避免了每次插入或者删除的时候需要重建数组的过程，所以它的时间复杂度将由O(n)提高到O(1)。</li>
+    <li>自定义排序的时候，使用Python2.4的key=或者传统的修饰器效率更高，因为它们的实现只需要对每个元素调用一次key函数。而不像cmp=那样每个元素都要调用很多次。比如sort(key=str.lower) 要比sort(cmp=lambda a,b: cmp(a.lower(),  b.lower()))快。另见<a href="http://wiki.python.org/moin/TimeComplexity"><span style="color:#0000aa;">TimeComplexity</span></a>。</li>
+</ul>
+
+
+<h3>利用解释器优化</h3>
+
+
+<ul>
+<li>在函数里面，局部变量的访问速度要比全局变量、内置数据和属性查找快。所以有时候在内部循环里面把变量局部化是值得的。 比如random.shuffle()函数使用了random=self.random进行局部化，节省了每次循环都要查表（在self中查找random）的过程。当然在循环外部这样做的话就不太值得了。</li>
+    <li>上一个建议是一个把常量表达式提出循环的通用规则。类似地，常量的展开也应该手工地做，比如说在循环里面应该把x=1+2替换成x=3。</li>
+    <li>函数调用开销要比其他的操作大。因此有时候应该在一些关键的循环里面应该把函数内联(inline)。</li>
+    <li>
+<a href="http://www.python.org/dev/peps/pep-0202/">list comprehensions</a>要比for循环稍微快一点（除非你不想要结果）。</li>
+    <li>从Python2.3开始，解释器对while  1进行了优化，相比起while  True而言，它在循环判断的时候只有一次跳转。因此在一些关键的场景下可以使用while  1来替代while True，虽然这有可能会降低程序的可读性。</li>
+    <li>混合赋值（x, y=a, b）比独立赋值要慢（x = a; y = b）。当然，通过混合赋值来交换（x, y=y, x）还是通过临时变量交换（t = x;  x = y; y = t）要快。</li>
+    <li>链式比较比用and操作符要快，因此应该把x < y and y < z写成x < y <  z。</li>
+    <li>另外还有一些快速的实现应该只在最需要的程序里面使用。比如果用not not  x会比bool(x)快。</li>
+</ul>
+
+
+<h3>利用诊断工具</h3>
+
+
+<ul>
+<li>hotshot和profile模块可以用来定位性能瓶颈所在，profile工具还能识别消耗在Python代码上的时间和消耗在C代码上的时间。</li>
+    <li>timeit模块提供一个分析不同实现的及时的性能比较的工具。</li>
+</ul>
+
+
+<h3>程序性能也受到一些全局策略的影响</h3>
+
+
+<ul>
+<li>在解析XML文本的时候，相对DOM方法而言，SAX更快，而且内存效率更高。</li>
+    <li>更多地使用C版本的模块也会提高程序性能，比如用cPickle来替代pickle模块，用cStringIO来替代StringIO。当然也要意识到一般而言C版本的模块可能会缺乏灵活性。</li>
+    <li>在一些I/O读取较多的场合使用线程可以加快响应时间。</li>
+    <li>select模块可以帮助我们最小化从多个socket抓取数据的开销。</li>
+</ul>
+
+
+<h3>考虑使用额外的工具来提高性能</h3>
+
+
+<ul>
+<li>对于大规模的数值计算而言，numpy更有效率。</li>
+    <li>psyco和pyrex能够加速本地代码。然而也要注意它们的一些限制，比如说并不支持所有的构造器。</li>
+    <li>See the <a href="http://wiki.python.org/moin/SciPy"><span style="color:#0000aa;">SciPy</span></a>-related document <a href="http://scipy.org/PerformancePython"><span style="color:#0000aa;">&#8220;A beginners guide  to using Python for performance computing&#8221;</span></a> for an interesting  comparison of different tools, along with some timing results.</li>
+</ul>
+
+
+<h2>更多地性能提示</h2>
+
+
+<p>可以在<a href="http://wiki.python.org/moin/PythonSpeed/PerformanceTips"><span style="color:#0000aa;">PythonSpeed/PerformanceTips</span></a>一文中找到更多的提升性能的技巧和例子。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -765,70 +875,6 @@ system(&quot;PAUSE&quot;);
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/04/27/2010-4-27-plc-xi-xiang-gu-piao/">2010.4.27 PLC、西厢、股票</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-27T00:00:00+08:00" pubdate data-updated="true">Apr 27<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>果然没有理论的支持还是做不成事情的，今天看了一下PLC的书，恍然大悟豁然开朗，很多疑问迎刃而解。
-首先PLC有一种很奇怪的执行方式，就是主程序块（OB1）并不是只执行一次，而是以一个恒定的间隔循环执行，这就解释了为什么CtrlValve里面DB101到DB110所有数据块里面的内容都是相同的，原来那只是个初始值。
-然后PIW之类的P是有深意的，它表示直接读取当前的信号（<strong>而不是在程序块执行之间保存到影像寄存器里面的值</strong>）。
-然后累加器AC呢，S7-300只有两个（ACCU0，ACCU1），而S7-200和S7-400都有4个（ACCU0～ACCU3）。
-然后对于一条指令，是一种操作码+操作数的形式，操作码自然就是L，A，=，==I之类的东西了。但操作数还是很有讲究的，可以有地址和数据两种方式。而地址又分为两种，一种是绝对地址（Memory Address），另一种是<strong>符号地址（Symbol Address）</strong>（符号地址还没看，据说在书中12～13章有详细介绍）。绝对地址呢，又分为直接寻址和间接寻址两种方式，直接寻址就是类似“I3.0”这样的形式，就是I区中第3个字节第0位了。间接寻址又很有讲究，比如S7-200中就跟C语言差不多，有&amp;和*两种符号，自然就是<strong>取地址</strong>和<strong>取当前地址对应的值作为地址对应的值</strong>（。。。反正就是那个意思了）。S7-300/400就简单很多了，可以用I[I10]之类的，意思就是把I10的值拿出来（比如是20），然后取I20的值。书里有个例子，是说</p>
-
-<p>[code]
-L    P#22.2
-T    LD10
-A    I[LD10]
-A    I0.0
-=    Q0.1
-[/code]</p>
-
-<p>看起来好像很复杂很牛的样子，其实就是</p>
-
-<p>[code]
-A    I22.2
-A    I0.0
-=    Q0.1
-[/code]</p>
-
-<p>的意思。
-然后还有S7-300/400寄存器间接寻址的内容也没看。
-然后今天跟万师兄谈了一下，发现某PLC系统结构非常清晰，没有整理的必要，于是现在任务暂时变成全方位理解CtrlValve的代码。貌似这160行的代码基本上就够我整个研究生论文了。。。</p>
-
-<p>然后今天收到一封邮件，说是西厢计划比较好用的版本出来了，于是下了下来，装上张生，还是很不错的，至少twitter、facebook等等都能正常访问，wordPress虽然慢了一点，但也还能忍。恩，西厢还是很牛的一个东西。</p>
-
-<p>然后今天股票很悲剧，操作失误把国航全卖了，然后南航差2分没买上（结果彪了6个点）。啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -844,9 +890,10 @@ A    I0.0
     <section>
  <h1>Categories</h1>
  <ul id="categories">
- <li class='category'><a href='/blog/categories/csharp/'>Csharp (1)</a></li>
+ <li class='category'><a href='/blog/categories/csharp/'>Csharp (2)</a></li>
 <li class='category'><a href='/blog/categories/haskell/'>Haskell (3)</a></li>
 <li class='category'><a href='/blog/categories/java/'>Java (2)</a></li>
+<li class='category'><a href='/blog/categories/linq/'>LINQ (1)</a></li>
 <li class='category'><a href='/blog/categories/lego/'>Lego (1)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
 <li class='category'><a href='/blog/categories/plc/'>PLC (3)</a></li>
@@ -874,6 +921,10 @@ A    I0.0
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/07/21/sieve-using-linq/">使用LINQ表达式来求素数</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/07/19/shi-yong-octopresszai-githubda-jian-bo-ke/">使用Octopress在github搭建博客</a>
       </li>
     
@@ -887,10 +938,6 @@ A    I0.0
     
       <li class="post">
         <a href="/blog/2010/12/29/tools/">tools</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2010/12/28/huan-shi-jin-tian-de-shi-qing/">还是今天的事情</a>
       </li>
     
   </ul>

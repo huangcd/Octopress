@@ -9,9 +9,8 @@
   <meta name="author" content="huangcd">
 
   
-  <meta name="description" content="首先详细分析一下SIMATIC 300(1)的代码（不写点东西的话总容易分神。。。）
-显然是先从OB1开始的了，OB1就是俗称的&#8221;Main Program Sweep (Cycle)&#8221;
-首先Call的是StationSendPC函数，也就是FC13（内含DB2&#8211; &hellip;">
+  <meta name="description" content="果然没有理论的支持还是做不成事情的，今天看了一下PLC的书，恍然大悟豁然开朗，很多疑问迎刃而解。
+首先PLC有一种很奇怪的执行方式，就是主程序块（OB1）并不是只执行一次，而是以一个恒定的间隔循环执行，这就解释了为什么CtrlValve里面DB101到DB110所有数据块里面的内容都是相同的， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -32,6 +31,18 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33586871-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -66,6 +77,70 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/04/27/2010-4-27-plc-xi-xiang-gu-piao/">2010.4.27 PLC、西厢、股票</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-27T00:00:00+08:00" pubdate data-updated="true">Apr 27<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>果然没有理论的支持还是做不成事情的，今天看了一下PLC的书，恍然大悟豁然开朗，很多疑问迎刃而解。
+首先PLC有一种很奇怪的执行方式，就是主程序块（OB1）并不是只执行一次，而是以一个恒定的间隔循环执行，这就解释了为什么CtrlValve里面DB101到DB110所有数据块里面的内容都是相同的，原来那只是个初始值。
+然后PIW之类的P是有深意的，它表示直接读取当前的信号（<strong>而不是在程序块执行之间保存到影像寄存器里面的值</strong>）。
+然后累加器AC呢，S7-300只有两个（ACCU0，ACCU1），而S7-200和S7-400都有4个（ACCU0～ACCU3）。
+然后对于一条指令，是一种操作码+操作数的形式，操作码自然就是L，A，=，==I之类的东西了。但操作数还是很有讲究的，可以有地址和数据两种方式。而地址又分为两种，一种是绝对地址（Memory Address），另一种是<strong>符号地址（Symbol Address）</strong>（符号地址还没看，据说在书中12～13章有详细介绍）。绝对地址呢，又分为直接寻址和间接寻址两种方式，直接寻址就是类似“I3.0”这样的形式，就是I区中第3个字节第0位了。间接寻址又很有讲究，比如S7-200中就跟C语言差不多，有&amp;和*两种符号，自然就是<strong>取地址</strong>和<strong>取当前地址对应的值作为地址对应的值</strong>（。。。反正就是那个意思了）。S7-300/400就简单很多了，可以用I[I10]之类的，意思就是把I10的值拿出来（比如是20），然后取I20的值。书里有个例子，是说</p>
+
+<p>[code]
+L    P#22.2
+T    LD10
+A    I[LD10]
+A    I0.0
+=    Q0.1
+[/code]</p>
+
+<p>看起来好像很复杂很牛的样子，其实就是</p>
+
+<p>[code]
+A    I22.2
+A    I0.0
+=    Q0.1
+[/code]</p>
+
+<p>的意思。
+然后还有S7-300/400寄存器间接寻址的内容也没看。
+然后今天跟万师兄谈了一下，发现某PLC系统结构非常清晰，没有整理的必要，于是现在任务暂时变成全方位理解CtrlValve的代码。貌似这160行的代码基本上就够我整个研究生论文了。。。</p>
+
+<p>然后今天收到一封邮件，说是西厢计划比较好用的版本出来了，于是下了下来，装上张生，还是很不错的，至少twitter、facebook等等都能正常访问，wordPress虽然慢了一点，但也还能忍。恩，西厢还是很牛的一个东西。</p>
+
+<p>然后今天股票很悲剧，操作失误把国航全卖了，然后南航差2分没买上（结果彪了6个点）。啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -511,9 +586,10 @@ Example: grep -i &#8216;hello world&#8217; menu.h main.c</p>
     <section>
  <h1>Categories</h1>
  <ul id="categories">
- <li class='category'><a href='/blog/categories/csharp/'>Csharp (1)</a></li>
+ <li class='category'><a href='/blog/categories/csharp/'>Csharp (2)</a></li>
 <li class='category'><a href='/blog/categories/haskell/'>Haskell (3)</a></li>
 <li class='category'><a href='/blog/categories/java/'>Java (2)</a></li>
+<li class='category'><a href='/blog/categories/linq/'>LINQ (1)</a></li>
 <li class='category'><a href='/blog/categories/lego/'>Lego (1)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
 <li class='category'><a href='/blog/categories/plc/'>PLC (3)</a></li>
@@ -541,6 +617,10 @@ Example: grep -i &#8216;hello world&#8217; menu.h main.c</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/07/21/sieve-using-linq/">使用LINQ表达式来求素数</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/07/19/shi-yong-octopresszai-githubda-jian-bo-ke/">使用Octopress在github搭建博客</a>
       </li>
     
@@ -554,10 +634,6 @@ Example: grep -i &#8216;hello world&#8217; menu.h main.c</p>
     
       <li class="post">
         <a href="/blog/2010/12/29/tools/">tools</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2010/12/28/huan-shi-jin-tian-de-shi-qing/">还是今天的事情</a>
       </li>
     
   </ul>
