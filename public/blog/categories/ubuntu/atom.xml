@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ubuntu | 流水笔记]]></title>
   <link href="http://huangcd.github.com/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://huangcd.github.com/"/>
-  <updated>2012-07-24T11:21:15+08:00</updated>
+  <updated>2012-07-24T13:23:53+08:00</updated>
   <id>http://huangcd.github.com/</id>
   <author>
     <name><![CDATA[huangcd]]></name>
@@ -40,31 +40,33 @@
     <id>http://huangcd.github.com/blog/2010/11/21/shell-bi-ji</id>
     <content type="html"><![CDATA[<p>批量删除指定文件（以链接错误文件为例）：</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>&lt;/p&gt;
 </span><span class='line'>
-</span><span class='line'>&lt;p>file * | grep 'symbolic link in a loop' | sed 's/:.*$//g' | xargs -i rm {}&lt;/p>
+</span><span class='line'>&lt;p&gt;file * | grep <span class="s1">&#39;symbolic link in a loop&#39;</span> | sed <span class="s1">&#39;s/:.*$//g&#39;</span> | xargs -i rm <span class="o">{}</span>&lt;/p&gt;
 </span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'>&lt;p&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>file列出当前文件夹的文件属性，grep过滤文件，sed修改行内容，xargs生成删除指令</p>
 
 <p>批量软链接：</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>&lt;/p&gt;
 </span><span class='line'>
-</span><span class='line'>&lt;p>file * | grep 'symbolic link in a loop' | sed 's/:.*$//g' | xargs -i rm {}&lt;/p>
+</span><span class='line'>&lt;p&gt;file * | grep <span class="s1">&#39;symbolic link in a loop&#39;</span> | sed <span class="s1">&#39;s/:.*$//g&#39;</span> | xargs -i rm <span class="o">{}</span>&lt;/p&gt;
 </span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'>&lt;p&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

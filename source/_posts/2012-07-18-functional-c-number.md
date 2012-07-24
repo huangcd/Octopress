@@ -17,7 +17,7 @@ lambda是我喜欢的，作为一个低级的Haskell爱好者和Python的中度�
 
 粗略看了一下C#，发现居然没有map、reduce、filter几个函数，深感无力，决定自己轮子一下：
 
-``` csharp functional C#
+{% codeblock functional C# lang:csharp %}
 public static IEnumerable<TResult> Map<TSource, TResult>
     (IEnumerable<TSource> sources, Converter<TSource, TResult> converter)
 {
@@ -52,7 +52,7 @@ public static TResult Reduce<TSource, TResult>
     }
     return initValue;
 }
-```
+{% endcodeblock %}
 
 写完之后就深深地被自己的函数式功底折服了~尤其是这Reduce函数，还可以生成Filter和Map两个函数，实在是太给力了。。。
 
@@ -60,9 +60,9 @@ public static TResult Reduce<TSource, TResult>
 
 然后装了ReSharper（插播一下，ReSharper真的可以让Visual Studio好用一万倍啊一万倍），猛然又发现，ReShaper函数上直接提示说这个可以换成LINQ表达式！我勒个去，Ctrl+Enter之后果然把Reduce函数变成了这个样子：
 
-``` csharp
+{% codeblock lang:csharp %}
 return sources.Aggregate(initValue, (current, source) => accumulator(source, current));
-```
+{% endcodeblock %}
 
 于是我就不能忍了，直接上.NET Reflector看源码，发现Aggregate、Select、Where几个函数长得基本和我写得差不多，总算舒服一点。。。
 

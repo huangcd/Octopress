@@ -9,8 +9,20 @@
   <meta name="author" content="huangcd">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="不得不说，这是相当无聊的问题，用LINQ来做Sieve，不仅效率低，而且可读性差，因此纯粹是练习LINQ。。 同样不得不说的是，Aggregate函数（也就是一般意义上的reduce函数）确实异常强大。。 sieve in LINQ 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -103,7 +115,43 @@
   </header>
 
 
-<div class="entry-content">
+<div class="entry-content"><p>不得不说，这是相当无聊的问题，用LINQ来做Sieve，不仅效率低，而且可读性差，因此纯粹是练习LINQ。。</p>
+
+<p>同样不得不说的是，Aggregate函数（也就是一般意义上的reduce函数）确实异常强大。。</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>sieve in LINQ  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">GetPrimesUsingLinq</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxValue</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">maxValue</span> <span class="p">-</span> <span class="m">1</span><span class="p">).</span><span class="n">Aggregate</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">maxValue</span> <span class="p">+</span> <span class="m">1</span><span class="p">).</span><span class="n">ToList</span><span class="p">(),</span>
+</span><span class='line'>        <span class="p">(</span><span class="n">sieve</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="p">=&gt;</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="n">sieve</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">maxValue</span> <span class="p">/</span> <span class="n">x</span> <span class="p">-</span> <span class="m">1</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="n">i</span> <span class="p">=&gt;</span> <span class="n">i</span> <span class="p">*</span> <span class="n">x</span><span class="p">).</span><span class="n">Aggregate</span><span class="p">(</span><span class="n">sieve</span><span class="p">,</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="k">return</span> <span class="n">s</span><span class="p">;</span> <span class="p">});</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">sieve</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>        <span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">i</span> <span class="p">=&gt;</span> <span class="n">i</span> <span class="p">&gt;</span> <span class="m">1</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
 </div>
 
 
@@ -177,6 +225,7 @@
 <li class='category'><a href='/blog/categories/ubuntu/'>Ubuntu (7)</a></li>
 <li class='category'><a href='/blog/categories/vim/'>Vim (2)</a></li>
 <li class='category'><a href='/blog/categories/webkit/'>Webkit (3)</a></li>
+<li class='category'><a href='/blog/categories/blog/'>blog (1)</a></li>
 <li class='category'><a href='/blog/categories/functional/'>functional (1)</a></li>
 <li class='category'><a href='/blog/categories/github/'>github (1)</a></li>
 <li class='category'><a href='/blog/categories/image/'>image (1)</a></li>
@@ -185,7 +234,6 @@
 <li class='category'><a href='/blog/categories/transparent/'>transparent (1)</a></li>
 <li class='category'><a href='/blog/categories/water/'>water (1)</a></li>
 <li class='category'><a href='/blog/categories/仙剑/'>仙剑 (5)</a></li>
-<li class='category'><a href='/blog/categories/博客/'>博客 (1)</a></li>
 <li class='category'><a href='/blog/categories/流水笔记/'>流水笔记 (20)</a></li>
 <li class='category'><a href='/blog/categories/游戏/'>游戏 (2)</a></li>
 <li class='category'><a href='/blog/categories/电影/'>电影 (1)</a></li>

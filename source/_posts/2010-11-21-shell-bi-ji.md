@@ -14,7 +14,7 @@ type: post
 ---
 批量删除指定文件（以链接错误文件为例）：
 
-{% codeblock %}
+{% codeblock lang:sh %}
 
 file * | grep 'symbolic link in a loop' | sed 's/:.*$//g' | xargs -i rm {}
 
@@ -24,7 +24,7 @@ file列出当前文件夹的文件属性，grep过滤文件，sed修改行内容
 
 批量软链接：
 
-{% codeblock %}
+{% codeblock lang:sh %}
 
 file * | grep 'symbolic link in a loop' | sed 's/:.*$//g' | xargs -i rm {}
 

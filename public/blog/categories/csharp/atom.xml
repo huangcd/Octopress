@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Csharp | 流水笔记]]></title>
   <link href="http://huangcd.github.com/blog/categories/csharp/atom.xml" rel="self"/>
   <link href="http://huangcd.github.com/"/>
-  <updated>2012-07-24T11:21:15+08:00</updated>
+  <updated>2012-07-24T13:23:53+08:00</updated>
   <id>http://huangcd.github.com/</id>
   <author>
     <name><![CDATA[huangcd]]></name>
@@ -18,7 +18,48 @@
     <link href="http://huangcd.github.com/blog/2012/07/21/sieve-using-linq/"/>
     <updated>2012-07-21T12:03:00+08:00</updated>
     <id>http://huangcd.github.com/blog/2012/07/21/sieve-using-linq</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<p>不得不说，这是相当无聊的问题，用LINQ来做Sieve，不仅效率低，而且可读性差，因此纯粹是练习LINQ。。</p>
+
+<p>同样不得不说的是，Aggregate函数（也就是一般意义上的reduce函数）确实异常强大。。</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>sieve in LINQ  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">GetPrimesUsingLinq</span><span class="p">(</span><span class="kt">int</span> <span class="n">maxValue</span><span class="p">)</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">return</span> <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">maxValue</span> <span class="p">-</span> <span class="m">1</span><span class="p">).</span><span class="n">Aggregate</span><span class="p">(</span>
+</span><span class='line'>    <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">maxValue</span> <span class="p">+</span> <span class="m">1</span><span class="p">).</span><span class="n">ToList</span><span class="p">(),</span>
+</span><span class='line'>    <span class="p">(</span><span class="n">sieve</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">sieve</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="m">0</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">maxValue</span> <span class="p">/</span> <span class="n">x</span> <span class="p">-</span> <span class="m">1</span><span class="p">).</span><span class="n">Select</span><span class="p">(</span><span class="n">i</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">i</span> <span class="p">*</span> <span class="n">x</span><span class="p">).</span><span class="n">Aggregate</span><span class="p">(</span><span class="n">sieve</span><span class="p">,</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="p">{</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="k">return</span> <span class="n">s</span><span class="p">;</span> <span class="p">});</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">sieve</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="n">x</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">x</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">i</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">i</span> <span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="m">1</span><span class="p">)</span>
+</span><span class='line'><span class="p">);</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   
@@ -38,62 +79,116 @@
 
 <p>粗略看了一下C#，发现居然没有map、reduce、filter几个函数，深感无力，决定自己轮子一下：</p>
 
-<p>``` csharp functional C#
-public static IEnumerable<TResult> Map&lt;TSource, TResult></p>
-
-<pre><code>(IEnumerable&lt;TSource&gt; sources, Converter&lt;TSource, TResult&gt; converter)
-</code></pre>
-
-<p>{</p>
-
-<pre><code>foreach (var source in sources)
-{
-    yield return converter(source);
-}
-</code></pre>
-
-<p>}</p>
-
-<p>public static IEnumerable<TItem> Filter<TItem></p>
-
-<pre><code>(IEnumerable&lt;TItem&gt; sources, Predicate&lt;TItem&gt; predicater)
-</code></pre>
-
-<p>{</p>
-
-<pre><code>foreach (var item in sources)
-{
-    if (predicater(item))
-    {
-        yield return item;
-    }
-}
-</code></pre>
-
-<p>}</p>
-
-<p>public delegate TResult Accumulator<in TSource, TResult></p>
-
-<pre><code>(TSource source, TResult result);
-</code></pre>
-
-<p>public static TResult Reduce&lt;TSource, TResult></p>
-
-<pre><code>(IEnumerable&lt;TSource&gt; sources, TResult initValue, 
- Accumulator&lt;TSource, TResult&gt; accumulator)
-</code></pre>
-
-<p>{</p>
-
-<pre><code>foreach (var source in sources)
-{
-    initValue = accumulator(source, initValue);
-}
-return initValue;
-</code></pre>
-
-<p>}
-```</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>functional C#  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">TResult</span><span class="p">&gt;</span> <span class="n">Map</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">TSource</span><span class="p">,</span> <span class="n">TResult</span><span class="p">&gt;&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;(</span><span class="n">IEnumerable</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">TSource</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">sources</span><span class="p">,</span> <span class="n">Converter</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">TSource</span><span class="p">,</span> <span class="n">TResult</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">converter</span><span class="p">)</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">source</span> <span class="k">in</span> <span class="n">sources</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">yield</span> <span class="k">return</span> <span class="nf">converter</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span><span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">TItem</span><span class="p">&gt;</span> <span class="n">Filter</span><span class="p">&lt;</span><span class="n">TItem</span><span class="p">&gt;&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;(</span><span class="n">IEnumerable</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">TItem</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">sources</span><span class="p">,</span> <span class="n">Predicate</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">TItem</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">predicater</span><span class="p">)</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">sources</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">predicater</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">yield</span> <span class="k">return</span> <span class="n">item</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span><span class="k">public</span> <span class="k">delegate</span> <span class="n">TResult</span> <span class="n">Accumulator</span><span class="p">&lt;</span><span class="k">in</span> <span class="n">TSource</span><span class="p">,</span> <span class="n">TResult</span><span class="p">&gt;&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;(</span><span class="n">TSource</span> <span class="n">source</span><span class="p">,</span> <span class="n">TResult</span> <span class="n">result</span><span class="p">);</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span><span class="k">public</span> <span class="k">static</span> <span class="n">TResult</span> <span class="n">Reduce</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">TSource</span><span class="p">,</span> <span class="n">TResult</span><span class="p">&gt;&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;(</span><span class="n">IEnumerable</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">TSource</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">sources</span><span class="p">,</span> <span class="n">TResult</span> <span class="n">initValue</span><span class="p">,</span>
+</span><span class='line'> <span class="n">Accumulator</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">TSource</span><span class="p">,</span> <span class="n">TResult</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">accumulator</span><span class="p">)</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">source</span> <span class="k">in</span> <span class="n">sources</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">initValue</span> <span class="p">=</span> <span class="n">accumulator</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">initValue</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">return</span> <span class="n">initValue</span><span class="p">;</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>写完之后就深深地被自己的函数式功底折服了~尤其是这Reduce函数，还可以生成Filter和Map两个函数，实在是太给力了。。。</p>
 
@@ -101,9 +196,9 @@ return initValue;
 
 <p>然后装了ReSharper（插播一下，ReSharper真的可以让Visual Studio好用一万倍啊一万倍），猛然又发现，ReShaper函数上直接提示说这个可以换成LINQ表达式！我勒个去，Ctrl+Enter之后果然把Reduce函数变成了这个样子：</p>
 
-<p><code>csharp
-return sources.Aggregate(initValue, (current, source) =&gt; accumulator(source, current));
-</code></p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">return</span> <span class="n">sources</span><span class="p">.</span><span class="n">Aggregate</span><span class="p">(</span><span class="n">initValue</span><span class="p">,</span> <span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">accumulator</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">current</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>于是我就不能忍了，直接上.NET Reflector看源码，发现Aggregate、Select、Where几个函数长得基本和我写得差不多，总算舒服一点。。。</p>
 

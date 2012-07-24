@@ -586,16 +586,18 @@ Codd同学十几年前说：“You jump, I jump”，现在成了“I&#8217;m no
 
   <div class="entry-content"><p>批量删除指定文件（以链接错误文件为例）：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>file * | grep 'symbolic link in a loop' | sed 's/:.*$//g' | xargs -i rm {}</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>file * | grep <span class="s1">&#39;symbolic link in a loop&#39;</span> | sed <span class="s1">&#39;s/:.*$//g&#39;</span> | xargs -i rm <span class="o">{}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>file列出当前文件夹的文件属性，grep过滤文件，sed修改行内容，xargs生成删除指令</p>
 
 <p>批量软链接：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>file * | grep 'symbolic link in a loop' | sed 's/:.*$//g' | xargs -i rm {}</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>file * | grep <span class="s1">&#39;symbolic link in a loop&#39;</span> | sed <span class="s1">&#39;s/:.*$//g&#39;</span> | xargs -i rm <span class="o">{}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -673,6 +675,7 @@ Codd同学十几年前说：“You jump, I jump”，现在成了“I&#8217;m no
 <li class='category'><a href='/blog/categories/ubuntu/'>Ubuntu (7)</a></li>
 <li class='category'><a href='/blog/categories/vim/'>Vim (2)</a></li>
 <li class='category'><a href='/blog/categories/webkit/'>Webkit (3)</a></li>
+<li class='category'><a href='/blog/categories/blog/'>blog (1)</a></li>
 <li class='category'><a href='/blog/categories/functional/'>functional (1)</a></li>
 <li class='category'><a href='/blog/categories/github/'>github (1)</a></li>
 <li class='category'><a href='/blog/categories/image/'>image (1)</a></li>
@@ -681,7 +684,6 @@ Codd同学十几年前说：“You jump, I jump”，现在成了“I&#8217;m no
 <li class='category'><a href='/blog/categories/transparent/'>transparent (1)</a></li>
 <li class='category'><a href='/blog/categories/water/'>water (1)</a></li>
 <li class='category'><a href='/blog/categories/仙剑/'>仙剑 (5)</a></li>
-<li class='category'><a href='/blog/categories/博客/'>博客 (1)</a></li>
 <li class='category'><a href='/blog/categories/流水笔记/'>流水笔记 (20)</a></li>
 <li class='category'><a href='/blog/categories/游戏/'>游戏 (2)</a></li>
 <li class='category'><a href='/blog/categories/电影/'>电影 (1)</a></li>
