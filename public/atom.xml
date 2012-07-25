@@ -4,7 +4,7 @@
   <title><![CDATA[流水笔记]]></title>
   <link href="http://huangcd.github.com/atom.xml" rel="self"/>
   <link href="http://huangcd.github.com/"/>
-  <updated>2012-07-24T13:31:11+08:00</updated>
+  <updated>2012-07-25T11:23:05+08:00</updated>
   <id>http://huangcd.github.com/</id>
   <author>
     <name><![CDATA[huangcd]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Awk 简单应用]]></title>
+    <link href="http://huangcd.github.com/blog/2012/07/25/awk-usage/"/>
+    <updated>2012-07-25T11:17:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2012/07/25/awk-usage</id>
+    <content type="html"><![CDATA[
+
+<figure class='code'><figcaption><span>使用制表符\t来过滤第4列的元素 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='awk'><span class='line'><span class="nx">awk</span> <span class="s1">&#39;BEGIN {FS = &quot;[\t]+&quot; }; {print $1&quot;\t&quot;$2&quot;\t&quot;$3&quot;\t&quot;$5&quot;\t&quot;$6}&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用LINQ表达式来求素数]]></title>
@@ -643,19 +658,6 @@ Codd同学十几年前说：“You jump, I jump”，现在成了“I&#8217;m no
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[发现Ubuntu下面的Firefox暴快无比]]></title>
-    <link href="http://huangcd.github.com/blog/2010/11/21/fa-xian-ubuntu-xia-mian-de-firefox-bao-kuai-wu-bi/"/>
-    <updated>2010-11-21T00:00:00+08:00</updated>
-    <id>http://huangcd.github.com/blog/2010/11/21/fa-xian-ubuntu-xia-mian-de-firefox-bao-kuai-wu-bi</id>
-    <content type="html"><![CDATA[<p>之前Ubuntu下一直在用chrome，结果开十来个标签就崩溃了；然后改用Opera，感觉很好很强大。不过在笔记本里面装Ubuntu以后，还是用回了Firefox。然后真是不用不知道，一用吓一跳，速度快得惊人。装了大概10个左右的插件，启动还是两秒内就好了，而且使用过程中开二三十个页面依然毫无压力。
-上个插件截图：
-<a href="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRihjQYM"><img class="alignnone" title="截图" src="http://println-hcd.appspot.com/file?method=get&key=agtwcmludGxuLWhjZHIMCxIERmlsZRihjQYM" alt=""></a></p>
-
-<p>恩，不得不说，appspot虽然诸多限制，但存点图片什么的小文件还是很给力的。</p>
 ]]></content>
   </entry>
   

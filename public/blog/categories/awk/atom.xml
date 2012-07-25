@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: awk | 流水笔记]]></title>
+  <link href="http://huangcd.github.com/blog/categories/awk/atom.xml" rel="self"/>
+  <link href="http://huangcd.github.com/"/>
+  <updated>2012-07-25T11:23:05+08:00</updated>
+  <id>http://huangcd.github.com/</id>
+  <author>
+    <name><![CDATA[huangcd]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Awk 简单应用]]></title>
+    <link href="http://huangcd.github.com/blog/2012/07/25/awk-usage/"/>
+    <updated>2012-07-25T11:17:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2012/07/25/awk-usage</id>
+    <content type="html"><![CDATA[<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>使用制表符\t来过滤第4列的元素 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='awk'><span class='line'><span class="nx">awk</span> <span class="s1">&#39;BEGIN {FS = &quot;[\t]+&quot; }; {print $1&quot;\t&quot;$2&quot;\t&quot;$3&quot;\t&quot;$5&quot;\t&quot;$6}&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+</feed>

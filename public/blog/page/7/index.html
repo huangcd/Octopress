@@ -9,8 +9,14 @@
   <meta name="author" content="huangcd">
 
   
-  <meta name="description" content="果然没有理论的支持还是做不成事情的，今天看了一下PLC的书，恍然大悟豁然开朗，很多疑问迎刃而解。
-首先PLC有一种很奇怪的执行方式，就是主程序块（OB1）并不是只执行一次，而是以一个恒定的间隔循环执行，这就解释了为什么CtrlValve里面DB101到DB110所有数据块里面的内容都是相同的， &hellip;">
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+今天都在看Webkit源码，总结一下：&lt;br>
+核心的两部分应该是WebCore和JavascriptCore，大致上来说，WebCore负责HTML和CSS及图片等资源的解 析，JavascriptCore负责Javascript脚本的解析和执行。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +83,58 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/04/28/2010-4-28-webkit/">2010.4.28 Webkit</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-28T00:00:00+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>今天都在看Webkit源码，总结一下：&lt;br>
+</span><span class='line'>核心的两部分应该是WebCore和JavascriptCore，大致上来说，WebCore负责HTML和CSS及图片等资源的解 析，JavascriptCore负责Javascript脚本的解析和执行。JavascriptCore还没看，主要是看了WebCore部分。&lt;br>
+</span><span class='line'>WebCore既然叫Core，其实就只有很Core的东西，也就是很单纯的解析。至于说如何获取数据，如何把页面显示出来，甚至如何处理与用户之间的交 互等功能就不是它来做的，而是让一些不那么Core的模块来做。而且这些模块都是平台相关的，win下有win下的实现，qt下有qt下的实现，gtk下 有gtk下的实现。又或者说其实Webkit并不是浏览器，而仅仅是一个引擎。&lt;br>
+</span><span class='line'>浏览器的一个经典应用场景是用户给出一个URL（直接输入或者点击链接或者JavaScript解析等方式）。然后浏览器外壳调用FrameLoader 来装载页面。FrameLoader首先检查一些条件(policyCheck())，如URL是否非空、URL是否可达，用户是否取消等等。然后通过 DocumentLoader启动一个MainResourceLoader来装载页面。&lt;br>
+</span><span class='line'>MainResource调用network模块中的接口来下载页面内容（ResourceHandle），实际上这里的Resourcehandle已 经是平台相关的内容了，比如在Qt里面，会有ResourceHandleQt来控制，然后调用QtNetworkReplyHandler来处理 HTTP请求（GET， POST等）。接收到数据以后，会有回调函数，告诉MainResourceLoader数据已经接收到了。然后一路返回到FrameLoader开始调 用HTMLTokenizer解析HTML文本。解析过程中，如果遇到Javascript脚本的话，也会调用Javascript引擎（Webkit中 的JavascriptCore，chrome中的V8）来解析。数据被解析完了以后，成了一个一个的node。然后通过 FrameLoaderClient调用外部的壳把内容显示出来。
+</span><span class='line'>。。。好像什么都没说清楚。。。</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -598,6 +656,7 @@ Example: grep -i &#8216;hello world&#8217; menu.h main.c</p>
 <li class='category'><a href='/blog/categories/ubuntu/'>Ubuntu (7)</a></li>
 <li class='category'><a href='/blog/categories/vim/'>Vim (2)</a></li>
 <li class='category'><a href='/blog/categories/webkit/'>Webkit (3)</a></li>
+<li class='category'><a href='/blog/categories/awk/'>awk (1)</a></li>
 <li class='category'><a href='/blog/categories/blog/'>blog (1)</a></li>
 <li class='category'><a href='/blog/categories/functional/'>functional (1)</a></li>
 <li class='category'><a href='/blog/categories/github/'>github (1)</a></li>
@@ -617,6 +676,10 @@ Example: grep -i &#8216;hello world&#8217; menu.h main.c</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/07/25/awk-usage/">Awk 简单应用</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/07/21/sieve-using-linq/">使用LINQ表达式来求素数</a>
       </li>
     
@@ -630,10 +693,6 @@ Example: grep -i &#8216;hello world&#8217; menu.h main.c</p>
     
       <li class="post">
         <a href="/blog/2010/12/29/yi-ran-shi-jin-tian-de-shi-qing/">依然是今天的事情</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2010/12/29/tools/">tools</a>
       </li>
     
   </ul>
