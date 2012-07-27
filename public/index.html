@@ -9,8 +9,8 @@
   <meta name="author" content="huangcd">
 
   
-  <meta name="description" content=" 使用制表符\t来过滤第4列的元素 1
-awk &#39;BEGIN {FS = &quot;[\t]+&quot; }; {print $1&quot;\t&quot;$2&quot;\t&quot;$3&quot;\t&quot;$5&quot;\t&quot;$6}&#39; ">
+  <meta name="description" content="SublimeCodeIntel 支持N多语言的Intelligence。主要提供几个功能。 定义跳转（光标在标示符上的时候按ctrl+F3或者alt+鼠标左键
+自动补全（写的时候会自动出来，如果没有自动出来可以按ctrl+j强制弹出(貌似没有效果)） 配置 可以配置外部库的路径，具体参考自带文档 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,100 @@ awk &#39;BEGIN {FS = &quot;[\t]+&quot; }; {print $1&quot;\t&quot;$2&quot;\t&quot
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/07/25/sublime-text-package-usage/">Sublime Text 2各种插件及使用方法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-25T17:32:00+08:00" pubdate data-updated="true">Jul 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>SublimeCodeIntel</h2>
+
+<p>支持N多语言的Intelligence。主要提供几个功能。</p>
+
+<ul>
+<li>定义跳转（光标在标示符上的时候按<code>ctrl+F3</code>或者<code>alt+鼠标左键</code></li>
+<li>自动补全（写的时候会自动出来，如果没有自动出来可以按<code>ctrl+j</code>强制弹出(貌似没有效果)）</li>
+</ul>
+
+
+<h3>配置</h3>
+
+<p>可以配置外部库的路径，具体参考自带文档。。。</p>
+
+<h2>Pylinter</h2>
+
+<p>Python代码的动态检查（主要是语法和格式层面的），打开py文件就会自动运行。有错误/警告的地方会用方框框住，光标移到方框里面的时候会在状态栏支出错误/警告的内容。有几个快捷键<code>ctrl+alt+x</code>、<code>ctrl+alt+z</code>、<code>ctrl+alt+c</code>，不够实测都没什么用。。。</p>
+
+<h3>配置</h3>
+
+<p>Pylinter依赖python的pylint包，运行前需要修改目录下的Pylinter.sublime-settings的文件。设置pylint_path变量，指定pylint的位置。</p>
+
+<h2>Sublime Alignment</h2>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/07/25/scope-notes/">Scope学习笔记</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-25T11:29:00+08:00" pubdate data-updated="true">Jul 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -496,92 +590,6 @@ awk &#39;BEGIN {FS = &quot;[\t]+&quot; }; {print $1&quot;\t&quot;$2&quot;\t&quot
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/12/24/jin-tian-de-shi-qing/">今天的事情</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-24T00:00:00+08:00" pubdate data-updated="true">Dec 24<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>首先是实验室里面的，最近两个老师都回来了，然后我的座位正好背对着两位老师，因此时常觉得压力很大。。。想悄悄干点坏事都不行。</p>
-
-<p>然后上周隔壁组试图结题，挤压了n久的工作要赶着做完。毫无意外地，我被拉去帮忙赶工了。。。发来布置任务的邮件写的很牛的样子，让我觉得压力很大，不过和负责coding的师弟了解了一下以后发现是个很简单的东西。</p>
-
-<p>第二天早上一大早赶过去试图开工，正在准备软件的时候老大赶过来说有个小任务。。。于是就开始优先做小任务了，确实挺小的，十分钟搞定，不过由于要求要弄成exe，然后我是用python写的，所以就开始尝试转换了，试了一下py2exe，很好很强大，一下子就转过去了，转到纯洁无瑕的虚拟机下面一试，发现丫说这是不明真相的exe不能执行。网上搜了一下，发现是python2.6用的是VS2008编译的，py2exe之后各种不能用，尝试了一些解决方案发现没效果。心里默念“python2.6傻X一万遍，VS2008傻X一千遍”以后果断开始尝试pyinstall，惊奇的发现pyinstall纯爷们，直接来一句我们支持2.5、2.7及各种3.+版本，但是不支持您用的2.6。心里再次默念python2.6傻X一万遍以后开始在纯洁无瑕的虚拟机下面装python2.5.4（顺便发现corsair挂了），装完以后果然pyinstall就可以用了。而且很好很强大的是它还可以把所有需要的文件打包成一个大exe，如果忽略那个长得巨难看无比的图标的话简直就太完美了。</p>
-
-<p>吃完饭回来开始做隔壁组的任务，吭哧吭哧捣鼓了一个下午总算完成了，n久不用Java，难得用一次还是在不给力的netbeans上面，而且还要写界面，十分痛苦。而且最后发现写的东西无非是师弟原有代码的简化版。。。不过事不关己，完成任务就好</p>
-
-<p>晚上打球，这学期第一次打六点场，一开始很不给力，跑了两下觉得晚饭都要跳出喉咙了。。。不过后来越打越舒服，更舒服的是打完以后还能去北区澡堂洗澡，不用去东区将就。</p>
-
-<p>然后就没有然后了，恩</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/12/19/jiao-le-ding-jin/">交了定金</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-19T00:00:00+08:00" pubdate data-updated="true">Dec 19<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>恩，元旦爸妈过来办理最后的手续，然后这事就算完了。</p>
-
-<p>家里人都很高兴，毕竟也算是有着落了。</p>
-
-<p>突然觉得压力很大。。。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -595,7 +603,8 @@ awk &#39;BEGIN {FS = &quot;[\t]+&quot; }; {print $1&quot;\t&quot;$2&quot;\t&quot
     <section>
  <h1>Categories</h1>
  <ul id="categories">
- <li class='category'><a href='/blog/categories/csharp/'>Csharp (2)</a></li>
+ <li class='category'><a href='/blog/categories/cosmos/'>Cosmos (1)</a></li>
+<li class='category'><a href='/blog/categories/csharp/'>Csharp (2)</a></li>
 <li class='category'><a href='/blog/categories/haskell/'>Haskell (3)</a></li>
 <li class='category'><a href='/blog/categories/java/'>Java (2)</a></li>
 <li class='category'><a href='/blog/categories/linq/'>LINQ (1)</a></li>
@@ -604,6 +613,7 @@ awk &#39;BEGIN {FS = &quot;[\t]+&quot; }; {print $1&quot;\t&quot;$2&quot;\t&quot
 <li class='category'><a href='/blog/categories/plc/'>PLC (3)</a></li>
 <li class='category'><a href='/blog/categories/programming/'>Programming (5)</a></li>
 <li class='category'><a href='/blog/categories/python/'>Python (14)</a></li>
+<li class='category'><a href='/blog/categories/scope/'>Scope (1)</a></li>
 <li class='category'><a href='/blog/categories/ubuntu/'>Ubuntu (7)</a></li>
 <li class='category'><a href='/blog/categories/vim/'>Vim (2)</a></li>
 <li class='category'><a href='/blog/categories/webkit/'>Webkit (3)</a></li>
@@ -614,6 +624,7 @@ awk &#39;BEGIN {FS = &quot;[\t]+&quot; }; {print $1&quot;\t&quot;$2&quot;\t&quot
 <li class='category'><a href='/blog/categories/image/'>image (1)</a></li>
 <li class='category'><a href='/blog/categories/lambda/'>lambda (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (1)</a></li>
+<li class='category'><a href='/blog/categories/sublime text/'>sublime text (1)</a></li>
 <li class='category'><a href='/blog/categories/transparent/'>transparent (1)</a></li>
 <li class='category'><a href='/blog/categories/water/'>water (1)</a></li>
 <li class='category'><a href='/blog/categories/仙剑/'>仙剑 (5)</a></li>
@@ -627,6 +638,14 @@ awk &#39;BEGIN {FS = &quot;[\t]+&quot; }; {print $1&quot;\t&quot;$2&quot;\t&quot
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/07/25/sublime-text-package-usage/">Sublime Text 2各种插件及使用方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/25/scope-notes/">Scope学习笔记</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/07/25/awk-usage/">Awk 简单应用</a>
       </li>
     
@@ -636,14 +655,6 @@ awk &#39;BEGIN {FS = &quot;[\t]+&quot; }; {print $1&quot;\t&quot;$2&quot;\t&quot
     
       <li class="post">
         <a href="/blog/2012/07/19/shi-yong-octopresszai-githubda-jian-bo-ke/">使用Octopress在github搭建博客</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/07/18/functional-c-number/">函数式C#的尝试</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2010/12/29/yi-ran-shi-jin-tian-de-shi-qing/">依然是今天的事情</a>
       </li>
     
   </ul>

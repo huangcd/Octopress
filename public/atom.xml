@@ -4,7 +4,7 @@
   <title><![CDATA[流水笔记]]></title>
   <link href="http://huangcd.github.com/atom.xml" rel="self"/>
   <link href="http://huangcd.github.com/"/>
-  <updated>2012-07-25T11:23:05+08:00</updated>
+  <updated>2012-07-27T13:54:33+08:00</updated>
   <id>http://huangcd.github.com/</id>
   <author>
     <name><![CDATA[huangcd]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text 2各种插件及使用方法]]></title>
+    <link href="http://huangcd.github.com/blog/2012/07/25/sublime-text-package-usage/"/>
+    <updated>2012-07-25T17:32:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2012/07/25/sublime-text-package-usage</id>
+    <content type="html"><![CDATA[<h2>SublimeCodeIntel</h2>
+
+<p>支持N多语言的Intelligence。主要提供几个功能。</p>
+
+<ul>
+<li>定义跳转（光标在标示符上的时候按<code>ctrl+F3</code>或者<code>alt+鼠标左键</code></li>
+<li>自动补全（写的时候会自动出来，如果没有自动出来可以按<code>ctrl+j</code>强制弹出(貌似没有效果)）</li>
+</ul>
+
+
+<h3>配置</h3>
+
+<p>可以配置外部库的路径，具体参考自带文档。。。</p>
+
+<h2>Pylinter</h2>
+
+<p>Python代码的动态检查（主要是语法和格式层面的），打开py文件就会自动运行。有错误/警告的地方会用方框框住，光标移到方框里面的时候会在状态栏支出错误/警告的内容。有几个快捷键<code>ctrl+alt+x</code>、<code>ctrl+alt+z</code>、<code>ctrl+alt+c</code>，不够实测都没什么用。。。</p>
+
+<h3>配置</h3>
+
+<p>Pylinter依赖python的pylint包，运行前需要修改目录下的Pylinter.sublime-settings的文件。设置pylint_path变量，指定pylint的位置。</p>
+
+<h2>Sublime Alignment</h2>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Scope学习笔记]]></title>
+    <link href="http://huangcd.github.com/blog/2012/07/25/scope-notes/"/>
+    <updated>2012-07-25T11:29:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2012/07/25/scope-notes</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Awk 简单应用]]></title>
@@ -613,48 +653,6 @@ Codd同学十几年前说：“You jump, I jump”，现在成了“I&#8217;m no
 </span><span class='line'>            instance_container.append(cls(*arg, **args))
 </span><span class='line'>        return instance_container[0]
 </span><span class='line'>    return get_instance</span></code></pre></td></tr></table></div></figure>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[做了件傻事]]></title>
-    <link href="http://huangcd.github.com/blog/2010/11/21/zuo-le-jian-sha-shi/"/>
-    <updated>2010-11-21T00:00:00+08:00</updated>
-    <id>http://huangcd.github.com/blog/2010/11/21/zuo-le-jian-sha-shi</id>
-    <content type="html"><![CDATA[<p>Ubuntu下改hosts文件的时候把&#8221;127.0.0.1 机器名&#8221;这行给删了，然后退出以后发现sudo不能用了，每次sudo的时候总会提示</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo: unable to resolve host 机器名</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然后由于sudo不能用不能把hosts改回来。。。</p>
-
-<p>幸好在网上搜了一下，发现有个gksudo的东西，与sudo类似功能，不过是GTK+ frontend的，反正就是说和sudo之间没什么联系了，然后就可以把hosts的内容改回来了。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Shell笔记]]></title>
-    <link href="http://huangcd.github.com/blog/2010/11/21/shell-bi-ji/"/>
-    <updated>2010-11-21T00:00:00+08:00</updated>
-    <id>http://huangcd.github.com/blog/2010/11/21/shell-bi-ji</id>
-    <content type="html"><![CDATA[<p>批量删除指定文件（以链接错误文件为例）：</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>file * | grep <span class="s1">&#39;symbolic link in a loop&#39;</span> | sed <span class="s1">&#39;s/:.*$//g&#39;</span> | xargs -i rm <span class="o">{}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>file列出当前文件夹的文件属性，grep过滤文件，sed修改行内容，xargs生成删除指令</p>
-
-<p>批量软链接：</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>file * | grep <span class="s1">&#39;symbolic link in a loop&#39;</span> | sed <span class="s1">&#39;s/:.*$//g&#39;</span> | xargs -i rm <span class="o">{}</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
 

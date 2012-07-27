@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: sublime text | 流水笔记]]></title>
+  <link href="http://huangcd.github.com/blog/categories/sublime-text/atom.xml" rel="self"/>
+  <link href="http://huangcd.github.com/"/>
+  <updated>2012-07-27T13:54:33+08:00</updated>
+  <id>http://huangcd.github.com/</id>
+  <author>
+    <name><![CDATA[huangcd]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text 2各种插件及使用方法]]></title>
+    <link href="http://huangcd.github.com/blog/2012/07/25/sublime-text-package-usage/"/>
+    <updated>2012-07-25T17:32:00+08:00</updated>
+    <id>http://huangcd.github.com/blog/2012/07/25/sublime-text-package-usage</id>
+    <content type="html"><![CDATA[<h2>SublimeCodeIntel</h2>
+
+<p>支持N多语言的Intelligence。主要提供几个功能。</p>
+
+<ul>
+<li>定义跳转（光标在标示符上的时候按<code>ctrl+F3</code>或者<code>alt+鼠标左键</code></li>
+<li>自动补全（写的时候会自动出来，如果没有自动出来可以按<code>ctrl+j</code>强制弹出(貌似没有效果)）</li>
+</ul>
+
+
+<h3>配置</h3>
+
+<p>可以配置外部库的路径，具体参考自带文档。。。</p>
+
+<h2>Pylinter</h2>
+
+<p>Python代码的动态检查（主要是语法和格式层面的），打开py文件就会自动运行。有错误/警告的地方会用方框框住，光标移到方框里面的时候会在状态栏支出错误/警告的内容。有几个快捷键<code>ctrl+alt+x</code>、<code>ctrl+alt+z</code>、<code>ctrl+alt+c</code>，不够实测都没什么用。。。</p>
+
+<h3>配置</h3>
+
+<p>Pylinter依赖python的pylint包，运行前需要修改目录下的Pylinter.sublime-settings的文件。设置pylint_path变量，指定pylint的位置。</p>
+
+<h2>Sublime Alignment</h2>
+]]></content>
+  </entry>
+  
+</feed>

@@ -9,7 +9,8 @@
   <meta name="author" content="huangcd">
 
   
-  <meta name="description" content="之前Ubuntu下一直在用chrome，结果开十来个标签就崩溃了；然后改用Opera，感觉很好很强大。不过在笔记本里面装Ubuntu以后，还是用回了Firefox。然后真是不用不知道，一用吓一跳，速度快得惊人。装了大概10个左右的插件，启动还是两秒内就好了，而且使用过程中开二三十个页面依然毫无压力 &hellip;">
+  <meta name="description" content="Ubuntu下改hosts文件的时候把&#8221;127.0.0.1 机器名&#8221;这行给删了，然后退出以后发现sudo不能用了，每次sudo的时候总会提示 1
+sudo: unable to resolve host 机器名 然后由于sudo不能用不能把hosts改回来。。。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +77,102 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/21/zuo-le-jian-sha-shi/">做了件傻事</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-21T00:00:00+08:00" pubdate data-updated="true">Nov 21<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ubuntu下改hosts文件的时候把&#8221;127.0.0.1 机器名&#8221;这行给删了，然后退出以后发现sudo不能用了，每次sudo的时候总会提示</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo: unable to resolve host 机器名</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后由于sudo不能用不能把hosts改回来。。。</p>
+
+<p>幸好在网上搜了一下，发现有个gksudo的东西，与sudo类似功能，不过是GTK+ frontend的，反正就是说和sudo之间没什么联系了，然后就可以把hosts的内容改回来了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/21/shell-bi-ji/">Shell笔记</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-21T00:00:00+08:00" pubdate data-updated="true">Nov 21<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>批量删除指定文件（以链接错误文件为例）：</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>file * | grep <span class="s1">&#39;symbolic link in a loop&#39;</span> | sed <span class="s1">&#39;s/:.*$//g&#39;</span> | xargs -i rm <span class="o">{}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>file列出当前文件夹的文件属性，grep过滤文件，sed修改行内容，xargs生成删除指令</p>
+
+<p>批量软链接：</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>file * | grep <span class="s1">&#39;symbolic link in a loop&#39;</span> | sed <span class="s1">&#39;s/:.*$//g&#39;</span> | xargs -i rm <span class="o">{}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -498,130 +595,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/11/03/pyqt-huan-shi-hen-hao-hen-qiang-da-de/">PyQt还是很好很强大的</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-03T00:00:00+08:00" pubdate data-updated="true">Nov 3<span>rd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>恩，QtDesigner是神器，秒杀JFormDesinger，Visual Studio一万次，信号/槽的绑定方式也很好很强大。</p>
-
-<p>不足之处是文档都是Qt的，没有专门针对Python的文档，写起来不够顺手，谨慎估计效率也不是很高。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/11/02/ting-lai-de-xiao-hua/">听来的笑话</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-02T00:00:00+08:00" pubdate data-updated="true">Nov 2<span>nd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>发信人: *****************, 信区: CProgramming
-标  题: EOF是什么
-发信站: 水木社区 (Tue Nov  2 00:28:43 2010), 站内</p>
-
-<h1>include</h1>
-
-<p>// copy the input char to the output</p>
-
-<p>main()
-{
-int c;</p>
-
-<p>c = getchar();
-while (c != EOF) {
-putchar(c);
-c = getchar();
-}
-}</p>
-
-<p>mac os x系统下编译：cc 编译后运行
-输入：EOF
-输出：EOF
-为什么不是退出程序啊？
-现在只能用ctrl+c退出
-谢谢！</p>
-
-<p>&#8211;</p>
-
-<p>※ 来源:·水木社区 newsmth.net·[FROM: 59.66.200.*]</p>
-
-<hr>好吧，这个一般搞笑，更搞笑的在下面
-
-
-
-
-<hr>发信人: ****************************, 信区: CProgramming
-
-
-<p>标  题: Re: EOF是什么
-发信站: 水木社区 (Tue Nov  2 09:23:16 2010), 站内</p>
-
-<p>输入end of file or END OF FILE 还是不行啊
-到底输什么能结束啊？</p>
-
-<p>【 在 shocker ((<sup>o<sup>)/~)</sup></sup> 的大作中提到: 】
-: EOF 是end of file 的缩写，你在屏幕上输入的话不能直接用缩写，要全部输入。
-: 你再试试吧。</p>
-
-<p>&#8211;</p>
-
-<p>※ 来源:·水木社区 newsmth.net·[FROM: 59.66.200.*]</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -637,7 +610,8 @@ c = getchar();
     <section>
  <h1>Categories</h1>
  <ul id="categories">
- <li class='category'><a href='/blog/categories/csharp/'>Csharp (2)</a></li>
+ <li class='category'><a href='/blog/categories/cosmos/'>Cosmos (1)</a></li>
+<li class='category'><a href='/blog/categories/csharp/'>Csharp (2)</a></li>
 <li class='category'><a href='/blog/categories/haskell/'>Haskell (3)</a></li>
 <li class='category'><a href='/blog/categories/java/'>Java (2)</a></li>
 <li class='category'><a href='/blog/categories/linq/'>LINQ (1)</a></li>
@@ -646,6 +620,7 @@ c = getchar();
 <li class='category'><a href='/blog/categories/plc/'>PLC (3)</a></li>
 <li class='category'><a href='/blog/categories/programming/'>Programming (5)</a></li>
 <li class='category'><a href='/blog/categories/python/'>Python (14)</a></li>
+<li class='category'><a href='/blog/categories/scope/'>Scope (1)</a></li>
 <li class='category'><a href='/blog/categories/ubuntu/'>Ubuntu (7)</a></li>
 <li class='category'><a href='/blog/categories/vim/'>Vim (2)</a></li>
 <li class='category'><a href='/blog/categories/webkit/'>Webkit (3)</a></li>
@@ -656,6 +631,7 @@ c = getchar();
 <li class='category'><a href='/blog/categories/image/'>image (1)</a></li>
 <li class='category'><a href='/blog/categories/lambda/'>lambda (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (1)</a></li>
+<li class='category'><a href='/blog/categories/sublime text/'>sublime text (1)</a></li>
 <li class='category'><a href='/blog/categories/transparent/'>transparent (1)</a></li>
 <li class='category'><a href='/blog/categories/water/'>water (1)</a></li>
 <li class='category'><a href='/blog/categories/仙剑/'>仙剑 (5)</a></li>
@@ -669,6 +645,14 @@ c = getchar();
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/07/25/sublime-text-package-usage/">Sublime Text 2各种插件及使用方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/07/25/scope-notes/">Scope学习笔记</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/07/25/awk-usage/">Awk 简单应用</a>
       </li>
     
@@ -678,14 +662,6 @@ c = getchar();
     
       <li class="post">
         <a href="/blog/2012/07/19/shi-yong-octopresszai-githubda-jian-bo-ke/">使用Octopress在github搭建博客</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/07/18/functional-c-number/">函数式C#的尝试</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2010/12/29/yi-ran-shi-jin-tian-de-shi-qing/">依然是今天的事情</a>
       </li>
     
   </ul>
